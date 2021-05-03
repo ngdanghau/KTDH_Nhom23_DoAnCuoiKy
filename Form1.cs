@@ -70,6 +70,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private void Btn_3D_Click(object sender, EventArgs e)
         {
             Init.ModeCurrent = Constants.Mode._3DMode;
+            Init.ShapeCurrent = Constants.Shape.Sphere;
             Btn_2D.Image = Properties.Resources._2d;
             Btn_3D.Image = Properties.Resources._3d_selected;
 
@@ -79,10 +80,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 Panel3DModel.Instance.Dock = DockStyle.Fill;
                 Panel3DModel.Instance.BringToFront();
             }
-            else
-                Panel3DModel.Instance.BringToFront();
+            else Panel3DModel.Instance.BringToFront();
 
-           
+            Panel3DModel.reset();
+
+
         }
 
         private void Btn_2D_Click(object sender, EventArgs e)
@@ -96,8 +98,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 Panel2DModel.Instance.Dock = DockStyle.Fill;
                 Panel2DModel.Instance.BringToFront();
             }
-            else
-                Panel2DModel.Instance.BringToFront();
+            else Panel2DModel.Instance.BringToFront();
+
+            Panel2DModel.reset();
 
         }
 
@@ -202,13 +205,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     case Constants.Shape.Line:
                         ListLine.Add(new Line(StartPoint, EndPoint));
                         ListLabel.Add(EndPoint.SetLabel());
+                        PanelLine.Instance.X2 = EndPoint.X;
+                        PanelLine.Instance.Y2 = EndPoint.Y;
                         break;
                     case Constants.Shape.Circle:
-                        ListCircle.Add(new Circle(StartPoint, Point.Distance(StartPoint, EndPoint)));
+                        Circle htron = new Circle(StartPoint, Point.Distance(StartPoint, EndPoint));
+                        ListCircle.Add(htron);
+                        PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
                         break;
                     case Constants.Shape.Rectangle:
                         Rectangle hinhcn = new Rectangle(StartPoint, EndPoint);
                         ListRectangle.Add(hinhcn);
+                        PanelRectangle.Instance.A_Edge = hinhcn.Width;
+                        PanelRectangle.Instance.B_Edge = hinhcn.Height;
+
                         ListLabel.Add(EndPoint.SetLabel());
                         ListLabel.Add(hinhcn.B.SetLabel());
                         ListLabel.Add(hinhcn.D.SetLabel());
@@ -216,6 +226,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     case Constants.Shape.Triangle:
                         Triangle hinhtamgiac = new Triangle(StartPoint, EndPoint);
                         ListTriangle.Add(hinhtamgiac);
+
+                        PanelTriangle.Instance.X2 = hinhtamgiac.B.X;
+                        PanelTriangle.Instance.Y2 = hinhtamgiac.B.Y;
+
+                        PanelTriangle.Instance.X3 = EndPoint.X;
+                        PanelTriangle.Instance.Y3 = EndPoint.Y;
+
                         ListLabel.Add(EndPoint.SetLabel());
                         ListLabel.Add(hinhtamgiac.B.SetLabel());
                         break;
@@ -323,7 +340,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         ListLabel.Add(hinhcn.D.SetLabel());
                         break;
                     case Constants.Shape.Triangle:
-                        
+                        StartPoint = new Point(Convert.ToInt32(PanelTriangle.Instance.X1), Convert.ToInt32(PanelTriangle.Instance.Y1));
+                        EndPoint = new Point(Convert.ToInt32(PanelTriangle.Instance.X3), Convert.ToInt32(PanelTriangle.Instance.Y3));
+                        Triangle hinhtamgiac = new Triangle(StartPoint, EndPoint);
+                        ListTriangle.Add(hinhtamgiac);
+                        ListLabel.Add(EndPoint.SetLabel());
+                        ListLabel.Add(hinhtamgiac.B.SetLabel());
                         break;
                     case Constants.Shape.Default:
                         break;
@@ -350,6 +372,37 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 ListDiemTamThoi.Clear();
                 // Lấy điểm bắt đâu khi click chuột. và đổi tọa độ chuột sang tọa độ Oxy
                 StartPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
+
+                if (Init.ModeCurrent == Constants.Mode._2DMode)
+                {
+                    switch (Init.ShapeCurrent)
+                    {
+                        case Constants.Shape.Line:
+                            PanelLine.Instance.X1 = StartPoint.X;
+                            PanelLine.Instance.Y1 = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Circle:
+                            PanelCircle.Instance.X = StartPoint.X;
+                            PanelCircle.Instance.Y = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Rectangle:
+                            PanelRectangle.Instance.X = StartPoint.X;
+                            PanelRectangle.Instance.Y = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Triangle:
+                            PanelTriangle.Instance.X1 = StartPoint.X;
+                            PanelTriangle.Instance.Y1 = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Default:
+                            break;
+                    }
+                }
+
+                // Nếu Mode = 3D - Chưa làm 
+                else
+                {
+
+                }
             }
         }
     }

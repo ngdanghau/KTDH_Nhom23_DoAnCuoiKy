@@ -10,8 +10,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
 {
     public partial class Panel2DModel : UserControl
     {
-        List<Button> lstBtnCalc = new List<Button>();
-        List<Image> lstBtn2 = new List<Image>();
+        public static List<Button> lstBtnCalc = new List<Button>();
+        public static List<Image> lstBtn2 = new List<Image>();
 
         private static Panel2DModel _instance;
         public static Panel2DModel Instance
@@ -24,12 +24,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             }
         }
 
+        public static void reset()
+        {
+            Init.ShapeCurrent = Shape.Line;
+            HandleInputPanel(PanelLine.Instance);
+            HandleButton(1, Resources._11_selected);
+        }
+
+
         public Panel2DModel()
         {
             InitializeComponent();
         }
 
-        private void HandleButton(int index, Bitmap image)
+        static void HandleButton(int index, Bitmap image)
         {
             for (int i = 0; i < lstBtnCalc.Count; i++)
             {
@@ -44,7 +52,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             }
         }
 
-        private void HandleInputPanel(Control Panel)
+        static void HandleInputPanel(Control Panel)
         {
             if (!Form1.GroupBoxInput.Controls.Contains(Panel))
             {
