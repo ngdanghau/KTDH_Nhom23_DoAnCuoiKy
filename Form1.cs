@@ -60,11 +60,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void VeTrucToaDo()
         {
-            Init.NewSize2D.Width = panel2.Width;
-            Init.NewSize2D.Height = panel2.Height;
-            PageSizeLabel.Text = Init.NewSize2D.Width + " x " + Init.NewSize2D.Height;
+            
             g.Clear(Constants.Background_Color_Coordinate_System);
-            DrawCoordinate();
+            PageSizeLabel.Text = Init.NewSize2D.Width + " x " + Init.NewSize2D.Height;
+            if (Init.ModeCurrent == Constants.Mode._2DMode)
+            {
+                Init.NewSize2D.Width = panel2.Width;
+                Init.NewSize2D.Height = panel2.Height;
+                DrawCoordinate();
+            }
+            else
+            {
+
+            }
+           
         }
 
         private void Btn_3D_Click(object sender, EventArgs e)
@@ -83,6 +92,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel3DModel.Instance.BringToFront();
 
             Panel3DModel.reset();
+            VeTrucToaDo();
 
 
         }
@@ -101,7 +111,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel2DModel.Instance.BringToFront();
 
             Panel2DModel.reset();
-
+            VeTrucToaDo();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -168,10 +178,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Default:
                             break;
                     }
-                }
-                else
-                {
-
                 }
                 // Hiện Tọa Độ Đầu Và cuối của mỗi hình, sau khi đã lọc hết các tọa độ tạm thời
                 HienToaDoChinh();
@@ -243,12 +249,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 ShowAllShape();
                 // Hiện thị Label Của Point
                 ShowLabel();
-            }
-
-            // Nếu Mode = 3D - Chưa làm 
-            else
-            {
-
             }
             
         }
@@ -396,12 +396,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Default:
                             break;
                     }
-                }
-
-                // Nếu Mode = 3D - Chưa làm 
-                else
-                {
-
                 }
             }
         }
