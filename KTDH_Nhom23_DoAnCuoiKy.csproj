@@ -154,6 +154,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\16_selected.png" />
+    <None Include="resources\16.png" />
+    <None Include="resources\15_selected.png" />
+    <None Include="resources\15.png" />
+    <None Include="resources\14_selected.png" />
+    <None Include="resources\14.png" />
+    <None Include="resources\13_selected.png" />
+    <None Include="resources\13.png" />
     <None Include="resources\switch_off.png" />
     <None Include="resources\switch_on.png" />
     <None Include="resources\switch.png" />

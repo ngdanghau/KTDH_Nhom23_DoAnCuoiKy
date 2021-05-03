@@ -70,6 +70,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private void Btn_3D_Click(object sender, EventArgs e)
         {
             Init.ModeCurrent = Constants.Mode._3DMode;
+            Init.ShapeCurrent = Constants.Shape.Sphere;
             Btn_2D.Image = Properties.Resources._2d;
             Btn_3D.Image = Properties.Resources._3d_selected;
 
@@ -79,10 +80,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 Panel3DModel.Instance.Dock = DockStyle.Fill;
                 Panel3DModel.Instance.BringToFront();
             }
-            else
-                Panel3DModel.Instance.BringToFront();
+            else Panel3DModel.Instance.BringToFront();
 
-           
+            Panel3DModel.reset();
+
+
         }
 
         private void Btn_2D_Click(object sender, EventArgs e)
@@ -96,8 +98,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 Panel2DModel.Instance.Dock = DockStyle.Fill;
                 Panel2DModel.Instance.BringToFront();
             }
-            else
-                Panel2DModel.Instance.BringToFront();
+            else Panel2DModel.Instance.BringToFront();
+
+            Panel2DModel.reset();
 
         }
 

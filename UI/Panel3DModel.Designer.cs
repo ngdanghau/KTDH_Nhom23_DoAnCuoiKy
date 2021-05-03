@@ -33,11 +33,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,15 +53,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // 
             this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(0, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 168);
+            this.groupBox1.Size = new System.Drawing.Size(220, 98);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "3D objects";
@@ -75,105 +67,52 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.ForeColor = System.Drawing.Color.Coral;
-            this.button10.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._10;
-            this.button10.Location = new System.Drawing.Point(137, 37);
+            this.button10.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._15;
+            this.button10.Location = new System.Drawing.Point(108, 37);
             this.button10.Margin = new System.Windows.Forms.Padding(0);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(50, 50);
             this.button10.TabIndex = 19;
             this.button10.Tag = "Tròn";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.Color.Coral;
-            this.button9.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._3x40;
-            this.button9.Location = new System.Drawing.Point(73, 37);
+            this.button9.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._14;
+            this.button9.Location = new System.Drawing.Point(58, 37);
             this.button9.Margin = new System.Windows.Forms.Padding(0);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(50, 50);
             this.button9.TabIndex = 18;
             this.button9.Tag = "Tròn";
             this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.Coral;
-            this.button8.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._8;
-            this.button8.Location = new System.Drawing.Point(137, 103);
-            this.button8.Margin = new System.Windows.Forms.Padding(0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(50, 50);
-            this.button8.TabIndex = 17;
-            this.button8.Tag = "Tròn";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.Coral;
-            this.button7.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._9;
-            this.button7.Location = new System.Drawing.Point(201, 103);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(50, 50);
-            this.button7.TabIndex = 16;
-            this.button7.Tag = "Tròn";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Coral;
-            this.button6.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._4;
-            this.button6.Location = new System.Drawing.Point(8, 103);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(50, 50);
-            this.button6.TabIndex = 15;
-            this.button6.Tag = "Tròn";
-            this.button6.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button5
             // 
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.Coral;
-            this.button5.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._5;
-            this.button5.Location = new System.Drawing.Point(201, 37);
+            this.button5.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._16;
+            this.button5.Location = new System.Drawing.Point(158, 37);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(50, 50);
             this.button5.TabIndex = 14;
             this.button5.Tag = "Tròn";
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Coral;
-            this.button3.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._7;
-            this.button3.Location = new System.Drawing.Point(73, 103);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 50);
-            this.button3.TabIndex = 12;
-            this.button3.Tag = "Tròn";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Coral;
-            this.button1.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._1x40;
+            this.button1.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._13;
             this.button1.Location = new System.Drawing.Point(8, 37);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
@@ -181,6 +120,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button1.TabIndex = 10;
             this.button1.Tag = "Tròn";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Panel3DModel
             // 
@@ -189,7 +129,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Panel3DModel";
-            this.Size = new System.Drawing.Size(259, 232);
+            this.Size = new System.Drawing.Size(223, 136);
+            this.Load += new System.EventHandler(this.Panel3DModel_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,11 +143,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
     }
 }
