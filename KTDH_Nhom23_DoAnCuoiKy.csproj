@@ -94,6 +94,12 @@
     <Compile Include="UI\PanelCircle.Designer.cs">
       <DependentUpon>PanelCircle.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\PanelTriangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PanelTriangle.Designer.cs">
+      <DependentUpon>PanelTriangle.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PanelRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,12 +111,6 @@
     </Compile>
     <Compile Include="UI\PanelLine.Designer.cs">
       <DependentUpon>PanelLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\PanelTriangle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\PanelTriangle.Designer.cs">
-      <DependentUpon>PanelTriangle.cs</DependentUpon>
     </Compile>
     <Compile Include="Variables\Constants.cs" />
     <Compile Include="Variables\Init.cs" />
@@ -135,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PanelCircle.resx">
       <DependentUpon>PanelCircle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PanelTriangle.resx">
+      <DependentUpon>PanelTriangle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PanelRectangle.resx">
       <DependentUpon>PanelRectangle.cs</DependentUpon>
