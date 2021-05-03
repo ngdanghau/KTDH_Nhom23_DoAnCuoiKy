@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KTDH_Nhom23_DoAnCuoiKy.Variables;
+using System;
 using System.Drawing;
 
 namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
@@ -10,8 +11,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public Line(Point first, Point last)
         {
-            First = first;
-            Last = last;
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+            {
+                First = new Point(0, 0, 0);
+                Last = new Point(0, 0, 0);
+                First.X = first.X - Convert.ToInt32(Math.Ceiling(first.Z * 0.5));
+                First.Y = first.Y - Convert.ToInt32(Math.Ceiling(first.Z * 0.5));
+                Last.X = last.X - Convert.ToInt32(Math.Ceiling(last.Z * 0.5));
+                Last.Y = last.Y - Convert.ToInt32(Math.Ceiling(last.Z * 0.5));
+            }
+            else
+            {
+                First = first;
+                Last = last;
+            }
 
             if (First.X != Last.X)
             {
@@ -156,12 +169,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         }
 
-        public void Show(Graphics g)
+        public void Show(Graphics g, bool IsDash = false)
         {
             first.PutPixel(g);
             last.PutPixel(g);
             foreach (Point p in List)
-                p.PutPixel(g);
+                if(IsDash)
+                    p.PutPixel(g, Init.zoom / 2);
+                else
+                    p.PutPixel(g);
         }
 
         private double GetK(Point first1, Point last1)
