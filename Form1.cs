@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
+using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
 using KTDH_Nhom23_DoAnCuoiKy.UI;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using Rectangle = KTDH_Nhom23_DoAnCuoiKy.Class._2D.Rectangle;
@@ -34,11 +35,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private void DrawCoordinate()
         {
             Pen pen = new Pen(Constants.Color_Vector_Coordinate_System, 1);
-            int i = 0, 
-                width = Init.NewSize2D.Width, 
-                height = Init.NewSize2D.Height;
+            int i = 0;
 
-                Point O = new Point(width / 2, height / 2);
+                Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
                 Pen p = new Pen(Constants.Color_Pixel_Grid);
 
                 // Vẽ lưới
@@ -46,25 +45,60 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 for ( i = O.X; i > 0; i -= Init.zoom) g.DrawLine(p, i, 0, i, panel2.Height);
                 for ( i = O.Y; i < panel2.Height; i += Init.zoom) g.DrawLine(p, 0, i, panel2.Width, i);
                 for ( i = O.Y; i > 0; i -= Init.zoom) g.DrawLine(p, 0, i, panel2.Width, i);
-         
+
 
             //// Vẽ mũi tên
             //AdjustableArrowCap bigArrow = new AdjustableArrowCap(5, 5);
             //pen.CustomStartCap = bigArrow;
 
             // Vẽ 2 đường Ox và Oy 
+            g.DrawLine(pen, panel2.Width, O.Y, 0, O.Y);
             g.DrawLine(pen, O.X, 0, O.X, panel2.Height);
-            g.DrawLine(pen, panel2.Width, O.Y,0, O.Y);
+        }
+
+        private void DrawCoordinate3D()
+        {
+            Pen pen = new Pen(Constants.Color_Vector_Coordinate_System, 1);
+            int i = 0;
+
+            Point O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
+            Pen p = new Pen(Constants.Color_Pixel_Grid);
+
+            // Vẽ lưới
+            for (i = O.X; i < panel2.Width; i += Init.zoom) g.DrawLine(p, i, 0, i, panel2.Height);
+            for (i = O.X; i > 0; i -= Init.zoom) g.DrawLine(p, i, 0, i, panel2.Height);
+            for (i = O.Y; i < panel2.Height; i += Init.zoom) g.DrawLine(p, 0, i, panel2.Width, i);
+            for (i = O.Y; i > 0; i -= Init.zoom) g.DrawLine(p, 0, i, panel2.Width, i);
+
+            //// Vẽ mũi tên
+            //AdjustableArrowCap bigArrow = new AdjustableArrowCap(5, 5);
+            //pen.CustomStartCap = bigArrow;
+
+            // Vẽ 3 đường Ox, Oy và Oz
+            g.DrawLine(pen, O.X, O.Y, panel2.Width, O.Y);
+            g.DrawLine(pen, O.X, 0, O.X, O.Y);
+            g.DrawLine(pen, O.X, O.Y, 0 - Convert.ToInt32(panel2.Width / 5), panel2.Width);
 
         }
 
         private void VeTrucToaDo()
         {
-            Init.NewSize2D.Width = panel2.Width;
-            Init.NewSize2D.Height = panel2.Height;
-            PageSizeLabel.Text = Init.NewSize2D.Width + " x " + Init.NewSize2D.Height;
+            
             g.Clear(Constants.Background_Color_Coordinate_System);
-            DrawCoordinate();
+            PageSizeLabel.Text = Init.NewSize2D.Width + " x " + Init.NewSize2D.Height;
+            if (Init.ModeCurrent == Constants.Mode._2DMode)
+            {
+                Init.NewSize2D.Width = panel2.Width/2;
+                Init.NewSize2D.Height = panel2.Height/2;
+                DrawCoordinate();
+            }
+            else
+            {
+                Init.NewSize3D.Width = Convert.ToInt32(panel2.Width / 2.5);
+                Init.NewSize3D.Height = Convert.ToInt32(panel2.Height /2);
+                DrawCoordinate3D();
+            }
+           
         }
 
         private void Btn_3D_Click(object sender, EventArgs e)
@@ -83,6 +117,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel3DModel.Instance.BringToFront();
 
             Panel3DModel.reset();
+            VeTrucToaDo();
 
 
         }
@@ -101,7 +136,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel2DModel.Instance.BringToFront();
 
             Panel2DModel.reset();
-
+            VeTrucToaDo();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -168,10 +203,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Default:
                             break;
                     }
-                }
-                else
-                {
-
                 }
                 // Hiện Tọa Độ Đầu Và cuối của mỗi hình, sau khi đã lọc hết các tọa độ tạm thời
                 HienToaDoChinh();
@@ -243,12 +274,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 ShowAllShape();
                 // Hiện thị Label Của Point
                 ShowLabel();
-            }
-
-            // Nếu Mode = 3D - Chưa làm 
-            else
-            {
-
             }
             
         }
@@ -359,7 +384,25 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // Nếu Mode = 3D - Chưa làm 
             else
             {
+                switch (Init.ShapeCurrent)
+                {
+                    case Constants.Shape.Cube:
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelCube.Instance.X), 
+                            Convert.ToInt32(PanelCube.Instance.Y), 
+                            Convert.ToInt32(PanelCube.Instance.Z)
+                        );
+                        StartPoint.PutPixel(g);
 
+                        Cube s = new Cube(StartPoint, Convert.ToInt32(PanelCube.Instance.Edge));
+                        s.Show(g);
+
+                        //ListLabel.Add(StartPoint.SetLabel());
+                        //ListLabel.Add(EndPoint.SetLabel());
+                        break;
+                    case Constants.Shape.Default:
+                        break;
+                }
             }
         }
 
@@ -396,12 +439,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Default:
                             break;
                     }
-                }
-
-                // Nếu Mode = 3D - Chưa làm 
-                else
-                {
-
                 }
             }
         }
