@@ -8,18 +8,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy
     class Point
     {
         private int x, y, z;
-        private bool _3d;
 
         public Point(int x, int y)
         {
-            _3D = false;
             X = x;
             Y = y;
         }
 
         public Point(int x, int y, int z)
         {
-            _3D = true;
             X = x;
             Y = y;
             Z = z;
@@ -28,7 +25,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
         public int Z { get => z; set => z = value; }
-        public bool _3D { get => _3d; set => _3d = value; }
 
         public Label SetLabel()
         {
@@ -59,19 +55,31 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         }
 
         // Vẽ Điểm Pixel
-        public void PutPixel(Graphics g)
+        public void PutPixel(Graphics g, int zoom = 0)
         {
-            Point O = new Point(Init.NewSize2D.Width/2, Init.NewSize2D.Height/2);
+            if (zoom == 0) zoom = Init.zoom;
             SolidBrush brush = new SolidBrush(Constants.Color_Point_Pixel);
-            g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom - Init.zoom / 2, Init.zoom, Init.zoom);
+            Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+            {
+                O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
+                g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, O.Y - Y * Init.zoom - Init.zoom / 2 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, zoom, zoom);
+            }
+            else
+            {
+                g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom - Init.zoom / 2, zoom, zoom);
+            }
 
         }
 
         // Xóa các điểm thừa khi vẽ
         public void RemovePixel(Graphics g)
         {
-            Point O = new Point(Init.NewSize2D.Width/2, Init.NewSize2D.Height/2);
-
+            Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+            {
+                O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
+            }
             SolidBrush brush = new SolidBrush(Constants.Background_Color_Coordinate_System);
             g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom - Init.zoom / 2, Init.zoom / 2, Init.zoom / 2);
             g.FillRectangle(brush, O.X + X * Init.zoom + 1, O.Y - Y * Init.zoom - Init.zoom / 2, Init.zoom / 2, Init.zoom / 2);
@@ -102,14 +110,22 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         //Chuyển đổi điểm từ Hệ Tọa Độ sang Pixel
         public static Point ConvertCoordinateSystem2DToPoint(Point p)
         {
-            Point O = new Point(Init.NewSize2D.Width / 2, Init.NewSize2D.Height / 2);
+            Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+            {
+                O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
+            }
             return new Point(p.X * Init.zoom + O.X, O.Y - p.Y * Init.zoom);
         }
 
         // Chuyển Điểm Từ Điểm Chuột Sang Hệ Tọa Độ
         public static Point ConvertPointToCoordinateSystem2D(Point p)
         {
-            Point O = new Point(Init.NewSize2D.Width / 2, Init.NewSize2D.Height / 2);
+            Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+            {
+                O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
+            }
             int x = Convert.ToInt32(Math.Round(1.0 * (p.X - O.X) / Init.zoom)),
                 y = Convert.ToInt32(Math.Round(1.0 * (O.Y - p.Y) / Init.zoom));
 
