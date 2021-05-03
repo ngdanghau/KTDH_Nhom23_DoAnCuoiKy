@@ -1,0 +1,14 @@
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\bin\Debug\KTDH_Nhom23_DoAnCuoiKy.exe
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\bin\Debug\KTDH_Nhom23_DoAnCuoiKy.pdb
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.Form1.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.csproj.GenerateResource.cache
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.csproj.CoreCompileInputs.cache
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.exe
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.pdb
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.UI.Panel2DModel.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.UI.Panel3DModel.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.UI.PanelLine.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.csprojAssemblyReference.cache
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.UI.PanelCircle.resources
+D:\HK6\KTDH\DoAn\KTDH_Nhom23_DoAnCuoiKy\obj\Debug\KTDH_Nhom23_DoAnCuoiKy.UI.PanelRectangle.resources
