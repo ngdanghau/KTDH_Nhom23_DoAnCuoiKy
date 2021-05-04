@@ -46,7 +46,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Location = new System.Drawing.Point(4, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 1;
@@ -55,25 +56,28 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 26);
+            this.label2.Location = new System.Drawing.Point(140, 40);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
+            this.label2.Size = new System.Drawing.Size(17, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "x";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(93, 74);
+            this.label3.Location = new System.Drawing.Point(140, 114);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 13);
+            this.label3.Size = new System.Drawing.Size(17, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "x";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 55);
+            this.label4.Location = new System.Drawing.Point(4, 85);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 5;
@@ -88,7 +92,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             0,
             0});
             this.y2.Name = "y2";
-            this.y2.Size = new System.Drawing.Size(80, 20);
+            this.y2.Size = new System.Drawing.Size(120, 26);
             this.y2.TabIndex = 8;
             // 
             // y1
@@ -105,7 +109,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             0,
             -2147483648});
             this.y1.Name = "y1";
-            this.y1.Size = new System.Drawing.Size(80, 20);
+            this.y1.Size = new System.Drawing.Size(120, 26);
             this.y1.TabIndex = 9;
             // 
             // x1
@@ -122,7 +126,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             0,
             -2147483648});
             this.x1.Name = "x1";
-            this.x1.Size = new System.Drawing.Size(73, 20);
+            this.x1.Size = new System.Drawing.Size(110, 26);
             this.x1.TabIndex = 10;
             // 
             // x2
@@ -134,12 +138,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             0,
             0});
             this.x2.Name = "x2";
-            this.x2.Size = new System.Drawing.Size(73, 20);
+            this.x2.Size = new System.Drawing.Size(110, 26);
             this.x2.TabIndex = 11;
             // 
             // PanelElip
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.x2);
             this.Controls.Add(this.x1);
