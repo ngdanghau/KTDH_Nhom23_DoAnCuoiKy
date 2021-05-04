@@ -118,11 +118,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // canh
             // 
             this.canh.Location = new System.Drawing.Point(7, 72);
-            this.canh.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
             this.canh.Name = "canh";
             this.canh.Size = new System.Drawing.Size(62, 20);
             this.canh.TabIndex = 11;

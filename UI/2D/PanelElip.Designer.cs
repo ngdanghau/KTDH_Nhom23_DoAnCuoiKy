@@ -1,7 +1,7 @@
 ﻿
 namespace KTDH_Nhom23_DoAnCuoiKy.UI
 {
-    partial class PanelRectangle
+    partial class PanelElip
     {
         /// <summary> 
         /// Required designer variable.
@@ -48,9 +48,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Điểm Đầu";
+            this.label1.Text = "Tâm";
             // 
             // label2
             // 
@@ -75,9 +75,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Cạnh";
+            this.label4.Text = "Bán Trục";
             // 
             // y2
             // 
@@ -117,7 +117,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.x2.Size = new System.Drawing.Size(73, 20);
             this.x2.TabIndex = 11;
             // 
-            // PanelRectangle
+            // PanelElip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "PanelRectangle";
+            this.Name = "PanelElip";
             this.Size = new System.Drawing.Size(198, 109);
             ((System.ComponentModel.ISupportInitialize)(this.y2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1)).EndInit();

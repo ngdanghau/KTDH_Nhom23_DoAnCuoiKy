@@ -22,6 +22,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private Point StartPoint, EndPoint;
         private Graphics g;
         public static List<Label> ListLabel = new List<Label>();
+        internal List<Sphere> ListSphere = new List<Sphere>();
+        internal List<Cube> ListCube = new List<Cube>();
+        internal List<Elip> ListElip = new List<Elip>();
+        internal List<Cylinder> ListCylinder = new List<Cylinder>();
+        internal List<Cone> ListCone = new List<Cone>();
 
         public static GroupBox GroupBoxInput;
 
@@ -85,7 +90,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             
             g.Clear(Constants.Background_Color_Coordinate_System);
-            PageSizeLabel.Text = Init.NewSize2D.Width + " x " + Init.NewSize2D.Height;
+            PageSizeLabel.Text = panel2.Width + " x " + panel2.Height;
             if (Init.ModeCurrent == Constants.Mode._2DMode)
             {
                 Init.NewSize2D.Width = panel2.Width/2;
@@ -117,9 +122,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel3DModel.Instance.BringToFront();
 
             Panel3DModel.reset();
-            VeTrucToaDo();
-
-
+            BtnClearAll_Click(null, EventArgs.Empty);
         }
 
         private void Btn_2D_Click(object sender, EventArgs e)
@@ -136,7 +139,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel2DModel.Instance.BringToFront();
 
             Panel2DModel.reset();
-            VeTrucToaDo();
+            BtnClearAll_Click(null, EventArgs.Empty);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -200,6 +203,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Triangle:
                             ListDiemTamThoi = new Triangle(StartPoint, EndPoint).List;
                             break;
+                        case Constants.Shape.Elip:
+                            ListDiemTamThoi = new Elip(StartPoint, Math.Abs(EndPoint.X - StartPoint.X), Math.Abs(EndPoint.Y - StartPoint.Y)).List;
+                            break;
                         case Constants.Shape.Default:
                             break;
                     }
@@ -217,10 +223,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void ShowAllShape()
         {
+            // vẽ lại tất cả hình 2D
             foreach (Line p in ListLine) p.Show(g);
             foreach (Circle p in ListCircle) p.Show(g);
             foreach (Rectangle p in ListRectangle) p.Show(g);
             foreach (Triangle p in ListTriangle) p.Show(g);
+            foreach (Elip p in ListElip) p.Show(g);
+
+            // vẽ lại tất cả hình 3D
+            foreach (Cube p in ListCube) p.Show(g);
+            foreach (Sphere p in ListSphere) p.Show(g);
+            foreach (Cylinder p in ListCylinder) p.Show(g);
+            foreach (Cone p in ListCone) p.Show(g);
         }
 
 
@@ -306,6 +320,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListTriangle.Clear(); // Xóa Hết Danh Sách Điểm Của Tam Giac
             ListRectangle.Clear(); // Xóa Hết Danh Sách Điểm Của Hinh Cn/Vuong
             ListDiemTamThoi.Clear(); // Xóa Hết Danh Sách Điểm Dư Thừa Khi Vẽ
+            ListElip.Clear();
+            ListSphere.Clear();
+            ListCube.Clear();
+            ListCylinder.Clear();
+            ListCone.Clear();
             ClearLabel();
             ListLabel.Clear();
             VeTrucToaDo();
@@ -351,6 +370,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         ListLabel.Add(StartPoint.SetLabel());
                         ListCircle.Add(new Circle(StartPoint, Point.Distance(StartPoint, EndPoint)));
                         break;
+                    case Constants.Shape.Elip:
+                        StartPoint = new Point(Convert.ToInt32(PanelElip.Instance.X), Convert.ToInt32(PanelElip.Instance.Y));
+                        ListElip.Add(
+                            new Elip(StartPoint, 
+                            Convert.ToInt32(PanelElip.Instance.MajorAxis), 
+                            Convert.ToInt32(PanelElip.Instance.MinorAxis)
+                            )
+                        );
+                        ListLabel.Add(StartPoint.SetLabel());
+                        break;
                     case Constants.Shape.Rectangle:
                         StartPoint = new Point(Convert.ToInt32(PanelRectangle.Instance.X), Convert.ToInt32(PanelRectangle.Instance.Y));
                         EndPoint = new Point(
@@ -375,13 +404,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     case Constants.Shape.Default:
                         break;
                 }
-                // Hiện thị hình ảnh
-                ShowAllShape();
-                // Hiện thị Label Của Point
-                ShowLabel();
             }
 
-            // Nếu Mode = 3D - Chưa làm 
+            // Nếu Mode = 3D
             else
             {
                 switch (Init.ShapeCurrent)
@@ -390,20 +415,78 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         StartPoint = new Point(
                             Convert.ToInt32(PanelCube.Instance.X), 
                             Convert.ToInt32(PanelCube.Instance.Y), 
-                            Convert.ToInt32(PanelCube.Instance.Z)
+                            Convert.ToInt32(PanelCube.Instance.Z),
+                            "A"
                         );
                         StartPoint.PutPixel(g);
 
-                        Cube s = new Cube(StartPoint, Convert.ToInt32(PanelCube.Instance.Edge));
-                        s.Show(g);
+                        Cube newCube = new Cube(StartPoint, Convert.ToInt32(PanelCube.Instance.Edge));
+                        ListCube.Add(newCube);
 
-                        //ListLabel.Add(StartPoint.SetLabel());
-                        //ListLabel.Add(EndPoint.SetLabel());
+                        ListLabel.Add(newCube.A.SetLabel());
+                        ListLabel.Add(newCube.B.SetLabel());
+                        ListLabel.Add(newCube.C.SetLabel());
+                        ListLabel.Add(newCube.D.SetLabel());
+                        ListLabel.Add(newCube.E.SetLabel());
+                        ListLabel.Add(newCube.F.SetLabel());
+                        ListLabel.Add(newCube.G.SetLabel());
+                        ListLabel.Add(newCube.H.SetLabel());
+                        break;
+                    case Constants.Shape.Sphere:
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelSphere.Instance.X),
+                            Convert.ToInt32(PanelSphere.Instance.Y),
+                            Convert.ToInt32(PanelSphere.Instance.Z)
+                        );
+                        Sphere hinhcau = new Sphere(StartPoint, Convert.ToInt32(PanelSphere.Instance.Radius));
+                        ListSphere.Add(hinhcau);
+                        ListLabel.Add(StartPoint.SetLabel());
+                        break;
+                    case Constants.Shape.Cone:
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelSphere.Instance.X),
+                            Convert.ToInt32(PanelSphere.Instance.Y),
+                            Convert.ToInt32(PanelSphere.Instance.Z),
+                            "A"
+                        );
+                        Cone hinhnon = new Cone(
+                            StartPoint, 
+                            Convert.ToInt32(PanelCone.Instance.ChieuCao), 
+                            Convert.ToInt32(PanelCone.Instance.Radius)
+                        );
+                        ListCone.Add(hinhnon);
+                        ListLabel.Add(StartPoint.SetLabel());
+                        ListLabel.Add(hinhnon.B.SetLabel());
+                        ListLabel.Add(hinhnon.C.SetLabel());
+                        ListLabel.Add(hinhnon.D.SetLabel());
+                        break;
+                    case Constants.Shape.Cylinder:
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelSphere.Instance.X),
+                            Convert.ToInt32(PanelSphere.Instance.Y),
+                            Convert.ToInt32(PanelSphere.Instance.Z),
+                            "B"
+                        );
+                        Cylinder hinhtru = new Cylinder(
+                            StartPoint, 
+                            Convert.ToInt32(PanelCylinder.Instance.ChieuCao), 
+                            Convert.ToInt32(PanelCylinder.Instance.Radius)
+                        );
+                        ListCylinder.Add(hinhtru);
+                        ListLabel.Add(hinhtru.A.SetLabel());
+                        ListLabel.Add(hinhtru.B.SetLabel());
+                        ListLabel.Add(hinhtru.C.SetLabel());
+                        ListLabel.Add(hinhtru.D.SetLabel());
+                        ListLabel.Add(hinhtru.E.SetLabel());
+                        ListLabel.Add(hinhtru.F.SetLabel());
                         break;
                     case Constants.Shape.Default:
                         break;
                 }
             }
+
+            ShowAllShape();
+            ShowLabel();
         }
 
         // Hành Động bắt đầu Click chuột để vẽ

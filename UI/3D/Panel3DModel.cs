@@ -82,14 +82,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         private void button10_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Cone;
-            HandleInputPanel(PanelTriangle.Instance);
+            HandleInputPanel(PanelCone.Instance);
             HandleButton(3, Resources._15_selected);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Cylinder;
-            HandleInputPanel(PanelTriangle.Instance);
+            HandleInputPanel(PanelCylinder.Instance);
             HandleButton(1, Resources._16_selected);
         }
 

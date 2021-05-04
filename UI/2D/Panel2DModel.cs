@@ -96,11 +96,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             HandleButton(4, Resources._10_selected);
         }
 
-        private void NoAction(object sender, EventArgs e)
-        {
-            MessageBox.Show("Tính Năng Đang Phát Triển.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void Panel2DModel_Load(object sender, EventArgs e)
         {
             lstBtnCalc.Add(button1);
@@ -117,6 +112,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
 
             Init.ShapeCurrent = Shape.Line;
             HandleButton(1, Resources._11_selected);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Init.ShapeCurrent = Shape.Elip;
+            HandleInputPanel(PanelElip.Instance);
+            HandleButton(2, Resources._17_selected);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace KTDH_Nhom23_DoAnCuoiKy.UI
 {
-    partial class PanelCube
+    partial class PanelCone
     {
         /// <summary> 
         /// Required designer variable.
@@ -37,10 +37,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.r = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.canh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.x1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.SuspendLayout();
             // 
             // canh
@@ -100,9 +103,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(4, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Cạnh";
+            this.label4.Text = "Chiều Cao";
             // 
             // label2
             // 
@@ -122,10 +125,28 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label1.TabIndex = 12;
             this.label1.Text = "Tạo Độ Gốc";
             // 
-            // PanelCube
+            // r
+            // 
+            this.r.Location = new System.Drawing.Point(111, 72);
+            this.r.Name = "r";
+            this.r.Size = new System.Drawing.Size(62, 20);
+            this.r.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(108, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Bán Kính";
+            // 
+            // PanelCylinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.r);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.canh);
             this.Controls.Add(this.x1);
             this.Controls.Add(this.y1);
@@ -134,12 +155,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "PanelCube";
+            this.Name = "PanelCylinder";
             this.Size = new System.Drawing.Size(198, 147);
             ((System.ComponentModel.ISupportInitialize)(this.canh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.x1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.z1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +177,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown r;
+        private System.Windows.Forms.Label label5;
     }
 }
