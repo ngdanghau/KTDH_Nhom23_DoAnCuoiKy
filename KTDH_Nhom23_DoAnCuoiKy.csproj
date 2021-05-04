@@ -68,6 +68,7 @@
     <Compile Include="Class\2D\Shape.cs" />
     <Compile Include="Class\2D\Rectangle.cs" />
     <Compile Include="Class\2D\Triangle.cs" />
+    <Compile Include="Class\3D\Cone.cs" />
     <Compile Include="Class\3D\Cube.cs" />
     <Compile Include="Class\3D\Cylinder.cs" />
     <Compile Include="Class\3D\Sphere.cs" />
@@ -122,6 +123,12 @@
     <Compile Include="UI\2D\PanelLine.Designer.cs">
       <DependentUpon>PanelLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\3D\PanelCone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\3D\PanelCone.Designer.cs">
+      <DependentUpon>PanelCone.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\3D\PanelCylinder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\2D\PanelLine.resx">
       <DependentUpon>PanelLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\3D\PanelCone.resx">
+      <DependentUpon>PanelCone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\3D\PanelCylinder.resx">
       <DependentUpon>PanelCylinder.cs</DependentUpon>

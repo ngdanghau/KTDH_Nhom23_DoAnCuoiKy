@@ -26,6 +26,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Cube> ListCube = new List<Cube>();
         internal List<Elip> ListElip = new List<Elip>();
         internal List<Cylinder> ListCylinder = new List<Cylinder>();
+        internal List<Cone> ListCone = new List<Cone>();
 
         public static GroupBox GroupBoxInput;
 
@@ -233,6 +234,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             foreach (Cube p in ListCube) p.Show(g);
             foreach (Sphere p in ListSphere) p.Show(g);
             foreach (Cylinder p in ListCylinder) p.Show(g);
+            foreach (Cone p in ListCone) p.Show(g);
         }
 
 
@@ -321,6 +323,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListElip.Clear();
             ListSphere.Clear();
             ListCube.Clear();
+            ListCylinder.Clear();
+            ListCone.Clear();
             ClearLabel();
             ListLabel.Clear();
             VeTrucToaDo();
@@ -437,6 +441,24 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         Sphere hinhcau = new Sphere(StartPoint, Convert.ToInt32(PanelSphere.Instance.Radius));
                         ListSphere.Add(hinhcau);
                         ListLabel.Add(StartPoint.SetLabel());
+                        break;
+                    case Constants.Shape.Cone:
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelSphere.Instance.X),
+                            Convert.ToInt32(PanelSphere.Instance.Y),
+                            Convert.ToInt32(PanelSphere.Instance.Z),
+                            "A"
+                        );
+                        Cone hinhnon = new Cone(
+                            StartPoint, 
+                            Convert.ToInt32(PanelCone.Instance.ChieuCao), 
+                            Convert.ToInt32(PanelCone.Instance.Radius)
+                        );
+                        ListCone.Add(hinhnon);
+                        ListLabel.Add(StartPoint.SetLabel());
+                        ListLabel.Add(hinhnon.B.SetLabel());
+                        ListLabel.Add(hinhnon.C.SetLabel());
+                        ListLabel.Add(hinhnon.D.SetLabel());
                         break;
                     case Constants.Shape.Cylinder:
                         StartPoint = new Point(
