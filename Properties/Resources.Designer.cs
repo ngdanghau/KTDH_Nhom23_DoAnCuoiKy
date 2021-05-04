@@ -473,6 +473,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap switch_off {
             get {
                 object obj = ResourceManager.GetObject("switch_off", resourceCulture);
@@ -486,6 +496,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Properties {
         internal static System.Drawing.Bitmap switch_on {
             get {
                 object obj = ResourceManager.GetObject("switch_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tru {
+            get {
+                object obj = ResourceManager.GetObject("tru", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

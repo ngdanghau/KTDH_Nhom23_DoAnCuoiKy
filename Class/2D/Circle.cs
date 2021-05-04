@@ -69,7 +69,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Show(Graphics g)
         {
-            Center.PutPixel(g);
             foreach (var item in List)
             {
                 item.PutPixel(g);
@@ -78,7 +77,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Hide(Graphics g)
         {
-            Center.RemovePixel(g);
             foreach (var item in List)
             {
                 item.RemovePixel(g);

@@ -214,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\plus.png" />
+    <None Include="resources\tru.png" />
     <None Include="resources\b4.png" />
     <None Include="resources\b3.png" />
     <None Include="resources\b2.png" />

@@ -172,8 +172,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Show(Graphics g, bool IsDash = false)
         {
-            first.PutPixel(g);
-            last.PutPixel(g);
             foreach (Point p in List)
                 if(IsDash)
                     p.PutPixel(g, Init.zoom / 2);
@@ -183,8 +181,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Hide(Graphics g)
         {
-            first.RemovePixel(g);
-            last.RemovePixel(g);
             foreach (Point p in List)
                 p.RemovePixel(g);
         }
@@ -204,7 +200,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             List.Add(Last);
             Draw(First, Last);
         }
-
 
         internal Point First { get => first; set => first = value; }
         internal Point Last { get => last; set => last = value; }

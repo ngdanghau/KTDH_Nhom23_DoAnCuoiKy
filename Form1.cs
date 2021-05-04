@@ -82,7 +82,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // Vẽ 3 đường Ox, Oy và Oz
             g.DrawLine(pen, O.X, O.Y, panel2.Width, O.Y);
             g.DrawLine(pen, O.X, 0, O.X, O.Y);
-            g.DrawLine(pen, O.X, O.Y, 0 - Convert.ToInt32(panel2.Width / 5), panel2.Width);
+            g.DrawLine(pen, O.X, O.Y, 0 - Convert.ToInt32(panel2.Width / 3.5), panel2.Width);
 
         }
 
@@ -108,6 +108,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void Btn_3D_Click(object sender, EventArgs e)
         {
+            panel7.Enabled = false;
+            panel2.ContextMenuStrip = contextMenuStrip1;
             Init.ModeCurrent = Constants.Mode._3DMode;
             Init.ShapeCurrent = Constants.Shape.Sphere;
             Btn_2D.Image = Properties.Resources._2d;
@@ -127,6 +129,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void Btn_2D_Click(object sender, EventArgs e)
         {
+            panel7.Enabled = true;
+            panel2.ContextMenuStrip = null;
             Init.ModeCurrent = Constants.Mode._2DMode;
             Btn_2D.Image = Properties.Resources._2d_selected;
             Btn_3D.Image = Properties.Resources._3d;
@@ -539,6 +543,75 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 item.Show(g);
             }
         }
+
+        private void FlipAllShape(int type)
+        {
+            foreach (Line item in ListLine)
+            {
+                item.Hide(g);
+                item.Symmetry(type);
+                item.Show(g);
+            }
+
+            foreach (Circle item in ListCircle)
+            {
+                item.Hide(g);
+                item.Symmetry(type);
+                item.Show(g);
+            }
+
+            foreach (Rectangle item in ListRectangle)
+            {
+                item.Hide(g);
+                item.Symmetry(type);
+                item.Show(g);
+            }
+
+            foreach (Triangle item in ListTriangle)
+            {
+                item.Hide(g);
+                item.Symmetry(type);
+                item.Show(g);
+            }
+
+            foreach (Elip item in ListElip)
+            {
+                item.Hide(g);
+                item.Symmetry(type);
+                item.Show(g);
+            }
+        }
+
+        private void ScaleAllShape(double ratio)
+        {
+            foreach (Sphere item in ListSphere)
+            {
+                item.Hide(g);
+                item.Scale(ratio);
+                item.Show(g);
+            }
+            foreach (Cube item in ListCube)
+            {
+                item.Hide(g);
+                item.Scale(ratio);
+                item.Show(g);
+            }
+
+            foreach (Cone item in ListCone)
+            {
+                item.Hide(g);
+                item.Scale(ratio);
+                item.Show(g);
+            }
+
+            foreach (Cylinder item in ListCylinder)
+            {
+                item.Hide(g);
+                item.Scale(ratio);
+                item.Show(g);
+            }
+
+        }
         private void RotateRight90_Click(object sender, EventArgs e)
         {
             RotateAllShape(-90);
@@ -551,12 +624,68 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void FlipVertical_Click(object sender, EventArgs e)
         {
-
+            FlipAllShape(-1);
         }
 
         private void FlipHorizontal_Click(object sender, EventArgs e)
         {
+            FlipAllShape(1);
+        }
 
+
+        private void ZoomOut(object sender, EventArgs e)
+        {
+            if (Init.zoom - 1 < 2) return;
+            Init.zoom--;
+            label2.Text = Init.zoom.ToString();
+            VeTrucToaDo();
+            // Hiện thị hình ảnh
+            ShowAllShape();
+            // Hiện thị Label Của Point
+            ShowLabel();
+        }
+
+        private void ZoomIn(object sender, EventArgs e)
+        {
+            if (Init.zoom + 1 > 10) return;
+            Init.zoom++;
+            label2.Text = Init.zoom.ToString();
+            VeTrucToaDo();
+            // Hiện thị hình ảnh
+            ShowAllShape();
+            // Hiện thị Label Của Point
+            ShowLabel();
+        }
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(0.75);
+        }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(0.25);
+        }
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(0.5);
+        }
+
+
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(2);
+        }
+
+        private void x4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(4);
+        }
+
+        private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScaleAllShape(5);
         }
 
         // Hành Động bắt đầu Click chuột để vẽ
