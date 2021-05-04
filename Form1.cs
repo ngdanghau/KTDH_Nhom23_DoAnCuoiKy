@@ -260,6 +260,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         ListCircle.Add(htron);
                         PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
                         break;
+                    case Constants.Shape.Elip:
+                        Elip elip = new Elip(StartPoint, Math.Abs(EndPoint.X - StartPoint.X), Math.Abs(EndPoint.Y - StartPoint.Y));
+                        ListElip.Add(elip);
+                        PanelElip.Instance.X = elip.Center.X;
+                        PanelElip.Instance.Y = elip.Center.Y;
+                        PanelElip.Instance.MajorAxis = elip.MajorAxis;
+                        PanelElip.Instance.MinorAxis = elip.MinorAxis;
+                        break;
                     case Constants.Shape.Rectangle:
                         Rectangle hinhcn = new Rectangle(StartPoint, EndPoint);
                         ListRectangle.Add(hinhcn);
