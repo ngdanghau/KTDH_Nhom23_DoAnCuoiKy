@@ -49,6 +49,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // canh
             // 
             this.canh.Location = new System.Drawing.Point(7, 72);
+            this.canh.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.canh.Name = "canh";
             this.canh.Size = new System.Drawing.Size(62, 20);
             this.canh.TabIndex = 19;
@@ -56,8 +61,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x1
             // 
             this.x1.Location = new System.Drawing.Point(7, 24);
+            this.x1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -68,8 +78,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y1
             // 
             this.y1.Location = new System.Drawing.Point(79, 24);
+            this.y1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -80,8 +95,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // z1
             // 
             this.z1.Location = new System.Drawing.Point(149, 24);
+            this.z1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.z1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -123,11 +143,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Tạo Độ Gốc";
+            this.label1.Text = "Tọa Độ Gốc";
             // 
             // r
             // 
             this.r.Location = new System.Drawing.Point(111, 72);
+            this.r.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.r.Name = "r";
             this.r.Size = new System.Drawing.Size(62, 20);
             this.r.TabIndex = 21;
@@ -141,7 +166,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label5.TabIndex = 20;
             this.label5.Text = "Bán Kính";
             // 
-            // PanelCylinder
+            // PanelCone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,7 +180,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "PanelCylinder";
+            this.Name = "PanelCone";
             this.Size = new System.Drawing.Size(198, 147);
             ((System.ComponentModel.ISupportInitialize)(this.canh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.x1)).EndInit();

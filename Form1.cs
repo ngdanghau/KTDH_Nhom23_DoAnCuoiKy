@@ -241,6 +241,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         // Hành Động Sau khi Thả Chuột
         private void StopDraw(object sender, MouseEventArgs e)
         {
+            if (EndPoint == null) return;
+
             // Nếu mode = 2D thì làm
             if (Init.ModeCurrent == Constants.Mode._2DMode)
             {
@@ -257,6 +259,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         Circle htron = new Circle(StartPoint, Point.Distance(StartPoint, EndPoint));
                         ListCircle.Add(htron);
                         PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
+                        break;
+                    case Constants.Shape.Elip:
+                        Elip elip = new Elip(StartPoint, Math.Abs(EndPoint.X - StartPoint.X), Math.Abs(EndPoint.Y - StartPoint.Y));
+                        ListElip.Add(elip);
+                        PanelElip.Instance.X = elip.Center.X;
+                        PanelElip.Instance.Y = elip.Center.Y;
+                        PanelElip.Instance.MajorAxis = elip.MajorAxis;
+                        PanelElip.Instance.MinorAxis = elip.MinorAxis;
                         break;
                     case Constants.Shape.Rectangle:
                         Rectangle hinhcn = new Rectangle(StartPoint, EndPoint);
@@ -288,6 +298,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 ShowAllShape();
                 // Hiện thị Label Của Point
                 ShowLabel();
+                EndPoint = StartPoint = null;
             }
             
         }
@@ -327,6 +338,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListCone.Clear();
             ClearLabel();
             ListLabel.Clear();
+            StartPoint = null;
+            EndPoint = null;
             VeTrucToaDo();
         }
 
@@ -518,6 +531,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Triangle:
                             PanelTriangle.Instance.X1 = StartPoint.X;
                             PanelTriangle.Instance.Y1 = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Elip:
+                            PanelElip.Instance.X = StartPoint.X;
+                            PanelElip.Instance.Y = StartPoint.Y;
                             break;
                         case Constants.Shape.Default:
                             break;

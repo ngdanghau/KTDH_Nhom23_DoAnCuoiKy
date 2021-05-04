@@ -26,6 +26,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                 Last = last;
             }
 
+            if (Last == null) return;
             if (First.X != Last.X)
             {
                 List.Add(First);

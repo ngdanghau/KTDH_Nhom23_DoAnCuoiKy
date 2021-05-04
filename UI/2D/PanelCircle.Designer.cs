@@ -70,8 +70,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y1
             // 
             this.y1.Location = new System.Drawing.Point(115, 23);
+            this.y1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -82,8 +87,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x1
             // 
             this.x1.Location = new System.Drawing.Point(7, 24);
+            this.x1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -94,11 +104,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x2
             // 
             this.x2.Location = new System.Drawing.Point(7, 71);
-            this.x2.Minimum = new decimal(new int[] {
-            100,
+            this.x2.Maximum = new decimal(new int[] {
+            1000,
             0,
             0,
-            -2147483648});
+            0});
             this.x2.Name = "x2";
             this.x2.Size = new System.Drawing.Size(73, 20);
             this.x2.TabIndex = 11;

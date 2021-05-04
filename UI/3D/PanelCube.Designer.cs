@@ -46,6 +46,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // canh
             // 
             this.canh.Location = new System.Drawing.Point(7, 72);
+            this.canh.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.canh.Name = "canh";
             this.canh.Size = new System.Drawing.Size(62, 20);
             this.canh.TabIndex = 19;
@@ -53,8 +58,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x1
             // 
             this.x1.Location = new System.Drawing.Point(7, 24);
+            this.x1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -65,8 +75,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y1
             // 
             this.y1.Location = new System.Drawing.Point(79, 24);
+            this.y1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -77,8 +92,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // z1
             // 
             this.z1.Location = new System.Drawing.Point(149, 24);
+            this.z1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.z1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -120,7 +140,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Tạo Độ Gốc";
+            this.label1.Text = "Tọa Độ Gốc";
             // 
             // PanelCube
             // 
