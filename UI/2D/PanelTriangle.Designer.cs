@@ -88,8 +88,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y2
             // 
             this.y2.Location = new System.Drawing.Point(115, 71);
+            this.y2.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y2.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -100,8 +105,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y1
             // 
             this.y1.Location = new System.Drawing.Point(115, 23);
+            this.y1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -112,8 +122,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x1
             // 
             this.x1.Location = new System.Drawing.Point(7, 24);
+            this.x1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x1.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -124,8 +139,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x2
             // 
             this.x2.Location = new System.Drawing.Point(7, 71);
+            this.x2.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x2.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -136,8 +156,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // x3
             // 
             this.x3.Location = new System.Drawing.Point(8, 118);
+            this.x3.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.x3.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
@@ -148,8 +173,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // y3
             // 
             this.y3.Location = new System.Drawing.Point(116, 118);
+            this.y3.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.y3.Minimum = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             -2147483648});
