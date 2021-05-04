@@ -207,6 +207,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\b4.png" />
+    <None Include="resources\b3.png" />
+    <None Include="resources\b2.png" />
+    <None Include="resources\b1.png" />
     <None Include="resources\17_selected.png" />
     <None Include="resources\17.png" />
     <None Include="resources\16_selected.png" />
