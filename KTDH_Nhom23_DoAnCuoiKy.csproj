@@ -69,6 +69,7 @@
     <Compile Include="Class\2D\Rectangle.cs" />
     <Compile Include="Class\2D\Triangle.cs" />
     <Compile Include="Class\3D\Cube.cs" />
+    <Compile Include="Class\3D\Cylinder.cs" />
     <Compile Include="Class\3D\Sphere.cs" />
     <Compile Include="Class\Point.cs" />
     <Compile Include="Form1.cs">
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="UI\2D\Panel2DModel.Designer.cs">
       <DependentUpon>Panel2DModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\2D\PanelElip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\2D\PanelElip.Designer.cs">
+      <DependentUpon>PanelElip.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\3D\Panel3DModel.cs">
       <SubType>UserControl</SubType>
@@ -115,6 +122,12 @@
     <Compile Include="UI\2D\PanelLine.Designer.cs">
       <DependentUpon>PanelLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\3D\PanelCylinder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\3D\PanelCylinder.Designer.cs">
+      <DependentUpon>PanelCylinder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\3D\PanelSphere.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +158,9 @@
     <EmbeddedResource Include="UI\2D\Panel2DModel.resx">
       <DependentUpon>Panel2DModel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\2D\PanelElip.resx">
+      <DependentUpon>PanelElip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\3D\Panel3DModel.resx">
       <DependentUpon>Panel3DModel.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\2D\PanelLine.resx">
       <DependentUpon>PanelLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\3D\PanelCylinder.resx">
+      <DependentUpon>PanelCylinder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\3D\PanelSphere.resx">
       <DependentUpon>PanelSphere.cs</DependentUpon>
@@ -178,6 +197,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\17_selected.png" />
+    <None Include="resources\17.png" />
     <None Include="resources\16_selected.png" />
     <None Include="resources\16.png" />
     <None Include="resources\15_selected.png" />

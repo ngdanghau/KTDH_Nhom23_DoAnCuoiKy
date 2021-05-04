@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KTDH_Nhom23_DoAnCuoiKy.Variables;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -92,6 +93,29 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             foreach (var item in List)
             {
                 item.PutPixel(g);
+            }
+        }
+
+        public void ShowElip(Graphics g, bool vertical = true)
+        {
+            Center.PutPixel(g);
+            foreach (var item in List)
+            {
+                if (vertical)
+                {
+                    if (item.X > Center.X)
+                        item.PutPixel(g, Init.zoom / 2);
+                    else
+                        item.PutPixel(g);
+                }
+                else
+                {
+                    if (item.Y > Center.Y)
+                        item.PutPixel(g, Init.zoom / 2);
+                    else
+                        item.PutPixel(g);
+                }
+                
             }
         }
 

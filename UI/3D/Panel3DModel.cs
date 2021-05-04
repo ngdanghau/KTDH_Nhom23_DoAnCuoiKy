@@ -89,7 +89,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         private void button5_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Cylinder;
-            HandleInputPanel(PanelTriangle.Instance);
+            HandleInputPanel(PanelCylinder.Instance);
             HandleButton(1, Resources._16_selected);
         }
 

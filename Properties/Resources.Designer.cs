@@ -203,6 +203,26 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _17 {
+            get {
+                object obj = ResourceManager.GetObject("_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _17_selected {
+            get {
+                object obj = ResourceManager.GetObject("_17_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1x40 {
             get {
                 object obj = ResourceManager.GetObject("1x40", resourceCulture);

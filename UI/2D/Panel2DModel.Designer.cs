@@ -126,7 +126,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.ForeColor = System.Drawing.Color.Coral;
-            this.button8.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._8;
+            this.button8.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._17;
             this.button8.Location = new System.Drawing.Point(158, 37);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
@@ -134,7 +134,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button8.TabIndex = 17;
             this.button8.Tag = "";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.NoAction);
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button1
             // 

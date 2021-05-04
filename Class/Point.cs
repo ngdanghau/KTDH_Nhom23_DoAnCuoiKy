@@ -8,6 +8,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
     class Point
     {
         private int x, y, z;
+        private string name;
 
         public Point(int x, int y)
         {
@@ -15,8 +16,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             Y = y;
         }
 
-        public Point(int x, int y, int z)
+        public Point(int x, int y, int z, string name = "")
         {
+            Name = name;
             X = x;
             Y = y;
             Z = z;
@@ -25,32 +27,59 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
         public int Z { get => z; set => z = value; }
+        public string Name { get => name; set => name = value; }
 
         public Label SetLabel()
         {
             Point temp = ConvertCoordinateSystem2DToPoint(new Point(X, Y));
+            Label lb = new Label();
             int x1, y1;
-            if (X >= 0 && Y >= 0){
-                x1 = temp.X + 10;
-                y1 = temp.Y - 10;
+            if (Init.ModeCurrent == Constants.Mode._3DMode) {
+                lb.Text = Name + "(" + X + ", " + Y + ", " + Z+ ")"; ;
+                if (X >= 0 && Y >= 0){
+                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                }
+                else if (X >= 0 && Y < 0){
+                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                }
+                else if (X < 0 && Y < 0){
+                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                }
+                else{
+                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                }
             }
-            else if (X >= 0 && Y < 0){
-                x1 = temp.X + 10;
-                y1 = temp.Y + 10;
-            }
-            else if (X < 0 && Y < 0){
-                x1 = temp.X - 10;
-                y1 = temp.Y + 10;
-            }
-            else {
-                x1 = temp.X - 10;
-                y1 = temp.Y - 10;
+            else
+            {
+                lb.Text = "(" + X + ", " + Y + ")"; ;
+                if (X >= 0 && Y >= 0)
+                {
+                    x1 = temp.X + 10;
+                    y1 = temp.Y - 10;
+                }
+                else if (X >= 0 && Y < 0)
+                {
+                    x1 = temp.X + 10;
+                    y1 = temp.Y + 10;
+                }
+                else if (X < 0 && Y < 0)
+                {
+                    x1 = temp.X - 10;
+                    y1 = temp.Y + 10;
+                }
+                else
+                {
+                    x1 = temp.X - 10;
+                    y1 = temp.Y - 10;
+                }
             }
 
-            Label lb = new Label();
-            lb.Text = "(" + X + "," + Y + ")"; ;
             lb.Location = new System.Drawing.Point(x1, y1);
-            lb.Width = Convert.ToInt32(lb.Font.Size) * lb.Text.Length - 10;
+            lb.AutoSize = true;
             return lb;
         }
 

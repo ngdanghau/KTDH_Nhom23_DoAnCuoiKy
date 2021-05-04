@@ -12,7 +12,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// <summary>
         /// Hình Đang Vẽ
         /// </summary>
-        public enum Shape { Default, Line, Circle, Rectangle, Triangle, Cube, Sphere, Cone, Cylinder };
+        public enum Shape { Default, Line, Circle, Rectangle, Triangle, Elip, Cube, Sphere, Cone, Cylinder };
 
         /// <summary>
         /// Màu sắc của Đường Ox, Oy của trục tọa độ
