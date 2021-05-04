@@ -67,44 +67,57 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         }
         // Click Nút Trong Hình Thì sẽ set cho ShapeCurrent trong Init là hình đang vẽ là gì
         // HandleButton là xử lý nút hiện thị là đang chọn, nếu ko thì thôi.
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Init.ShapeCurrent = Shape.Line;
-            HandleInputPanel(PanelLine.Instance);
-            HandleButton(1, Resources._11_selected);
 
-        }
-
+        // hình tròn - số 0
         private void button1_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Circle;
             HandleInputPanel(PanelCircle.Instance);
             HandleButton(0, Resources._1x40_selected);
         }
-
+        // vẽ nét liền - số 1
+        private void FlatLine_Click(object sender, EventArgs e)
+        {
+            Init.ShapeCurrent = Shape.Line;
+            HandleInputPanel(PanelLine.Instance);
+            HandleButton(1, Resources._11_selected);
+        }
+        // nét đứt 1 chấm - số 2
+        private void DashDotLine_Click(object sender, EventArgs e)
+        {
+            Init.ShapeCurrent = Shape.DashDotLine;
+            HandleInputPanel(PanelDashDotLine.Instance);
+            HandleButton(2, Resources._12_selected);
+        }
+        // hình vuông - số 3
         private void button9_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Rectangle;
             HandleInputPanel(PanelRectangle.Instance);
-            HandleButton(3, Resources._3x40_selected);
+            HandleButton(5, Resources._3x40_selected);
         }
 
+        // hình tam giác - số 5
         private void button10_Click(object sender, EventArgs e)
         {
             Init.ShapeCurrent = Shape.Triangle;
             HandleInputPanel(PanelTriangle.Instance);
-            HandleButton(4, Resources._10_selected);
+            HandleButton(6, Resources._10_selected);
         }
 
         private void Panel2DModel_Load(object sender, EventArgs e)
         {
-            lstBtnCalc.Add(button1);
-            lstBtnCalc.Add(button4);
-            lstBtnCalc.Add(button8);
-            lstBtnCalc.Add(button9);
-            lstBtnCalc.Add(button10);
+            lstBtnCalc.Add(button1);//hình tròn - 0
+            lstBtnCalc.Add(FlatLine);//nét liền - 1
+            lstBtnCalc.Add(DashDotLine);// net dut 1 cham - 2
+            lstBtn2.Add(button4.Image);
+            lstBtnCalc.Add(button8);//  hình lục giác - 3
+            lstBtnCalc.Add(button9);// hinh vuong - 4
+            lstBtnCalc.Add(button10);// hình tam giác - 5
 
             lstBtn2.Add(button1.Image);
+            lstBtn2.Add(FlatLine.Image);
+            lstBtn2.Add(DashDotLine.Image);
             lstBtn2.Add(button4.Image);
             lstBtn2.Add(button8.Image);
             lstBtn2.Add(button9.Image);
@@ -118,7 +131,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         {
             Init.ShapeCurrent = Shape.Elip;
             HandleInputPanel(PanelElip.Instance);
-            HandleButton(2, Resources._17_selected);
+            HandleButton(4, Resources._17_selected);
         }
     }
 }
