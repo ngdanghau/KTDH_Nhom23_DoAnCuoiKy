@@ -1,9 +1,6 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
@@ -134,6 +131,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             List.Add(new Point(p.X, -1 * p.Y));
             List.Add(new Point(-1 * p.X, -1 * p.Y));
         }
-       
+
+        public void Rotate(int degrees)
+        {
+            double a = (1.0 * degrees / 180) * Math.PI;
+            Center = PhepToan.Rotate(Center, a);
+            for (int i = 0; i< List.Count; i++)
+            {
+                List[i] = PhepToan.Rotate(List[i], a);
+            }
+        }
+
     }
 }

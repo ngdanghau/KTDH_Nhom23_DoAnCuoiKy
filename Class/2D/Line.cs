@@ -181,10 +181,30 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                     p.PutPixel(g);
         }
 
+        public void Hide(Graphics g)
+        {
+            first.RemovePixel(g);
+            last.RemovePixel(g);
+            foreach (Point p in List)
+                p.RemovePixel(g);
+        }
+
         private double GetK(Point first1, Point last1)
         {
             return Convert.ToDouble(1.0 * (first1.Y - last1.Y) / (first1.X - last1.X));
         }
+
+        public void Rotate(int degrees)
+        {
+            double a = (1.0 * degrees / 180) * Math.PI;
+            List.Clear();
+            First = PhepToan.Rotate(First, a);
+            Last = PhepToan.Rotate(Last, a);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
 
         internal Point First { get => first; set => first = value; }
         internal Point Last { get => last; set => last = value; }

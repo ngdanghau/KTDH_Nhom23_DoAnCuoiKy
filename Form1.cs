@@ -502,6 +502,63 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ShowLabel();
         }
 
+        private void RotateAllShape(int degrees)
+        {
+            foreach (Line item in ListLine)
+            {
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+            }
+
+            foreach (Circle item in ListCircle)
+            {
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+            }
+
+            foreach (Rectangle item in ListRectangle)
+            {
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+            }
+
+            foreach (Triangle item in ListTriangle)
+            {
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+            }
+
+            foreach (Elip item in ListElip)
+            {
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+            }
+        }
+        private void RotateRight90_Click(object sender, EventArgs e)
+        {
+            RotateAllShape(-90);
+        }
+
+        private void RotateLeft90_Click(object sender, EventArgs e)
+        {
+            RotateAllShape(90);
+        }
+
+        private void FlipVertical_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FlipHorizontal_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // Hành Động bắt đầu Click chuột để vẽ
         private void StartDraw(object sender, MouseEventArgs e)
         {

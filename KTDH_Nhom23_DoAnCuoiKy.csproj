@@ -50,8 +50,13 @@
     <ApplicationIcon>ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=4.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MathNet.Numerics.4.15.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -147,6 +152,7 @@
     <Compile Include="UI\3D\PanelCube.Designer.cs">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhepToan.cs" />
     <Compile Include="Variables\Constants.cs" />
     <Compile Include="Variables\Init.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -195,6 +201,7 @@
     <EmbeddedResource Include="UI\3D\PanelCube.resx">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

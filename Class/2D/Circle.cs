@@ -84,5 +84,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                 item.RemovePixel(g);
             }
         }
+
+
+        public void Rotate(int degrees)
+        {
+            List.Clear();
+            double a = (1.0 * degrees / 180) * Math.PI;
+            Center = PhepToan.Rotate(Center, a);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
     }
 }
