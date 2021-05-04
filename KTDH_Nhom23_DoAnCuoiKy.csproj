@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\2D\Circle.cs" />
+    <Compile Include="Class\2D\DashDotLine.cs" />
     <Compile Include="Class\2D\Line.cs" />
     <Compile Include="Class\2D\Shape.cs" />
     <Compile Include="Class\2D\Rectangle.cs" />
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="UI\PanelCircle.Designer.cs">
       <DependentUpon>PanelCircle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PanelDashDotLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PanelDashDotLine.Designer.cs">
+      <DependentUpon>PanelDashDotLine.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\PanelTriangle.cs">
       <SubType>UserControl</SubType>
@@ -135,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PanelCircle.resx">
       <DependentUpon>PanelCircle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PanelDashDotLine.resx">
+      <DependentUpon>PanelDashDotLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PanelTriangle.resx">
       <DependentUpon>PanelTriangle.cs</DependentUpon>
