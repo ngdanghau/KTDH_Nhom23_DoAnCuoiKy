@@ -25,6 +25,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Elip> ListElip = new List<Elip>();
         internal List<Cylinder> ListCylinder = new List<Cylinder>();
         internal List<Cone> ListCone = new List<Cone>();
+        private bool IsTranslation = false;
+        private Point cursor;
 
         public static GroupBox GroupBoxInput;
 
@@ -202,7 +204,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             foreach (Point p in ListDiemTamThoi)
             {
-                p.PutPixel(g);
+                if(IsTranslation) p.PutPixel(g, 2, true);
+                else p.PutPixel(g);
             }
         }
 
@@ -226,7 +229,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             foreach (Label ctrl in ListLabel)
             {
-                panel2.Controls.Remove(ctrl);
+                //panel2.Controls.Remove(ctrl);
+                ctrl.Visible = false;
             }
             panel2.Refresh();
         }
@@ -255,16 +259,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         //Hành Động Kéo Rê Chuột
         private void Panel2_MouseMove(object sender, MouseEventArgs e)
         {
-            Point cursor = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
-            Lable_Cursor.Text = cursor.X + ", " + cursor.Y;
+            cursor = new Point(e.X, e.Y);
+            Point cursorPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
+            Lable_Cursor.Text = cursorPoint.X + ", " + cursorPoint.Y;
 
             if (e.Button == MouseButtons.Left)
             {
                 // Xóa các điểm tạm thời, chỉ lấy điểm đầu và cuối. Chỗ này khó hiểu. Hãy đóng hàm //AnToaDoTamThoi rồi chạy lại sẽ hiểu. 
                 AnToaDoTamThoi();
-
                 // lấy điểm của chuột đang rê tới bỏ vào Endpoint (Chỉ là điểm cuối tạm thời chưa phải là chính thức)
                 EndPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
+                if (StartPoint == null || EndPoint == null) return;
                 if (Init.ModeCurrent == Constants.Mode._2DMode)
                 {
                     // kiểm tra hình đang vẽ là gì
@@ -274,7 +279,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             ListDiemTamThoi = new Line(StartPoint, EndPoint).List;
                             break;
                         case Constants.Shape.Circle:
-                            ListDiemTamThoi = new Circle(StartPoint, Point.Distance(StartPoint, EndPoint)).List;
+                            ListDiemTamThoi = new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint)).List;
                             break;
                         case Constants.Shape.Rectangle:
                             ListDiemTamThoi = new Rectangle(StartPoint, EndPoint).List;
@@ -291,7 +296,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 }
                 // Hiện Tọa Độ Đầu Và cuối của mỗi hình, sau khi đã lọc hết các tọa độ tạm thời
                 HienToaDoChinh();
+            }
 
+            if (IsTranslation)
+            {
+                AnToaDoTamThoi();
+                EndPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
+                ListDiemTamThoi = new Line(StartPoint, EndPoint).List;
+                HienToaDoChinh();
             }
         }
 
@@ -300,6 +312,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             if (e.Button == MouseButtons.Left)
             {
+                if (IsTranslation)
+                {
+                    IsTranslation = false;
+                    AnToaDoTamThoi();
+                    ListDiemTamThoi.Clear();
+                    TranslationAllShape(StartPoint, EndPoint);
+                    StartPoint = EndPoint = null;
+                    return;
+                }
                 // Xóa Hết Điểm Tạm Thời Đi
                 ListDiemTamThoi.Clear();
                 // Lấy điểm bắt đâu khi click chuột. và đổi tọa độ chuột sang tọa độ Oxy
@@ -334,13 +355,21 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     }
                 }
             }
+            else
+            {
+                ListDiemTamThoi.Clear();
+                IsTranslation = false;
+                AnToaDoTamThoi();
+                StartPoint = EndPoint = null;
+            }
         }
 
         // Hành Động Sau khi Thả Chuột
         private void StopDraw(object sender, MouseEventArgs e)
         {
-            if (EndPoint == null) return;
+            if (EndPoint == null || StartPoint == null) return;
 
+           
             // Nếu mode = 2D thì làm
             if (Init.ModeCurrent == Constants.Mode._2DMode)
             {
@@ -355,7 +384,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         break;
                     case Constants.Shape.Circle:
                         ListLabel.Add(StartPoint.SetLabel("circle_" + ListCircle.Count + "_1"));
-                        Circle htron = new Circle(StartPoint, Point.Distance(StartPoint, EndPoint));
+                        Circle htron = new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
                         ListCircle.Add(htron);
                         PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
                         break;
@@ -466,7 +495,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             Convert.ToInt32(PanelCircle.Instance.Y)
                         );
                         ListLabel.Add(StartPoint.SetLabel("circle_" + ListLine.Count + "_1"));
-                        ListCircle.Add(new Circle(StartPoint, Point.Distance(StartPoint, EndPoint)));
+                        ListCircle.Add(new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint)));
                         break;
                     case Constants.Shape.Elip:
                         StartPoint = new Point(Convert.ToInt32(PanelElip.Instance.X), Convert.ToInt32(PanelElip.Instance.Y));
@@ -591,6 +620,77 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         }
 
         #region Phép Toán Cho Hinh 2D
+        private void TranslationAllShape(Point a, Point b)
+        {
+
+            ClearLabel();
+            int index = 0;
+            int trX = b.X - a.X,
+                trY = b.Y - a.Y;
+            foreach (Line item in ListLine)
+            {
+                ClearLabelAt("line_" + index + "_1");
+                ClearLabelAt("line_" + index + "_2");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.First.SetLabel("line_" + index + "_1"));
+                ListLabel.Add(item.Last.SetLabel("line_" + index + "_2"));
+                index++;
+            }
+            index = 0;
+            foreach (Circle item in ListCircle)
+            {
+                ClearLabelAt("circle_" + index + "_1");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.Center.SetLabel("circle_" + index + "_1"));
+                index++;
+            }
+            index = 0;
+            foreach (Rectangle item in ListRectangle)
+            {
+                ClearLabelAt("rectangle_" + index + "_1");
+                ClearLabelAt("rectangle_" + index + "_2");
+                ClearLabelAt("rectangle_" + index + "_3");
+                ClearLabelAt("rectangle_" + index + "_4");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.A.SetLabel("rectangle_" + index + "_1"));
+                ListLabel.Add(item.B.SetLabel("rectangle_" + index + "_2"));
+                ListLabel.Add(item.C.SetLabel("rectangle_" + index + "_3"));
+                ListLabel.Add(item.D.SetLabel("rectangle_" + index + "_4"));
+                index++;
+            }
+            index = 0;
+            foreach (Triangle item in ListTriangle)
+            {
+                ClearLabelAt("triangle_" + index + "_1");
+                ClearLabelAt("triangle_" + index + "_2");
+                ClearLabelAt("triangle_" + index + "_3");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.A.SetLabel("triangle_" + index + "_1"));
+                ListLabel.Add(item.B.SetLabel("triangle_" + index + "_2"));
+                ListLabel.Add(item.C.SetLabel("triangle_" + index + "_3"));
+                index++;
+            }
+            index = 0;
+            foreach (Elip item in ListElip)
+            {
+                ClearLabelAt("elip_" + index + "_1");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.Center.SetLabel("elip_" + index + "_1"));
+                index++;
+            }
+            ShowLabel();
+
+        }
         private void RotateAllShape(int degrees)
         {
             ClearLabel();
@@ -921,7 +1021,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void phépTịnhTiếnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            IsTranslation = true;
+            ListDiemTamThoi.Clear();
+            StartPoint = Point.ConvertPointToCoordinateSystem2D(cursor);
         }
 
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)

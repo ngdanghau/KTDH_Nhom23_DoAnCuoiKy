@@ -10,7 +10,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
         {
             A = angle;
             C = new Point(p2.X, p2.Y);
-            double AC = Point.Distance(A, C);
+            double AC = PhepToan.Distance(A, C);
             double xB = C.X - AC;
             B = new Point(Convert.ToInt32(xB), C.Y);
 
@@ -93,6 +93,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             A = PhepToan.Reflection(A, type);
             B = PhepToan.Reflection(B, type);
             C = PhepToan.Reflection(C, type);
+            ListEdge.Add(new Line(A, B));
+            ListEdge.Add(new Line(B, C));
+            ListEdge.Add(new Line(C, A));
+            foreach (Line canh in ListEdge)
+            {
+                List.AddRange(canh.List);
+            }
+            Remove();
+        }
+
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            ListEdge.Clear();
+            A = PhepToan.Translation(A, trX, trY, 0);
+            B = PhepToan.Translation(B, trX, trY, 0);
+            C = PhepToan.Translation(C, trX, trY, 0);
             ListEdge.Add(new Line(A, B));
             ListEdge.Add(new Line(B, C));
             ListEdge.Add(new Line(C, A));

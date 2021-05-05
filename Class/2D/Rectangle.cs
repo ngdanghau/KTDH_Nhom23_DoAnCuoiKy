@@ -114,6 +114,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             }
             Remove();
         }
-
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            ListEdge.Clear();
+            A = PhepToan.Translation(A, trX, trY, 0);
+            B = PhepToan.Translation(B, trX, trY, 0);
+            C = PhepToan.Translation(C, trX, trY, 0);
+            D = PhepToan.Translation(D, trX, trY, 0);
+            ListEdge.Add(new Line(A, B));
+            ListEdge.Add(new Line(B, C));
+            ListEdge.Add(new Line(C, D));
+            ListEdge.Add(new Line(D, A));
+            foreach (Line canh in ListEdge)
+            {
+                List.AddRange(canh.List);
+            }
+            Remove();
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                 Last = last;
             }
 
-            if (Last == null) return;
+            if (First == null || Last == null) return;
             if (First.X != Last.X)
             {
                 List.Add(First);
@@ -216,6 +216,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             List.Clear();
             First = PhepToan.Reflection(First, type);
             Last = PhepToan.Reflection(Last, type);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            First = PhepToan.Translation(First, trX, trY, 0);
+            Last = PhepToan.Translation(Last, trX, trY, 0);
             List.Add(First);
             List.Add(Last);
             Draw(First, Last);

@@ -82,5 +82,44 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                  );
             }
         }
+
+        public static Point Translation(Point p, double trX, double trY, double trZ)
+        {
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
+
+            {
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] {
+                    { 1,    0,      0,      0 },
+                    { 0,    1,      0,      0 },
+                    { 0,    0,      1,      0 },
+                    { trX,  trY,    trZ,    1 }
+                });
+                Matrix<double> result = GetMatrix(p).Multiply(matrix);
+                return new Point(
+                    Convert.ToInt32(result[0, 0]),
+                    Convert.ToInt32(result[0, 1]),
+                    Convert.ToInt32(result[0, 2])
+                );
+            }
+            else
+            {
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] { 
+                    { 1,    0,      0 },
+                    { 0,    1,      0 },
+                    { trX,  trY,    1 } 
+                });
+                Matrix<double> result = GetMatrix(p).Multiply(matrix);
+                return new Point(
+                     Convert.ToInt32(result[0, 0]),
+                     Convert.ToInt32(result[0, 1])
+                 );
+            }
+        }
+
+        // Tính Khoảng cách 2 Điểm
+        public static double Distance(Point p1, Point p2)
+        {
+            return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+        }
     }
 }

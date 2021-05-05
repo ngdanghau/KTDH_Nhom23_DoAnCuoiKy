@@ -109,5 +109,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Move();
             List.Add(Center);
         }
+
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            Center = PhepToan.Translation(Center, trX, trY, 0);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
     }
 }

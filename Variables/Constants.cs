@@ -33,5 +33,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// Màu sắc của điểm pixel, tức là màu của mấy hình
         /// </summary>
         public static Color Color_Point_Pixel = Color.Black;
+
+        /// <summary>
+        /// Màu sắc Khác của điểm pixel - Dùng cho phép tịnh tiến
+        /// </summary>
+        public static Color Color_Point_Dot_Pixel = Color.MediumVioletRed;
     }
 }
