@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
@@ -13,7 +12,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 {
     public partial class Form1 : Form
     {
-
         internal List<Point> ListDiemTamThoi = new List<Point>();
         internal List<Line> ListLine = new List<Line>();
         internal List<Circle> ListCircle = new List<Circle>();
@@ -522,16 +520,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         StartPoint.PutPixel(g);
 
                         Cube newCube = new Cube(StartPoint, Convert.ToInt32(PanelCube.Instance.Edge));
-                        ListCube.Add(newCube);
 
-                        //ListLabel.Add(newCube.A.SetLabel());
-                        //ListLabel.Add(newCube.B.SetLabel());
-                        //ListLabel.Add(newCube.C.SetLabel());
-                        //ListLabel.Add(newCube.D.SetLabel());
-                        //ListLabel.Add(newCube.E.SetLabel());
-                        //ListLabel.Add(newCube.F.SetLabel());
-                        //ListLabel.Add(newCube.G.SetLabel());
-                        //ListLabel.Add(newCube.H.SetLabel());
+                        ListLabel.Add(newCube.A.SetLabel("cube_" + ListCube.Count + "_1"));
+                        ListLabel.Add(newCube.B.SetLabel("cube_" + ListCube.Count + "_2"));
+                        ListLabel.Add(newCube.C.SetLabel("cube_" + ListCube.Count + "_3"));
+                        ListLabel.Add(newCube.D.SetLabel("cube_" + ListCube.Count + "_4"));
+                        ListLabel.Add(newCube.E.SetLabel("cube_" + ListCube.Count + "_5"));
+                        ListLabel.Add(newCube.F.SetLabel("cube_" + ListCube.Count + "_6"));
+                        ListLabel.Add(newCube.G.SetLabel("cube_" + ListCube.Count + "_7"));
+                        ListLabel.Add(newCube.H.SetLabel("cube_" + ListCube.Count + "_8"));
+
+                        ListCube.Add(newCube);
                         break;
                     case Constants.Shape.Sphere:
                         StartPoint = new Point(
@@ -540,8 +539,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             Convert.ToInt32(PanelSphere.Instance.Z)
                         );
                         Sphere hinhcau = new Sphere(StartPoint, Convert.ToInt32(PanelSphere.Instance.Radius));
+                        ListLabel.Add(StartPoint.SetLabel("sphere_" + ListSphere.Count + "_1"));
                         ListSphere.Add(hinhcau);
-                        //ListLabel.Add(StartPoint.SetLabel());
+                        
                         break;
                     case Constants.Shape.Cone:
                         StartPoint = new Point(
@@ -551,15 +551,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             "A"
                         );
                         Cone hinhnon = new Cone(
-                            StartPoint, 
+                            StartPoint,
                             Convert.ToInt32(PanelCone.Instance.ChieuCao), 
                             Convert.ToInt32(PanelCone.Instance.Radius)
                         );
+                        ListLabel.Add(hinhnon.A.SetLabel("cone_" + ListCone.Count + "_1"));
+                        ListLabel.Add(hinhnon.B.SetLabel("cone_" + ListCone.Count + "_2"));
+                        ListLabel.Add(hinhnon.C.SetLabel("cone_" + ListCone.Count + "_3"));
+                        ListLabel.Add(hinhnon.D.SetLabel("cone_" + ListCone.Count + "_4"));
                         ListCone.Add(hinhnon);
-                        //ListLabel.Add(StartPoint.SetLabel());
-                        //ListLabel.Add(hinhnon.B.SetLabel());
-                        //ListLabel.Add(hinhnon.C.SetLabel());
-                        //ListLabel.Add(hinhnon.D.SetLabel());
                         break;
                     case Constants.Shape.Cylinder:
                         StartPoint = new Point(
@@ -573,13 +573,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             Convert.ToInt32(PanelCylinder.Instance.ChieuCao), 
                             Convert.ToInt32(PanelCylinder.Instance.Radius)
                         );
+                        ListLabel.Add(hinhtru.A.SetLabel("cylinder_" + ListCylinder.Count + "_1"));
+                        ListLabel.Add(hinhtru.B.SetLabel("cylinder_" + ListCylinder.Count + "_2"));
+                        ListLabel.Add(hinhtru.C.SetLabel("cylinder_" + ListCylinder.Count + "_3"));
+                        ListLabel.Add(hinhtru.D.SetLabel("cylinder_" + ListCylinder.Count + "_4"));
+                        ListLabel.Add(hinhtru.E.SetLabel("cylinder_" + ListCylinder.Count + "_5"));
+                        ListLabel.Add(hinhtru.F.SetLabel("cylinder_" + ListCylinder.Count + "_6"));
                         ListCylinder.Add(hinhtru);
-                        //ListLabel.Add(hinhtru.A.SetLabel());
-                        //ListLabel.Add(hinhtru.B.SetLabel());
-                        //ListLabel.Add(hinhtru.C.SetLabel());
-                        //ListLabel.Add(hinhtru.D.SetLabel());
-                        //ListLabel.Add(hinhtru.E.SetLabel());
-                        //ListLabel.Add(hinhtru.F.SetLabel());
                         break;
                     case Constants.Shape.Default:
                         break;
@@ -821,28 +821,74 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else
             {
                 VeTrucToaDo();
+                int index = 0;
                 foreach (Sphere item in ListSphere)
                 {
+                    ClearLabelAt("sphere_" + index + "_1");
                     item.Scale(ratio);
                     item.Show(g);
+                    ListLabel.Add(item.Center.SetLabel("sphere_" + index + "_1"));
+                    index++;
                 }
+                index = 0;
                 foreach (Cube item in ListCube)
                 {
+                    ClearLabelAt("cube_" + index + "_1");
+                    ClearLabelAt("cube_" + index + "_2");
+                    ClearLabelAt("cube_" + index + "_3");
+                    ClearLabelAt("cube_" + index + "_4");
+                    ClearLabelAt("cube_" + index + "_5");
+                    ClearLabelAt("cube_" + index + "_6");
+                    ClearLabelAt("cube_" + index + "_7");
+                    ClearLabelAt("cube_" + index + "_8");
                     item.Hide(g);
                     item.Scale(ratio);
                     item.Show(g);
+                    ListLabel.Add(item.A.SetLabel("cube_" + index + "_1"));
+                    ListLabel.Add(item.B.SetLabel("cube_" + index + "_2"));
+                    ListLabel.Add(item.C.SetLabel("cube_" + index + "_3"));
+                    ListLabel.Add(item.D.SetLabel("cube_" + index + "_4"));
+                    ListLabel.Add(item.E.SetLabel("cube_" + index + "_5"));
+                    ListLabel.Add(item.F.SetLabel("cube_" + index + "_6"));
+                    ListLabel.Add(item.G.SetLabel("cube_" + index + "_7"));
+                    ListLabel.Add(item.H.SetLabel("cube_" + index + "_8"));
+                    index++;
                 }
+                index = 0;
                 foreach (Cone item in ListCone)
                 {
+                    ClearLabelAt("cone_" + index + "_1");
+                    ClearLabelAt("cone_" + index + "_2");
+                    ClearLabelAt("cone_" + index + "_3");
+                    ClearLabelAt("cone_" + index + "_4");
                     item.Hide(g);
                     item.Scale(ratio);
                     item.Show(g);
+                    ListLabel.Add(item.A.SetLabel("cone_" + index + "_1"));
+                    ListLabel.Add(item.B.SetLabel("cone_" + index + "_2"));
+                    ListLabel.Add(item.C.SetLabel("cone_" + index + "_3"));
+                    ListLabel.Add(item.D.SetLabel("cone_" + index + "_4"));
+                    index++;
                 }
+                index = 0;
                 foreach (Cylinder item in ListCylinder)
                 {
+                    ClearLabelAt("cylinder_" + index + "_1");
+                    ClearLabelAt("cylinder_" + index + "_2");
+                    ClearLabelAt("cylinder_" + index + "_3");
+                    ClearLabelAt("cylinder_" + index + "_4");
+                    ClearLabelAt("cylinder_" + index + "_5");
+                    ClearLabelAt("cylinder_" + index + "_6");
                     item.Hide(g);
                     item.Scale(ratio);
                     item.Show(g);
+                    ListLabel.Add(item.A.SetLabel("cylinder_" + index + "_1"));
+                    ListLabel.Add(item.B.SetLabel("cylinder_" + index + "_2"));
+                    ListLabel.Add(item.C.SetLabel("cylinder_" + index + "_3"));
+                    ListLabel.Add(item.D.SetLabel("cylinder_" + index + "_4"));
+                    ListLabel.Add(item.E.SetLabel("cylinder_" + index + "_5"));
+                    ListLabel.Add(item.F.SetLabel("cylinder_" + index + "_6"));
+                    index++;
                 }
             }
             ShowLabel();
@@ -871,6 +917,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private void x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScaleAllShape(4);
+        }
+
+        private void phépTịnhTiếnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
