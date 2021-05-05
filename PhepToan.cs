@@ -36,7 +36,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         // Type = -1 - Qua Oy
         // Type = 0 - Qua O - Default
         // Type = 1 - Qua Ox
-        public static Point Symmetry(Point p, int type = 0)
+        public static Point Reflection(Point p, int type = 0)
         {
             switch (type)
             {

@@ -6,13 +6,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
     class Elip: Shape
     {
-        private int a;
-        private int b;
-        Point center;
-
-        internal Point Center { get => center; set => center = value; }
-        public int MajorAxis { get => a; set => a = value; }
-        public int MinorAxis { get => b; set => b = value; }
+        internal Point Center { get; set; }
+        public int MajorAxis { get; set; }
+        public int MinorAxis { get; set; }
 
         public Elip(Point o, int a, int b)
         {
@@ -131,12 +127,32 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Rotate(int degrees)
         {
+            List.Clear();
             double a = (1.0 * degrees / 180) * Math.PI;
             Center = PhepToan.Rotate(Center, a);
-            for (int i = 0; i< List.Count; i++)
-            {
-                List[i] = PhepToan.Rotate(List[i], a);
-            }
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            Center = PhepToan.Scale(Center, ratio, ratio, 0);
+            MajorAxis = Convert.ToInt32(MajorAxis * ratio);
+            MinorAxis = Convert.ToInt32(MinorAxis * ratio);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            Center = PhepToan.Reflection(Center, type);
+            MidPoint();
+            Move();
+            List.Add(Center);
         }
 
     }

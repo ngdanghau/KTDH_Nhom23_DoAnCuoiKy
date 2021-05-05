@@ -77,5 +77,43 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Remove();
         }
 
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            ListEdge.Clear();
+            A = PhepToan.Scale(A, ratio, ratio, 0);
+            B = PhepToan.Scale(B, ratio, ratio, 0);
+            C = PhepToan.Scale(C, ratio, ratio, 0);
+            D = PhepToan.Scale(D, ratio, ratio, 0);
+            ListEdge.Add(new Line(A, B));
+            ListEdge.Add(new Line(B, C));
+            ListEdge.Add(new Line(C, D));
+            ListEdge.Add(new Line(D, A));
+            foreach (Line canh in ListEdge)
+            {
+                List.AddRange(canh.List);
+            }
+            Remove();
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            ListEdge.Clear();
+            A = PhepToan.Reflection(A, type);
+            B = PhepToan.Reflection(B, type);
+            C = PhepToan.Reflection(C, type);
+            D = PhepToan.Reflection(D, type);
+            ListEdge.Add(new Line(A, B));
+            ListEdge.Add(new Line(B, C));
+            ListEdge.Add(new Line(C, D));
+            ListEdge.Add(new Line(D, A));
+            foreach (Line canh in ListEdge)
+            {
+                List.AddRange(canh.List);
+            }
+            Remove();
+        }
+
     }
 }

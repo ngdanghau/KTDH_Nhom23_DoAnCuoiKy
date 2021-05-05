@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
@@ -89,6 +86,25 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             List.Clear();
             double a = (1.0 * degrees / 180) * Math.PI;
             Center = PhepToan.Rotate(Center, a);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            Center = PhepToan.Scale(Center, ratio, ratio, 0);
+            Radius = Radius * ratio;
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            Center = PhepToan.Reflection(Center, type);
             MidPoint();
             Move();
             List.Add(Center);

@@ -6,8 +6,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
     class Line: Shape
     {
-        Point first;
-        Point last;
+        internal Point First { get; set; }
+        internal Point Last { get; set; }
 
         public Line(Point first, Point last)
         {
@@ -201,7 +201,24 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Draw(First, Last);
         }
 
-        internal Point First { get => first; set => first = value; }
-        internal Point Last { get => last; set => last = value; }
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            First = PhepToan.Scale(First, ratio, ratio, 0);
+            Last = PhepToan.Scale(Last, ratio, ratio, 0);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            First = PhepToan.Reflection(First, type);
+            Last = PhepToan.Reflection(Last, type);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
     }
 }

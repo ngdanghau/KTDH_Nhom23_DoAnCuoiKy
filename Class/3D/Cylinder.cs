@@ -62,17 +62,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public void Hide(Graphics g)
         {
-            E1.Hide(g);
-            E2.Hide(g);
-            foreach (Line n in nega)
-            {
-                n.Hide(g);
-            }
-
-            foreach (Line n in pose)
-            {
-                n.Hide(g);
-            }
             nega.Clear();
             pose.Clear();
         }

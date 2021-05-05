@@ -29,7 +29,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public int Z { get => z; set => z = value; }
         public string Name { get => name; set => name = value; }
 
-        public Label SetLabel()
+        public Label SetLabel(string name)
         {
             Point temp = ConvertCoordinateSystem2DToPoint(new Point(X, Y));
             Label lb = new Label();
@@ -80,6 +80,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
             lb.Location = new System.Drawing.Point(x1, y1);
             lb.AutoSize = true;
+            lb.Name = name;
             return lb;
         }
 
