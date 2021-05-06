@@ -38,6 +38,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +48,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(96)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 24);
             this.label1.TabIndex = 24;
@@ -55,10 +57,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Location = new System.Drawing.Point(0, 27);
+            this.groupBox2.Location = new System.Drawing.Point(0, 33);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(215, 82);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(287, 101);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lines";
@@ -69,10 +74,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.Coral;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(8, 16);
+            this.button4.Location = new System.Drawing.Point(11, 20);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 50);
+            this.button4.Size = new System.Drawing.Size(67, 62);
             this.button4.TabIndex = 20;
             this.button4.Tag = "";
             this.button4.UseVisualStyleBackColor = false;
@@ -84,9 +89,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 115);
+            this.groupBox1.Location = new System.Drawing.Point(0, 142);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(215, 112);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(287, 138);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "2D shapes";
@@ -97,10 +104,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.ForeColor = System.Drawing.Color.Coral;
             this.button10.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._10;
-            this.button10.Location = new System.Drawing.Point(108, 37);
+            this.button10.Location = new System.Drawing.Point(144, 46);
             this.button10.Margin = new System.Windows.Forms.Padding(0);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(50, 50);
+            this.button10.Size = new System.Drawing.Size(67, 62);
             this.button10.TabIndex = 19;
             this.button10.Tag = "";
             this.button10.UseVisualStyleBackColor = false;
@@ -112,10 +119,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.Color.Coral;
             this.button9.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._3x40;
-            this.button9.Location = new System.Drawing.Point(58, 37);
+            this.button9.Location = new System.Drawing.Point(77, 46);
             this.button9.Margin = new System.Windows.Forms.Padding(0);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(50, 50);
+            this.button9.Size = new System.Drawing.Size(67, 62);
             this.button9.TabIndex = 18;
             this.button9.Tag = "";
             this.button9.UseVisualStyleBackColor = false;
@@ -127,10 +134,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.ForeColor = System.Drawing.Color.Coral;
             this.button8.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._17;
-            this.button8.Location = new System.Drawing.Point(158, 37);
+            this.button8.Location = new System.Drawing.Point(211, 46);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(50, 50);
+            this.button8.Size = new System.Drawing.Size(67, 62);
             this.button8.TabIndex = 17;
             this.button8.Tag = "";
             this.button8.UseVisualStyleBackColor = false;
@@ -142,24 +149,40 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Coral;
             this.button1.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._1x40;
-            this.button1.Location = new System.Drawing.Point(8, 37);
+            this.button1.Location = new System.Drawing.Point(11, 46);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 50);
+            this.button1.Size = new System.Drawing.Size(67, 62);
             this.button1.TabIndex = 10;
             this.button1.Tag = "";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Coral;
+            this.button2.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._12;
+            this.button2.Location = new System.Drawing.Point(78, 19);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 62);
+            this.button2.TabIndex = 21;
+            this.button2.Tag = "";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Panel2DModel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Panel2DModel";
-            this.Size = new System.Drawing.Size(214, 240);
+            this.Size = new System.Drawing.Size(285, 295);
             this.Load += new System.EventHandler(this.Panel2DModel_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -178,5 +201,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
     }
 }

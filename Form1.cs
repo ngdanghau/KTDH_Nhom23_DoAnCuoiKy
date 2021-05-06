@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
 using KTDH_Nhom23_DoAnCuoiKy.UI;
+using KTDH_Nhom23_DoAnCuoiKy.UI._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using Rectangle = KTDH_Nhom23_DoAnCuoiKy.Class._2D.Rectangle;
 
@@ -25,6 +26,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Elip> ListElip = new List<Elip>();
         internal List<Cylinder> ListCylinder = new List<Cylinder>();
         internal List<Cone> ListCone = new List<Cone>();
+        internal List<DashLine> ListDashLine = new List<DashLine>();
 
         public static GroupBox GroupBoxInput;
 
@@ -210,6 +212,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             // vẽ lại tất cả hình 2D
             foreach (Line p in ListLine) p.Show(g);
+            foreach (DashLine p in ListDashLine) p.Show(g);
             foreach (Circle p in ListCircle) p.Show(g);
             foreach (Rectangle p in ListRectangle) p.Show(g);
             foreach (Triangle p in ListTriangle) p.Show(g);
@@ -274,6 +277,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Line:
                             ListDiemTamThoi = new Line(StartPoint, EndPoint).List;
                             break;
+                        case Constants.Shape.DashLine:
+                            ListDiemTamThoi = new DashLine(StartPoint, EndPoint).List;
+                            break;
                         case Constants.Shape.Circle:
                             ListDiemTamThoi = new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint)).List;
                             break;
@@ -312,6 +318,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Line:
                             PanelLine.Instance.X1 = StartPoint.X;
                             PanelLine.Instance.Y1 = StartPoint.Y;
+                            break;
+                        case Constants.Shape.DashLine:
+                            PanelDashLine.Instance.X1 = StartPoint.X;
+                            PanelDashLine.Instance.Y1 = StartPoint.Y;
                             break;
                         case Constants.Shape.Circle:
                             PanelCircle.Instance.X = StartPoint.X;
@@ -353,6 +363,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         ListLine.Add(new Line(StartPoint, EndPoint));
                         PanelLine.Instance.X2 = EndPoint.X;
                         PanelLine.Instance.Y2 = EndPoint.Y;
+                        break;
+                    case Constants.Shape.DashLine:
+                        ListLabel.Add(StartPoint.SetLabel("dashline_" + ListDashLine.Count + "_1"));
+                        ListLabel.Add(EndPoint.SetLabel("dashline_" + ListDashLine.Count + "_2"));
+                        ListDashLine.Add(new DashLine(StartPoint, EndPoint));
+                        PanelDashLine.Instance.X2 = EndPoint.X;
+                        PanelDashLine.Instance.Y2 = EndPoint.Y;
                         break;
                     case Constants.Shape.Circle:
                         ListLabel.Add(StartPoint.SetLabel("circle_" + ListCircle.Count + "_1"));
@@ -422,6 +439,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListCube.Clear();
             ListCylinder.Clear();
             ListCone.Clear();
+            ListDashLine.Clear();
             ClearLabel();
             ListLabel.Clear();
             StartPoint = null;
@@ -459,6 +477,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         ListLabel.Add(StartPoint.SetLabel("line_" + ListLine.Count + "_1"));
                         ListLabel.Add(EndPoint.SetLabel("line_" + ListLine.Count + "_2"));
                         ListLine.Add(new Line(StartPoint, EndPoint));
+                        break;
+                    case Constants.Shape.DashLine:
+                        StartPoint = new Point(Convert.ToInt32(PanelDashLine.Instance.X1), Convert.ToInt32(PanelDashLine.Instance.Y1));
+                        EndPoint = new Point(Convert.ToInt32(PanelDashLine.Instance.X2), Convert.ToInt32(PanelDashLine.Instance.Y2));
+
+                        ListLabel.Add(StartPoint.SetLabel("dashline_" + ListDashLine.Count + "_1"));
+                        ListLabel.Add(EndPoint.SetLabel("dashline_" + ListDashLine.Count + "_2"));
+                        ListDashLine.Add(new DashLine(StartPoint, EndPoint));
                         break;
                     case Constants.Shape.Circle:
                         StartPoint = new Point(Convert.ToInt32(PanelCircle.Instance.X), Convert.ToInt32(PanelCircle.Instance.Y));
@@ -592,12 +618,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         }
 
         #region Phép Toán Cho Hinh 2D
-        private void TranslationAllShape(Point a, Point b)
+        private void TranslationAllShape(double trX, double trY)
         {
             ClearLabel();
             int index = 0;
-            int trX = b.X - a.X,
-                trY = b.Y - a.Y;
             foreach (Line item in ListLine)
             {
                 ClearLabelAt("line_" + index + "_1");
@@ -607,6 +631,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 item.Show(g);
                 ListLabel.Add(item.First.SetLabel("line_" + index + "_1"));
                 ListLabel.Add(item.Last.SetLabel("line_" + index + "_2"));
+                index++;
+            }
+            index = 0;
+            foreach (DashLine item in ListDashLine)
+            {
+                ClearLabelAt("dashline_" + index + "_1");
+                ClearLabelAt("dashline_" + index + "_2");
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+                ListLabel.Add(item.First.SetLabel("dashline_" + index + "_1"));
+                ListLabel.Add(item.Last.SetLabel("dashline_" + index + "_2"));
                 index++;
             }
             index = 0;
@@ -678,6 +714,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 index++;
             }
             index = 0;
+            foreach (DashLine item in ListDashLine)
+            {
+                ClearLabelAt("dashline_" + index + "_1");
+                ClearLabelAt("dashline_" + index + "_2");
+                item.Hide(g);
+                item.Rotate(degrees);
+                item.Show(g);
+                ListLabel.Add(item.First.SetLabel("dashline_" + index + "_1"));
+                ListLabel.Add(item.Last.SetLabel("dashline_" + index + "_2"));
+                index++;
+            }
+            index = 0;
             foreach (Circle item in ListCircle)
             {
                 ClearLabelAt("circle_" + index + "_1");
@@ -743,6 +791,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 item.Show(g);
                 ListLabel.Add(item.First.SetLabel("line_" + index + "_1"));
                 ListLabel.Add(item.Last.SetLabel("line_" + index + "_2"));
+                index++;
+            }
+            index = 0;
+            foreach (DashLine item in ListDashLine)
+            {
+                ClearLabelAt("dashline_" + index + "_1");
+                ClearLabelAt("dashline_" + index + "_2");
+                item.Hide(g);
+                item.Reflection(type);
+                item.Show(g);
+                ListLabel.Add(item.First.SetLabel("dashline_" + index + "_1"));
+                ListLabel.Add(item.Last.SetLabel("dashline_" + index + "_2"));
                 index++;
             }
             index = 0;
@@ -965,6 +1025,82 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ShowLabel();
         }
 
+        private void TranslationAllShape3D(double TrX, double TrY, double TrZ)
+        {
+            ClearLabel();
+            VeTrucToaDo();
+            int index = 0;
+            foreach (Sphere item in ListSphere)
+            {
+                ClearLabelAt("sphere_" + index + "_1");
+                item.Translation(TrX, TrY, TrZ);
+                item.Show(g);
+                ListLabel.Add(item.Center.SetLabel("sphere_" + index + "_1"));
+                index++;
+            }
+            index = 0;
+            foreach (Cube item in ListCube)
+            {
+                ClearLabelAt("cube_" + index + "_1");
+                ClearLabelAt("cube_" + index + "_2");
+                ClearLabelAt("cube_" + index + "_3");
+                ClearLabelAt("cube_" + index + "_4");
+                ClearLabelAt("cube_" + index + "_5");
+                ClearLabelAt("cube_" + index + "_6");
+                ClearLabelAt("cube_" + index + "_7");
+                ClearLabelAt("cube_" + index + "_8");
+                item.Hide(g);
+                item.Translation(TrX, TrY, TrZ);
+                item.Show(g);
+                ListLabel.Add(item.A.SetLabel("cube_" + index + "_1"));
+                ListLabel.Add(item.B.SetLabel("cube_" + index + "_2"));
+                ListLabel.Add(item.C.SetLabel("cube_" + index + "_3"));
+                ListLabel.Add(item.D.SetLabel("cube_" + index + "_4"));
+                ListLabel.Add(item.E.SetLabel("cube_" + index + "_5"));
+                ListLabel.Add(item.F.SetLabel("cube_" + index + "_6"));
+                ListLabel.Add(item.G.SetLabel("cube_" + index + "_7"));
+                ListLabel.Add(item.H.SetLabel("cube_" + index + "_8"));
+                index++;
+            }
+            index = 0;
+            foreach (Cone item in ListCone)
+            {
+                ClearLabelAt("cone_" + index + "_1");
+                ClearLabelAt("cone_" + index + "_2");
+                ClearLabelAt("cone_" + index + "_3");
+                ClearLabelAt("cone_" + index + "_4");
+                item.Hide(g);
+                item.Translation(TrX, TrY, TrZ);
+                item.Show(g);
+                ListLabel.Add(item.A.SetLabel("cone_" + index + "_1"));
+                ListLabel.Add(item.B.SetLabel("cone_" + index + "_2"));
+                ListLabel.Add(item.C.SetLabel("cone_" + index + "_3"));
+                ListLabel.Add(item.D.SetLabel("cone_" + index + "_4"));
+                index++;
+            }
+            index = 0;
+            foreach (Cylinder item in ListCylinder)
+            {
+                ClearLabelAt("cylinder_" + index + "_1");
+                ClearLabelAt("cylinder_" + index + "_2");
+                ClearLabelAt("cylinder_" + index + "_3");
+                ClearLabelAt("cylinder_" + index + "_4");
+                ClearLabelAt("cylinder_" + index + "_5");
+                ClearLabelAt("cylinder_" + index + "_6");
+                item.Hide(g);
+                item.Translation(TrX, TrY, TrZ);
+                item.Show(g);
+                ListLabel.Add(item.A.SetLabel("cylinder_" + index + "_1"));
+                ListLabel.Add(item.B.SetLabel("cylinder_" + index + "_2"));
+                ListLabel.Add(item.C.SetLabel("cylinder_" + index + "_3"));
+                ListLabel.Add(item.D.SetLabel("cylinder_" + index + "_4"));
+                ListLabel.Add(item.E.SetLabel("cylinder_" + index + "_5"));
+                ListLabel.Add(item.F.SetLabel("cylinder_" + index + "_6"));
+                index++;
+            }
+            ShowLabel();
+        }
+
         private void toolStripMenuItem13_Click(object sender, EventArgs e)
         {
             ScaleAllShape(0.75);
@@ -992,7 +1128,25 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void phépTịnhTiếnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Translation Translation = new Translation();
+            if (Translation.ShowDialog() == DialogResult.OK)
+            {
+                if (Init.ModeCurrent == Constants.Mode._2DMode)
+                {
+                    TranslationAllShape(
+                        Convert.ToDouble(Translation.TrX),
+                        Convert.ToDouble(Translation.TrY)
+                    );
+                }
+                else
+                {
+                    TranslationAllShape3D(
+                        Convert.ToDouble(Translation.TrX),
+                        Convert.ToDouble(Translation.TrY),
+                        Convert.ToDouble(Translation.TrZ)
+                    );
+                }        
+            }
         }
 
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)

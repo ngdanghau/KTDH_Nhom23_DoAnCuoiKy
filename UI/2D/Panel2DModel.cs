@@ -1,4 +1,5 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Properties;
+using KTDH_Nhom23_DoAnCuoiKy.UI._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using System;
 using System.Collections.Generic;
@@ -103,12 +104,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             lstBtnCalc.Add(button8);
             lstBtnCalc.Add(button9);
             lstBtnCalc.Add(button10);
+            lstBtnCalc.Add(button2);
 
             lstBtn2.Add(button1.Image);
             lstBtn2.Add(button4.Image);
             lstBtn2.Add(button8.Image);
             lstBtn2.Add(button9.Image);
             lstBtn2.Add(button10.Image);
+            lstBtn2.Add(button2.Image);
 
             Init.ShapeCurrent = Shape.Line;
             HandleButton(1, Resources._11_selected);
@@ -119,6 +122,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             Init.ShapeCurrent = Shape.Elip;
             HandleInputPanel(PanelElip.Instance);
             HandleButton(2, Resources._17_selected);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Init.ShapeCurrent = Shape.DashLine;
+            HandleInputPanel(PanelDashLine.Instance);
+            HandleButton(5, Resources._12_selected);
         }
     }
 }

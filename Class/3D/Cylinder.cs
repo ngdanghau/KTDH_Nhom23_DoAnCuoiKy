@@ -88,5 +88,26 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             E1 = new Elip(B, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
             E2 = new Elip(E, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
         }
+
+        public void Translation(double trX, double trY, double trZ)
+        {
+            Point O = PhepToan.Translation(B, trX, trY, trZ);
+            B = O;
+            A = new Point(O.X - Radius, O.Y, O.Z, "A");
+            C = new Point(O.X + Radius, O.Y, O.Z, "C");
+            D = new Point(O.X - Radius, O.Y + ChieuCao, O.Z, "D");
+            E = new Point(O.X, O.Y + ChieuCao, O.Z, "E");
+            F = new Point(O.X + Radius, O.Y + ChieuCao, O.Z, "F");
+
+            nega.Add(new Line(E, B));
+            nega.Add(new Line(B, C));
+
+            pose.Add(new Line(E, F));
+            pose.Add(new Line(F, C));
+            pose.Add(new Line(A, D));
+
+            E1 = new Elip(B, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            E2 = new Elip(E, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+        }
     }
 }

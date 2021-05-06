@@ -98,5 +98,34 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(G, H));
             pose.Add(new Line(H, E));
         }
+
+        public void Translation(double trX, double trY, double trZ)
+        {
+            A = PhepToan.Scale(A, trX, trY, trZ);
+            B = new Point(A.X, A.Y + Edge, A.Z, "B");
+            C = new Point(A.X + Edge, A.Y + Edge, A.Z, "C");
+            D = new Point(A.X + Edge, A.Y, A.Z, "D");
+            E = new Point(A.X, A.Y, A.Z + Edge, "E");
+            F = new Point(A.X, A.Y + Edge, A.Z + Edge, "F");
+            G = new Point(A.X + Edge, A.Y + Edge, A.Z + Edge, "G");
+            H = new Point(A.X + Edge, A.Y, A.Z + Edge, "H");
+
+            nega.Add(new Line(A, E));
+
+            nega.Add(new Line(A, B));
+            nega.Add(new Line(A, D));
+
+            pose.Add(new Line(B, C));
+            pose.Add(new Line(D, C));
+
+            pose.Add(new Line(B, F));
+            pose.Add(new Line(G, C));
+            pose.Add(new Line(D, H));
+
+            pose.Add(new Line(E, F));
+            pose.Add(new Line(F, G));
+            pose.Add(new Line(G, H));
+            pose.Add(new Line(H, E));
+        }
     }
 }

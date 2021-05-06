@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\2D\Circle.cs" />
+    <Compile Include="Class\2D\DashLine.cs" />
     <Compile Include="Class\2D\Elip.cs" />
     <Compile Include="Class\2D\Line.cs" />
     <Compile Include="Class\2D\Shape.cs" />
@@ -91,6 +92,12 @@
     </Compile>
     <Compile Include="UI\2D\Panel2DModel.Designer.cs">
       <DependentUpon>Panel2DModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\2D\PanelDashLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\2D\PanelDashLine.Designer.cs">
+      <DependentUpon>PanelDashLine.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\2D\PanelElip.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +160,12 @@
       <DependentUpon>PanelCube.cs</DependentUpon>
     </Compile>
     <Compile Include="PhepToan.cs" />
+    <Compile Include="UI\Translation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Translation.Designer.cs">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Variables\Constants.cs" />
     <Compile Include="Variables\Init.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -201,6 +214,9 @@
     <EmbeddedResource Include="UI\3D\PanelCube.resx">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Translation.resx">
+      <DependentUpon>Translation.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +230,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\Cancel.png" />
+    <None Include="resources\OK.png" />
     <None Include="resources\plus.png" />
     <None Include="resources\tru.png" />
     <None Include="resources\b4.png" />
