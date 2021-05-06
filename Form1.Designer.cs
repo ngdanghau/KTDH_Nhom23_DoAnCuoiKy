@@ -29,35 +29,55 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btn_3D = new System.Windows.Forms.Button();
             this.Btn_2D = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.PageSizeLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Lable_Cursor = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.phépTỉLệToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.x4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.BtnDraw = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnClearAll = new System.Windows.Forms.Button();
+            this.BtnDraw = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ShowPointName = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.phépTịnhTiếnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowPointName)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,7 +88,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1026, 50);
+            this.panel1.Size = new System.Drawing.Size(1225, 50);
             this.panel1.TabIndex = 0;
             // 
             // Btn_3D
@@ -79,7 +99,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.Btn_3D.ForeColor = System.Drawing.Color.White;
             this.Btn_3D.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._3d;
             this.Btn_3D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_3D.Location = new System.Drawing.Point(491, 0);
+            this.Btn_3D.Location = new System.Drawing.Point(580, 0);
             this.Btn_3D.Name = "Btn_3D";
             this.Btn_3D.Size = new System.Drawing.Size(60, 50);
             this.Btn_3D.TabIndex = 4;
@@ -96,7 +116,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.Btn_2D.ForeColor = System.Drawing.Color.White;
             this.Btn_2D.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources._2d_selected;
             this.Btn_2D.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_2D.Location = new System.Drawing.Point(425, 0);
+            this.Btn_2D.Location = new System.Drawing.Point(514, 0);
             this.Btn_2D.Name = "Btn_2D";
             this.Btn_2D.Size = new System.Drawing.Size(60, 50);
             this.Btn_2D.TabIndex = 3;
@@ -109,21 +129,64 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(243)))));
             this.panel3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.panel3.Location = new System.Drawing.Point(810, 50);
+            this.panel3.Location = new System.Drawing.Point(1009, 50);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(216, 220);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.button5);
             this.panel4.Controls.Add(this.PageSizeLabel);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.Lable_Cursor);
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Location = new System.Drawing.Point(0, 50);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(810, 60);
+            this.panel4.Size = new System.Drawing.Size(726, 60);
             this.panel4.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(181, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 29);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "5";
+            // 
+            // button6
+            // 
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.Coral;
+            this.button6.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.plus;
+            this.button6.Location = new System.Drawing.Point(221, 0);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(60, 60);
+            this.button6.TabIndex = 29;
+            this.button6.Tag = "";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.ZoomIn);
+            // 
+            // button5
+            // 
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.Coral;
+            this.button5.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.tru;
+            this.button5.Location = new System.Drawing.Point(116, 0);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(60, 60);
+            this.button5.TabIndex = 28;
+            this.button5.Tag = "";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.ZoomOut);
             // 
             // PageSizeLabel
             // 
@@ -170,14 +233,78 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.ContextMenuStrip = this.contextMenuStrip1;
             this.panel2.Location = new System.Drawing.Point(0, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(810, 645);
+            this.panel2.Size = new System.Drawing.Size(1006, 645);
             this.panel2.TabIndex = 4;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDraw);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDraw);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.phépTỉLệToolStripMenuItem,
+            this.phépTịnhTiếnToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // phépTỉLệToolStripMenuItem
+            // 
+            this.phépTỉLệToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem11,
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem15,
+            this.x4ToolStripMenuItem,
+            this.x5ToolStripMenuItem});
+            this.phépTỉLệToolStripMenuItem.Name = "phépTỉLệToolStripMenuItem";
+            this.phépTỉLệToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.phépTỉLệToolStripMenuItem.Text = "Phép Tỉ Lệ";
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(101, 22);
+            this.toolStripMenuItem11.Text = "x0.25";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(101, 22);
+            this.toolStripMenuItem12.Text = "x0.5";
+            this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(101, 22);
+            this.toolStripMenuItem13.Text = "x0.75";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
+            // 
+            // toolStripMenuItem15
+            // 
+            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(101, 22);
+            this.toolStripMenuItem15.Text = "x2";
+            this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
+            // 
+            // x4ToolStripMenuItem
+            // 
+            this.x4ToolStripMenuItem.Name = "x4ToolStripMenuItem";
+            this.x4ToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.x4ToolStripMenuItem.Text = "x4";
+            this.x4ToolStripMenuItem.Click += new System.EventHandler(this.x4ToolStripMenuItem_Click);
+            // 
+            // x5ToolStripMenuItem
+            // 
+            this.x5ToolStripMenuItem.Name = "x5ToolStripMenuItem";
+            this.x5ToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.x5ToolStripMenuItem.Text = "x5";
+            this.x5ToolStripMenuItem.Click += new System.EventHandler(this.x5ToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -185,25 +312,21 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.panel5.Controls.Add(this.groupBox3);
             this.panel5.Controls.Add(this.groupBox2);
             this.panel5.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.panel5.Location = new System.Drawing.Point(810, 376);
+            this.panel5.Location = new System.Drawing.Point(1009, 376);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(216, 377);
             this.panel5.TabIndex = 2;
             // 
-            // BtnDraw
+            // groupBox3
             // 
-            this.BtnDraw.FlatAppearance.BorderSize = 0;
-            this.BtnDraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDraw.ForeColor = System.Drawing.Color.Coral;
-            this.BtnDraw.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.draw;
-            this.BtnDraw.Location = new System.Drawing.Point(11, 20);
-            this.BtnDraw.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnDraw.Name = "BtnDraw";
-            this.BtnDraw.Size = new System.Drawing.Size(176, 38);
-            this.BtnDraw.TabIndex = 23;
-            this.BtnDraw.Tag = "";
-            this.BtnDraw.UseVisualStyleBackColor = false;
-            this.BtnDraw.Click += new System.EventHandler(this.BtnDraw_Click);
+            this.groupBox3.Controls.Add(this.BtnClearAll);
+            this.groupBox3.Controls.Add(this.BtnDraw);
+            this.groupBox3.Location = new System.Drawing.Point(3, 258);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(210, 116);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Hành Động";
             // 
             // BtnClearAll
             // 
@@ -220,11 +343,26 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.BtnClearAll.UseVisualStyleBackColor = false;
             this.BtnClearAll.Click += new System.EventHandler(this.BtnClearAll_Click);
             // 
+            // BtnDraw
+            // 
+            this.BtnDraw.FlatAppearance.BorderSize = 0;
+            this.BtnDraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDraw.ForeColor = System.Drawing.Color.Coral;
+            this.BtnDraw.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.draw;
+            this.BtnDraw.Location = new System.Drawing.Point(11, 20);
+            this.BtnDraw.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnDraw.Name = "BtnDraw";
+            this.BtnDraw.Size = new System.Drawing.Size(176, 38);
+            this.BtnDraw.TabIndex = 23;
+            this.BtnDraw.Tag = "";
+            this.BtnDraw.UseVisualStyleBackColor = false;
+            this.BtnDraw.Click += new System.EventHandler(this.BtnDraw_Click);
+            // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(3, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(207, 237);
+            this.groupBox2.Size = new System.Drawing.Size(210, 246);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Số";
@@ -234,7 +372,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(243)))));
             this.panel6.Controls.Add(this.groupBox1);
             this.panel6.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.panel6.Location = new System.Drawing.Point(810, 276);
+            this.panel6.Location = new System.Drawing.Point(1009, 276);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(216, 100);
             this.panel6.TabIndex = 2;
@@ -243,7 +381,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // 
             this.groupBox1.Controls.Add(this.ShowPointName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(210, 91);
             this.groupBox1.TabIndex = 1;
@@ -271,28 +409,96 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.label1.TabIndex = 0;
             this.label1.Text = "Hiện Thị Tọa Độ Điểm";
             // 
-            // groupBox3
+            // panel7
             // 
-            this.groupBox3.Controls.Add(this.BtnClearAll);
-            this.groupBox3.Controls.Add(this.BtnDraw);
-            this.groupBox3.Location = new System.Drawing.Point(6, 249);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 116);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hành Động";
+            this.panel7.Controls.Add(this.button4);
+            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.button2);
+            this.panel7.Controls.Add(this.button3);
+            this.panel7.Location = new System.Drawing.Point(732, 50);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(274, 60);
+            this.panel7.TabIndex = 28;
+            // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.Coral;
+            this.button4.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.b1;
+            this.button4.Location = new System.Drawing.Point(38, 0);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(58, 60);
+            this.button4.TabIndex = 27;
+            this.button4.Tag = "";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.RotateLeft90_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Coral;
+            this.button1.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.b4;
+            this.button1.Location = new System.Drawing.Point(212, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 60);
+            this.button1.TabIndex = 24;
+            this.button1.Tag = "";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.FlipHorizontal_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Coral;
+            this.button2.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.b3;
+            this.button2.Location = new System.Drawing.Point(154, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(58, 60);
+            this.button2.TabIndex = 25;
+            this.button2.Tag = "";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.FlipVertical_Click);
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.Coral;
+            this.button3.Image = global::KTDH_Nhom23_DoAnCuoiKy.Properties.Resources.b2;
+            this.button3.Location = new System.Drawing.Point(96, 0);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(58, 60);
+            this.button3.TabIndex = 26;
+            this.button3.Tag = "";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.RotateRight90_Click);
+            // 
+            // phépTịnhTiếnToolStripMenuItem
+            // 
+            this.phépTịnhTiếnToolStripMenuItem.Name = "phépTịnhTiếnToolStripMenuItem";
+            this.phépTịnhTiếnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.phépTịnhTiếnToolStripMenuItem.Text = "Phép Tịnh Tiến";
+            this.phépTịnhTiếnToolStripMenuItem.Click += new System.EventHandler(this.phépTịnhTiếnToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 753);
+            this.ClientSize = new System.Drawing.Size(1225, 753);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -305,12 +511,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowPointName)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -336,6 +544,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox ShowPointName;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem phépTỉLệToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+        private System.Windows.Forms.ToolStripMenuItem x4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x5ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem phépTịnhTiếnToolStripMenuItem;
     }
 }
 

@@ -29,7 +29,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public int Z { get => z; set => z = value; }
         public string Name { get => name; set => name = value; }
 
-        public Label SetLabel()
+        public Label SetLabel(string name)
         {
             Point temp = ConvertCoordinateSystem2DToPoint(new Point(X, Y));
             Label lb = new Label();
@@ -80,14 +80,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
             lb.Location = new System.Drawing.Point(x1, y1);
             lb.AutoSize = true;
+            lb.Name = name;
             return lb;
         }
 
         // Vẽ Điểm Pixel
-        public void PutPixel(Graphics g, int zoom = 0)
+        public void PutPixel(Graphics g, int zoom = 0, bool isDot = false)
         {
             if (zoom == 0) zoom = Init.zoom;
-            SolidBrush brush = new SolidBrush(Constants.Color_Point_Pixel);
+            SolidBrush brush = new SolidBrush(isDot ? Constants.Color_Point_Dot_Pixel : Constants.Color_Point_Pixel);
             Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
             if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
@@ -98,7 +99,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             {
                 g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom - Init.zoom / 2, zoom, zoom);
             }
-
         }
 
         // Xóa các điểm thừa khi vẽ
@@ -128,12 +128,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 g.DrawLine(pen, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom, O.X + X * Init.zoom + Init.zoom / 2, O.Y - Y * Init.zoom);
             }
 
-        }
-
-        // Tính Khoảng cách 2 Điểm
-        public static double Distance(Point p1, Point p2)
-        {
-            return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
         }
 
         //Chuyển đổi điểm từ Hệ Tọa Độ sang Pixel

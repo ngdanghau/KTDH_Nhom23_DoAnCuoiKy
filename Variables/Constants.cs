@@ -12,7 +12,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// <summary>
         /// Hình Đang Vẽ
         /// </summary>
-        public enum Shape { Default, Line, Circle, Rectangle, Triangle, Elip, Cube, Sphere, Cone, Cylinder };
+        public enum Shape { Default, Line, DashLine, Circle, Rectangle, Triangle, Elip, Cube, Sphere, Cone, Cylinder };
 
         /// <summary>
         /// Màu sắc của Đường Ox, Oy của trục tọa độ
@@ -33,5 +33,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// Màu sắc của điểm pixel, tức là màu của mấy hình
         /// </summary>
         public static Color Color_Point_Pixel = Color.Black;
+
+        /// <summary>
+        /// Màu sắc Khác của điểm pixel - Dùng cho phép tịnh tiến
+        /// </summary>
+        public static Color Color_Point_Dot_Pixel = Color.MediumVioletRed;
     }
 }

@@ -1,21 +1,14 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
     class Elip: Shape
     {
-        private int a;
-        private int b;
-        Point center;
-
-        internal Point Center { get => center; set => center = value; }
-        public int MajorAxis { get => a; set => a = value; }
-        public int MinorAxis { get => b; set => b = value; }
+        internal Point Center { get; set; }
+        public int MajorAxis { get; set; }
+        public int MinorAxis { get; set; }
 
         public Elip(Point o, int a, int b)
         {
@@ -89,7 +82,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Show(Graphics g)
         {
-            Center.PutPixel(g);
             foreach (var item in List)
             {
                 item.PutPixel(g);
@@ -98,7 +90,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void ShowElip(Graphics g, bool vertical = true)
         {
-            Center.PutPixel(g);
             foreach (var item in List)
             {
                 if (vertical)
@@ -121,7 +112,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Hide(Graphics g)
         {
-            Center.RemovePixel(g);
             foreach (var item in List)
             {
                 item.RemovePixel(g);
@@ -134,6 +124,45 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             List.Add(new Point(p.X, -1 * p.Y));
             List.Add(new Point(-1 * p.X, -1 * p.Y));
         }
-       
+
+        public void Rotate(int degrees)
+        {
+            List.Clear();
+            double a = (1.0 * degrees / 180) * Math.PI;
+            Center = PhepToan.Rotate(Center, a);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            Center = PhepToan.Scale(Center, ratio, ratio, 0);
+            MajorAxis = Convert.ToInt32(MajorAxis * ratio);
+            MinorAxis = Convert.ToInt32(MinorAxis * ratio);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            Center = PhepToan.Reflection(Center, type);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            Center = PhepToan.Translation(Center, trX, trY, 0);
+            MidPoint();
+            Move();
+            List.Add(Center);
+        }
+
     }
 }

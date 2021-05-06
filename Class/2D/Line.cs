@@ -6,8 +6,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
     class Line: Shape
     {
-        Point first;
-        Point last;
+        internal Point First { get; set; }
+        internal Point Last { get; set; }
 
         public Line(Point first, Point last)
         {
@@ -26,7 +26,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                 Last = last;
             }
 
-            if (Last == null) return;
+            if (First == null || Last == null) return;
             if (First.X != Last.X)
             {
                 List.Add(First);
@@ -172,8 +172,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 
         public void Show(Graphics g, bool IsDash = false)
         {
-            first.PutPixel(g);
-            last.PutPixel(g);
             foreach (Point p in List)
                 if(IsDash)
                     p.PutPixel(g, Init.zoom / 2);
@@ -181,12 +179,56 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                     p.PutPixel(g);
         }
 
+        public void Hide(Graphics g)
+        {
+            foreach (Point p in List)
+                p.RemovePixel(g);
+        }
+
         private double GetK(Point first1, Point last1)
         {
             return Convert.ToDouble(1.0 * (first1.Y - last1.Y) / (first1.X - last1.X));
         }
 
-        internal Point First { get => first; set => first = value; }
-        internal Point Last { get => last; set => last = value; }
+        public void Rotate(int degrees)
+        {
+            double a = (1.0 * degrees / 180) * Math.PI;
+            List.Clear();
+            First = PhepToan.Rotate(First, a);
+            Last = PhepToan.Rotate(Last, a);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
+        public void Scale(double ratio)
+        {
+            List.Clear();
+            First = PhepToan.Scale(First, ratio, ratio, 0);
+            Last = PhepToan.Scale(Last, ratio, ratio, 0);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
+        public void Reflection(int type)
+        {
+            List.Clear();
+            First = PhepToan.Reflection(First, type);
+            Last = PhepToan.Reflection(Last, type);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
+
+        public void Translation(double trX, double trY)
+        {
+            List.Clear();
+            First = PhepToan.Translation(First, trX, trY, 0);
+            Last = PhepToan.Translation(Last, trX, trY, 0);
+            List.Add(First);
+            List.Add(Last);
+            Draw(First, Last);
+        }
     }
 }
