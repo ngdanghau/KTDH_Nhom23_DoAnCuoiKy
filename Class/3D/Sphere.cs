@@ -50,5 +50,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             E1 = new Elip(O1, Convert.ToInt32(Radius / 3), Convert.ToInt32(Radius));
             E2 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
         }
+
+        public void Translation(double trX, double trY, double trZ)
+        {
+            Center = PhepToan.Translation(Center, trX, trY, trZ);
+            int x1 = Center.X - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
+            int y1 = Center.Y - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
+            Point O1 = new Point(x1, y1);
+            C1 = new Circle(O1, Radius);
+            E1 = new Elip(O1, Convert.ToInt32(Radius / 3), Convert.ToInt32(Radius));
+            E2 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+        }
     }
 }

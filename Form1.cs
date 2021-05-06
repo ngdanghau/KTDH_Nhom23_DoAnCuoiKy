@@ -25,8 +25,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Elip> ListElip = new List<Elip>();
         internal List<Cylinder> ListCylinder = new List<Cylinder>();
         internal List<Cone> ListCone = new List<Cone>();
-        private bool IsTranslation = false;
-        private Point cursor;
 
         public static GroupBox GroupBoxInput;
 
@@ -204,8 +202,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             foreach (Point p in ListDiemTamThoi)
             {
-                if(IsTranslation) p.PutPixel(g, 2, true);
-                else p.PutPixel(g);
+                p.PutPixel(g);
             }
         }
 
@@ -259,7 +256,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         //Hành Động Kéo Rê Chuột
         private void Panel2_MouseMove(object sender, MouseEventArgs e)
         {
-            cursor = new Point(e.X, e.Y);
             Point cursorPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
             Lable_Cursor.Text = cursorPoint.X + ", " + cursorPoint.Y;
 
@@ -297,14 +293,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 // Hiện Tọa Độ Đầu Và cuối của mỗi hình, sau khi đã lọc hết các tọa độ tạm thời
                 HienToaDoChinh();
             }
-
-            if (IsTranslation)
-            {
-                AnToaDoTamThoi();
-                EndPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
-                ListDiemTamThoi = new Line(StartPoint, EndPoint).List;
-                HienToaDoChinh();
-            }
         }
 
         // Hành Động bắt đầu Click chuột để vẽ
@@ -312,15 +300,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (IsTranslation)
-                {
-                    IsTranslation = false;
-                    AnToaDoTamThoi();
-                    ListDiemTamThoi.Clear();
-                    TranslationAllShape(StartPoint, EndPoint);
-                    StartPoint = EndPoint = null;
-                    return;
-                }
                 // Xóa Hết Điểm Tạm Thời Đi
                 ListDiemTamThoi.Clear();
                 // Lấy điểm bắt đâu khi click chuột. và đổi tọa độ chuột sang tọa độ Oxy
@@ -354,13 +333,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             break;
                     }
                 }
-            }
-            else
-            {
-                ListDiemTamThoi.Clear();
-                IsTranslation = false;
-                AnToaDoTamThoi();
-                StartPoint = EndPoint = null;
             }
         }
 
@@ -622,7 +594,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         #region Phép Toán Cho Hinh 2D
         private void TranslationAllShape(Point a, Point b)
         {
-
             ClearLabel();
             int index = 0;
             int trX = b.X - a.X,
@@ -1021,9 +992,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void phépTịnhTiếnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IsTranslation = true;
-            ListDiemTamThoi.Clear();
-            StartPoint = Point.ConvertPointToCoordinateSystem2D(cursor);
+            
         }
 
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
