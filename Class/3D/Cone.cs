@@ -85,7 +85,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         {
             ChieuCao = Convert.ToInt32(ChieuCao * ratio);
             Radius = Convert.ToInt32(Radius * ratio);
-            Point O= PhepToan.Scale(A, ratio, ratio, ratio);
+            Point O = PhepToan.Scale(A, ratio, ratio, ratio);
             A = O;
             B = new Point(O.X, O.Y + ChieuCao, O.Z, "B");
             C = new Point(O.X + Radius, O.Y, O.Z, "C");
@@ -113,7 +113,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public void Translation(double trX, double trY, double trZ)
         {
-            Point O = PhepToan.Scale(A, trX, trY, trZ);
+            Point O = PhepToan.Translation(A, trX, trY, trZ);
             A = O;
             B = new Point(O.X, O.Y + ChieuCao, O.Z, "B");
             C = new Point(O.X + Radius, O.Y, O.Z, "C");

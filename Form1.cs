@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
 using KTDH_Nhom23_DoAnCuoiKy.UI;
 using KTDH_Nhom23_DoAnCuoiKy.UI._2D;
+using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using Rectangle = KTDH_Nhom23_DoAnCuoiKy.Class._2D.Rectangle;
 
@@ -143,7 +145,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 Init.NewSize3D.Height = Convert.ToInt32(panel2.Height / 2);
                 DrawCoordinate3D();
             }
-            else
+            else if (Init.ModeCurrent == Constants.Mode._2DMode)
             {
                 Init.NewSize2D.Width = panel2.Width / 2;
                 Init.NewSize2D.Height = panel2.Height / 2;
@@ -253,7 +255,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 foreach (Cone p in ListCone) p.Show(g);
             }
             else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
-                // vẽ lại hình động 
+                // vẽ lại tất cả hình 3D
                 foreach (Clock p in ListClock) p.Show(g);
             }
         }
@@ -328,17 +330,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             break;
                     }
                 }
-                else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
-                    // kiểm tra hình đang vẽ là gì
-                    switch (Init.ShapeCurrent)
-                    {
-                        case Constants.Shape.Clock:
-                            ListDiemTamThoi = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint)).List;
-                            break;
-                        case Constants.Shape.Default:
-                            break;
-                    }
-                }
                 // Hiện Tọa Độ Đầu Và cuối của mỗi hình, sau khi đã lọc hết các tọa độ tạm thời
                 HienToaDoChinh();
             }
@@ -385,17 +376,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             break;
                     }
                 }
-                else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
-                    switch (Init.ShapeCurrent)
-                    {
-                        case Constants.Shape.Clock:
-                            PanelCircle.Instance.X = StartPoint.X;
-                            PanelCircle.Instance.Y = StartPoint.Y;
-                            break;
-                        case Constants.Shape.Default:
-                            break;
-                    }
-                }
             }
         }
 
@@ -429,12 +409,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         Circle htron = new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
                         ListCircle.Add(htron);
                         PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
-                        break;
-                    case Constants.Shape.Clock:
-                        ListLabel.Add(StartPoint.SetLabel("clock_" + ListClock.Count + "_1"));
-                        Clock dongho = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
-                        ListClock.Add(dongho);
-                        dongho.time.Start();
                         break;
                     case Constants.Shape.Elip:
                         ListLabel.Add(StartPoint.SetLabel("elip_"+ListElip.Count + "_1"));
@@ -470,25 +444,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         PanelTriangle.Instance.Y3 = EndPoint.Y;
 
                         
-                        break;
-                    case Constants.Shape.Default:
-                        break;
-                }
-                // Hiện thị hình ảnh
-                ShowAllShape();
-                // Hiện thị Label Của Point
-                ShowLabel();
-                EndPoint = StartPoint = null;
-            }
-            else if (Init.ModeCurrent == Constants.Mode.AnimationMode)
-            {
-                switch (Init.ShapeCurrent)
-                {
-                    case Constants.Shape.Clock:
-                        ListLabel.Add(StartPoint.SetLabel("clock_" + ListClock.Count + "_1"));
-                        Clock dongho = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
-                        ListClock.Add(dongho);
-                        dongho.time.Start();
                         break;
                     case Constants.Shape.Default:
                         break;
@@ -617,7 +572,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             }
 
             // Nếu Mode = 3D
-            else
+            else if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
                 switch (Init.ShapeCurrent)
                 {
@@ -697,6 +652,22 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 }
             }
 
+            else if (Init.ModeCurrent == Constants.Mode.AnimationMode)
+            {
+                switch (Init.ShapeCurrent)
+                {
+                    case Constants.Shape.Clock:
+                        if(ListClock.Count > 0) return;
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelClock.Instance.X),
+                            Convert.ToInt32(PanelClock.Instance.Y)
+                        );
+                        ListClock.Add(new Clock(StartPoint, Convert.ToInt32(PanelClock.Instance.Radius)));
+                        break;
+                    case Constants.Shape.Default:
+                        break;
+                }
+            }
             ShowAllShape();
             ShowLabel();
         }
@@ -782,6 +753,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ShowLabel();
 
         }
+
+
         private void RotateAllShape(int degrees)
         {
             ClearLabel();
@@ -1033,7 +1006,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     index++;
                 }
             }
-            else
+            else if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
                 VeTrucToaDo();
                 int index = 0;
@@ -1105,6 +1078,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                     ListLabel.Add(item.F.SetLabel("cylinder_" + index + "_6"));
                     index++;
                 }
+            }
+            else
+            {
+                ScaleAllShapeAnimate(ratio);
             }
             ShowLabel();
         }
@@ -1215,7 +1192,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             Translation Translation = new Translation();
             if (Translation.ShowDialog() == DialogResult.OK)
             {
-                if (Init.ModeCurrent == Constants.Mode._2DMode)
+                if (Init.ModeCurrent == Constants.Mode._3DMode)
+                {
+                    TranslationAllShape3D(
+                        Convert.ToDouble(Translation.TrX),
+                        Convert.ToDouble(Translation.TrY),
+                        Convert.ToDouble(Translation.TrZ)
+                    );
+                }
+                else if (Init.ModeCurrent == Constants.Mode._2DMode)
                 {
                     TranslationAllShape(
                         Convert.ToDouble(Translation.TrX),
@@ -1224,12 +1209,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 }
                 else
                 {
-                    TranslationAllShape3D(
+                    TranslationAllShapeAnimate(
                         Convert.ToDouble(Translation.TrX),
-                        Convert.ToDouble(Translation.TrY),
-                        Convert.ToDouble(Translation.TrZ)
+                        Convert.ToDouble(Translation.TrY)
                     );
-                }        
+                }      
             }
         }
 
@@ -1238,6 +1222,29 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ScaleAllShape(5);
+        }
+
+        #endregion
+
+        #region Phép Toán Cho Hình Động
+        private void TranslationAllShapeAnimate(double trX, double trY)
+        {
+            foreach (Clock item in ListClock)
+            {
+                item.Hide(g);
+                item.Translation(trX, trY);
+                item.Show(g);
+            }
+        }
+
+        private void ScaleAllShapeAnimate(double ratio)
+        {
+            foreach (Clock item in ListClock)
+            {
+                item.Hide(g);
+                item.Scale(ratio);
+                item.Show(g);
+            }
         }
 
         #endregion

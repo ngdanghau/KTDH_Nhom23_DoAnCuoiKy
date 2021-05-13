@@ -22,6 +22,60 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI.Animation
             }
         }
 
+        public decimal X
+        {
+            get { return x1.Value; }
+            set { x1.Value = value; }
+        }
+
+        public decimal Y
+        {
+            get { return y1.Value; }
+            set { y1.Value = value; }
+        }
+
+        public decimal Radius
+        {
+            get { return x2.Value; }
+            set { x2.Value = value; }
+        }
+
+        public string HourO
+        {
+            get { return label4.Text; }
+            set { label4.Text = value; }
+        }
+
+        public string HourA
+        {
+            get { return label5.Text; }
+            set { label5.Text = value; }
+        }
+
+        public string MinuteO
+        {
+            get { return label7.Text; }
+            set { label7.Text = value; }
+        }
+
+        public string MinuteB
+        {
+            get { return label6.Text; }
+            set { label6.Text = value; }
+        }
+
+        public string SecondO
+        {
+            get { return label9.Text; }
+            set { label9.Text = value; }
+        }
+
+        public string SecondC
+        {
+            get { return label8.Text; }
+            set { label8.Text = value; }
+        }
+
         public PanelClock()
         {
             InitializeComponent();

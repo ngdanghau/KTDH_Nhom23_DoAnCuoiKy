@@ -42,13 +42,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
 
         private void Translation_Load(object sender, EventArgs e)
         {
-            if (Init.ModeCurrent == Constants.Mode._2DMode)
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
-                TrZBtn.Enabled = false;
+                TrZBtn.Enabled = true;
             }
             else
             {
-                TrZBtn.Enabled = true;
+                TrZBtn.Enabled = false;
             }
         }
     }
