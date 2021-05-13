@@ -7,12 +7,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// <summary>
         /// Chế độ làm việc
         /// </summary>
-        public enum Mode { _2DMode, _3DMode };
+        public enum Mode { _2DMode, _3DMode, AnimationMode };
 
         /// <summary>
         /// Hình Đang Vẽ
         /// </summary>
-        public enum Shape { Default, Line, DashLine, Circle, Rectangle, Triangle, Elip, Cube, Sphere, Cone, Cylinder };
+        public enum Shape { 
+            Default, Line, DashLine, Circle, Rectangle, Triangle, Elip, 
+            Cube, Sphere, Cone, Cylinder, 
+            Tank, Clock, Plane, Fan
+        };
 
         /// <summary>
         /// Màu sắc của Đường Ox, Oy của trục tọa độ

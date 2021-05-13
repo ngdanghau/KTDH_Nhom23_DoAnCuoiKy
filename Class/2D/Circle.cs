@@ -7,6 +7,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
     {
         Point center;
         double radius;
+        internal Point Center { get => center; set => center = value; }
+        public double Radius { get => radius; set => radius = value; }
 
         public Circle(Point c, double r)
         {
@@ -16,9 +18,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Move();
             List.Add(Center);
         }
-
-        internal Point Center { get => center; set => center = value; }
-        public double Radius { get => radius; set => radius = value; }
 
         private void MidPoint()
         {

@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\2D\Circle.cs" />
+    <Compile Include="Class\2D\Clock.cs" />
     <Compile Include="Class\2D\DashLine.cs" />
     <Compile Include="Class\2D\Elip.cs" />
     <Compile Include="Class\2D\Line.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Class\3D\Cube.cs" />
     <Compile Include="Class\3D\Cylinder.cs" />
     <Compile Include="Class\3D\Sphere.cs" />
+    <Compile Include="Class\Animation\Matrix.cs" />
     <Compile Include="Class\Point.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -159,7 +161,37 @@
     <Compile Include="UI\3D\PanelCube.Designer.cs">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhepToan.cs" />
+    <Compile Include="Class\Animation\PhepToan.cs" />
+    <Compile Include="UI\Animation\PanelAnimateModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Animation\PanelAnimateModel.Designer.cs">
+      <DependentUpon>PanelAnimateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Animation\PanelClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Animation\PanelClock.Designer.cs">
+      <DependentUpon>PanelClock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Animation\PanelFan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Animation\PanelFan.Designer.cs">
+      <DependentUpon>PanelFan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Animation\PanelPlane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Animation\PanelPlane.Designer.cs">
+      <DependentUpon>PanelPlane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Animation\PanelTank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Animation\PanelTank.Designer.cs">
+      <DependentUpon>PanelTank.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Translation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +246,9 @@
     <EmbeddedResource Include="UI\3D\PanelCube.resx">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Animation\PanelAnimateModel.resx">
+      <DependentUpon>PanelAnimateModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Translation.resx">
       <DependentUpon>Translation.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,14 +265,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
-    <None Include="resources\Cancel.png" />
-    <None Include="resources\OK.png" />
-    <None Include="resources\plus.png" />
-    <None Include="resources\tru.png" />
-    <None Include="resources\b4.png" />
+    <None Include="resources\animation_selected.png" />
+    <None Include="resources\animation.png" />
+    <None Include="resources\21_selected.png" />
+    <None Include="resources\21.png" />
+    <None Include="resources\20_selected.png" />
+    <None Include="resources\20.png" />
     <None Include="resources\b3.png" />
     <None Include="resources\b2.png" />
     <None Include="resources\b1.png" />
+    <None Include="resources\tru.png" />
+    <None Include="resources\plus.png" />
+    <None Include="resources\b4.png" />
+    <None Include="resources\19.png" />
+    <None Include="resources\19_selected.png" />
+    <None Include="resources\18.png" />
+    <None Include="resources\18_selected.png" />
+    <None Include="resources\Cancel.png" />
+    <None Include="resources\OK.png" />
     <None Include="resources\17_selected.png" />
     <None Include="resources\17.png" />
     <None Include="resources\16_selected.png" />

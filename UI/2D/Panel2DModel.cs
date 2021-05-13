@@ -1,5 +1,6 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Properties;
 using KTDH_Nhom23_DoAnCuoiKy.UI._2D;
+using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
 using System;
 using System.Collections.Generic;

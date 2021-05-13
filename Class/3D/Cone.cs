@@ -51,8 +51,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public void Show(Graphics g)
         {
-            nega.Clear();
-            pose.Clear();
+
+            E1.ShowElip(g, false);
+
+            foreach (Line n in nega)
+            {
+                n.Show(g, true);
+            }
+
+            foreach (Line n in pose)
+            {
+                n.Show(g);
+            }
         }
 
         public void Hide(Graphics g)
