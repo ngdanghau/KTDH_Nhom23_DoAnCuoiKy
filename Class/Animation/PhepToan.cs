@@ -1,6 +1,7 @@
 ﻿using System;
 using MathNet.Numerics.LinearAlgebra;
 using KTDH_Nhom23_DoAnCuoiKy.Variables;
+using KTDH_Nhom23_DoAnCuoiKy.Class.Animation;
 
 namespace KTDH_Nhom23_DoAnCuoiKy
 {
@@ -19,17 +20,21 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         public static Point Rotate(Point point, double alpha)
         {
-            double sin = Math.Sin(alpha);
-            double cos = Math.Cos(alpha);
-            Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(
-                new[,] { 
-                    { cos,    sin, 0 },
-                    { -1*sin, cos, 0 },
-                    { 0,      0,   1 } 
-                }
-            );
+            Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.rotate(alpha));
             Matrix<double> result = GetMatrix(point).Multiply(matrix);
             return new Point(Convert.ToInt32(result[0, 0]), Convert.ToInt32(result[0, 1]));
+        }
+
+        public static Point CenterRotate(Point point, Point c, double alpha)
+        {
+            double sin = Math.Sin(alpha);
+            double cos = Math.Cos(alpha);
+            int distanceX = (point.X - c.X);
+            int distanceY = (point.Y - c.Y);
+            return new Point(
+                Convert.ToInt32(distanceX * cos) - Convert.ToInt32(distanceY * sin) + c.X,
+                Convert.ToInt32(distanceX * sin) - Convert.ToInt32(distanceY * cos) + c.Y
+           );
         }
 
         // Phép Đối Xứng Qua Ox, Oy
@@ -52,15 +57,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         // Phép Tỉ Lệ
         public static Point Scale(Point p, double Sx, double Sy, double Sz)
         {
-            if (Init.ModeCurrent == Constants.Mode._3DMode)
-
-            {
-                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] {
-                    { Sx,     0,      0,     0 },
-                    { 0,      Sy,     0,     0 },
-                    { 0,      0,      Sz,    0 },
-                    { 0,      0,      0,     1 } 
-                });
+            if (Init.ModeCurrent == Constants.Mode._3DMode){
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.scale3D(Sx, Sy, Sz));
                 Matrix<double> result = GetMatrix(p).Multiply(matrix);
                 return new Point(
                     Convert.ToInt32(result[0, 0]),
@@ -70,11 +68,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             }
             else
             {
-                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] { 
-                    { Sx,    0,     0 },
-                    { 0,     Sy,    0 },
-                    { 0,     0,     1 } 
-                });
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.scale(Sx, Sy));
                 Matrix<double> result = GetMatrix(p).Multiply(matrix);
                 return new Point(
                      Convert.ToInt32(result[0, 0]),
@@ -88,12 +82,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             if (Init.ModeCurrent == Constants.Mode._3DMode)
 
             {
-                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] {
-                    { 1,    0,      0,      0 },
-                    { 0,    1,      0,      0 },
-                    { 0,    0,      1,      0 },
-                    { trX,  trY,    trZ,    1 }
-                });
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.move3d(trX, trY, trZ));
                 Matrix<double> result = GetMatrix(p).Multiply(matrix);
                 return new Point(
                     Convert.ToInt32(result[0, 0]),
@@ -103,11 +92,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             }
             else
             {
-                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(new[,] { 
-                    { 1,    0,      0 },
-                    { 0,    1,      0 },
-                    { trX,  trY,    1 } 
-                });
+                Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.move2d(trX, trY));
                 Matrix<double> result = GetMatrix(p).Multiply(matrix);
                 return new Point(
                      Convert.ToInt32(result[0, 0]),
@@ -120,6 +105,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public static double Distance(Point p1, Point p2)
         {
             return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+        }
+
+        public static double ConvertDegreesToRadian(int degrees)
+        {
+            return (1.0 * degrees / 180) * Math.PI;
         }
     }
 }

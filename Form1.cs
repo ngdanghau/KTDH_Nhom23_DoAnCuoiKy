@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
@@ -27,6 +28,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Cylinder> ListCylinder = new List<Cylinder>();
         internal List<Cone> ListCone = new List<Cone>();
         internal List<DashLine> ListDashLine = new List<DashLine>();
+        internal List<Clock> ListClock = new List<Clock>();
 
         public static GroupBox GroupBoxInput;
 
@@ -135,17 +137,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
             g.Clear(Constants.Background_Color_Coordinate_System);
             PageSizeLabel.Text = panel2.Width + " x " + panel2.Height;
-            if (Init.ModeCurrent == Constants.Mode._2DMode)
-            {
-                Init.NewSize2D.Width = panel2.Width / 2;
-                Init.NewSize2D.Height = panel2.Height / 2;
-                DrawCoordinate();
-            }
-            else
+            if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
                 Init.NewSize3D.Width = Convert.ToInt32(panel2.Width / 2.5);
                 Init.NewSize3D.Height = Convert.ToInt32(panel2.Height / 2);
                 DrawCoordinate3D();
+            }
+            else
+            {
+                Init.NewSize2D.Width = panel2.Width / 2;
+                Init.NewSize2D.Height = panel2.Height / 2;
+                DrawCoordinate();
             }
 
         }
@@ -159,6 +161,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             Init.ShapeCurrent = Constants.Shape.Sphere;
             Btn_2D.Image = Properties.Resources._2d;
             Btn_3D.Image = Properties.Resources._3d_selected;
+            Btn_Animation.Image = Properties.Resources.animation;
 
             if (!panel3.Controls.Contains(Panel3DModel.Instance))
             {
@@ -178,6 +181,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             Init.ModeCurrent = Constants.Mode._2DMode;
             Btn_2D.Image = Properties.Resources._2d_selected;
             Btn_3D.Image = Properties.Resources._3d;
+            Btn_Animation.Image = Properties.Resources.animation;
             if (!panel3.Controls.Contains(Panel2DModel.Instance))
             {
                 panel3.Controls.Add(Panel2DModel.Instance);
@@ -187,6 +191,27 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             else Panel2DModel.Instance.BringToFront();
 
             Panel2DModel.reset();
+            BtnClearAll_Click(null, EventArgs.Empty);
+        }
+
+        private void Btn_Animation_Click(object sender, EventArgs e)
+        {
+            panel7.Enabled = false;
+            Init.ModeCurrent = Constants.Mode.AnimationMode;
+            Init.ShapeCurrent = Constants.Shape.Clock;
+            Btn_2D.Image = Properties.Resources._2d;
+            Btn_3D.Image = Properties.Resources._3d;
+            Btn_Animation.Image = Properties.Resources.animation_selected;
+
+            if (!panel3.Controls.Contains(PanelAnimateModel.Instance))
+            {
+                panel3.Controls.Add(PanelAnimateModel.Instance);
+                PanelAnimateModel.Instance.Dock = DockStyle.Fill;
+                PanelAnimateModel.Instance.BringToFront();
+            }
+            else PanelAnimateModel.Instance.BringToFront();
+
+            PanelAnimateModel.reset();
             BtnClearAll_Click(null, EventArgs.Empty);
         }
         #endregion
@@ -210,19 +235,27 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void ShowAllShape()
         {
-            // vẽ lại tất cả hình 2D
-            foreach (Line p in ListLine) p.Show(g);
-            foreach (DashLine p in ListDashLine) p.Show(g);
-            foreach (Circle p in ListCircle) p.Show(g);
-            foreach (Rectangle p in ListRectangle) p.Show(g);
-            foreach (Triangle p in ListTriangle) p.Show(g);
-            foreach (Elip p in ListElip) p.Show(g);
-
-            // vẽ lại tất cả hình 3D
-            foreach (Cube p in ListCube) p.Show(g);
-            foreach (Sphere p in ListSphere) p.Show(g);
-            foreach (Cylinder p in ListCylinder) p.Show(g);
-            foreach (Cone p in ListCone) p.Show(g);
+            if (Init.ModeCurrent == Constants.Mode._2DMode)
+            {
+                // vẽ lại tất cả hình 2D
+                foreach (Line p in ListLine) p.Show(g);
+                foreach (DashLine p in ListDashLine) p.Show(g);
+                foreach (Circle p in ListCircle) p.Show(g);
+                foreach (Rectangle p in ListRectangle) p.Show(g);
+                foreach (Triangle p in ListTriangle) p.Show(g);
+                foreach (Elip p in ListElip) p.Show(g);
+            }
+            else if(Init.ModeCurrent == Constants.Mode._3DMode){
+                // vẽ lại tất cả hình 3D
+                foreach (Cube p in ListCube) p.Show(g);
+                foreach (Sphere p in ListSphere) p.Show(g);
+                foreach (Cylinder p in ListCylinder) p.Show(g);
+                foreach (Cone p in ListCone) p.Show(g);
+            }
+            else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
+                // vẽ lại hình động 
+                foreach (Clock p in ListClock) p.Show(g);
+            }
         }
 
         private void ClearLabel()
@@ -269,8 +302,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 // lấy điểm của chuột đang rê tới bỏ vào Endpoint (Chỉ là điểm cuối tạm thời chưa phải là chính thức)
                 EndPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
                 if (StartPoint == null || EndPoint == null) return;
-                if (Init.ModeCurrent == Constants.Mode._2DMode)
-                {
+                if (Init.ModeCurrent == Constants.Mode._2DMode){
                     // kiểm tra hình đang vẽ là gì
                     switch (Init.ShapeCurrent)
                     {
@@ -291,6 +323,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                             break;
                         case Constants.Shape.Elip:
                             ListDiemTamThoi = new Elip(StartPoint, Math.Abs(EndPoint.X - StartPoint.X), Math.Abs(EndPoint.Y - StartPoint.Y)).List;
+                            break; 
+                        case Constants.Shape.Default:
+                            break;
+                    }
+                }
+                else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
+                    // kiểm tra hình đang vẽ là gì
+                    switch (Init.ShapeCurrent)
+                    {
+                        case Constants.Shape.Clock:
+                            ListDiemTamThoi = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint)).List;
                             break;
                         case Constants.Shape.Default:
                             break;
@@ -311,8 +354,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 // Lấy điểm bắt đâu khi click chuột. và đổi tọa độ chuột sang tọa độ Oxy
                 StartPoint = Point.ConvertPointToCoordinateSystem2D(new Point(e.X, e.Y));
 
-                if (Init.ModeCurrent == Constants.Mode._2DMode)
-                {
+                if (Init.ModeCurrent == Constants.Mode._2DMode){
                     switch (Init.ShapeCurrent)
                     {
                         case Constants.Shape.Line:
@@ -338,6 +380,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         case Constants.Shape.Elip:
                             PanelElip.Instance.X = StartPoint.X;
                             PanelElip.Instance.Y = StartPoint.Y;
+                            break;
+                        case Constants.Shape.Default:
+                            break;
+                    }
+                }
+                else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
+                    switch (Init.ShapeCurrent)
+                    {
+                        case Constants.Shape.Clock:
+                            PanelCircle.Instance.X = StartPoint.X;
+                            PanelCircle.Instance.Y = StartPoint.Y;
                             break;
                         case Constants.Shape.Default:
                             break;
@@ -376,6 +429,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         Circle htron = new Circle(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
                         ListCircle.Add(htron);
                         PanelCircle.Instance.Radius = Convert.ToDecimal(htron.Radius);
+                        break;
+                    case Constants.Shape.Clock:
+                        ListLabel.Add(StartPoint.SetLabel("clock_" + ListClock.Count + "_1"));
+                        Clock dongho = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
+                        ListClock.Add(dongho);
+                        dongho.time.Start();
                         break;
                     case Constants.Shape.Elip:
                         ListLabel.Add(StartPoint.SetLabel("elip_"+ListElip.Count + "_1"));
@@ -421,7 +480,25 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 ShowLabel();
                 EndPoint = StartPoint = null;
             }
-            
+            else if (Init.ModeCurrent == Constants.Mode.AnimationMode)
+            {
+                switch (Init.ShapeCurrent)
+                {
+                    case Constants.Shape.Clock:
+                        ListLabel.Add(StartPoint.SetLabel("clock_" + ListClock.Count + "_1"));
+                        Clock dongho = new Clock(StartPoint, PhepToan.Distance(StartPoint, EndPoint));
+                        ListClock.Add(dongho);
+                        dongho.time.Start();
+                        break;
+                    case Constants.Shape.Default:
+                        break;
+                }
+                // Hiện thị hình ảnh
+                ShowAllShape();
+                // Hiện thị Label Của Point
+                ShowLabel();
+                EndPoint = StartPoint = null;
+            }
         }
 
         #endregion
@@ -440,6 +517,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListCylinder.Clear();
             ListCone.Clear();
             ListDashLine.Clear();
+
+            foreach (Clock clock in ListClock)
+            {
+                clock.time.Stop();
+            }
+            ListClock.Clear();
             ClearLabel();
             ListLabel.Clear();
             StartPoint = null;
@@ -449,6 +532,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void ShowPointName_Click(object sender, EventArgs e)
         {
+            if (Init.ShapeCurrent == Constants.Shape.Tank || Init.ShapeCurrent == Constants.Shape.Clock) return;
             Init.IsShowNamePoint = !Init.IsShowNamePoint;
             if (Init.IsShowNamePoint)
             {
@@ -1148,6 +1232,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 }        
             }
         }
+
+
 
         private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
