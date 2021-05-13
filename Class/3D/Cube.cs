@@ -101,7 +101,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public void Translation(double trX, double trY, double trZ)
         {
-            A = PhepToan.Scale(A, trX, trY, trZ);
+            A = PhepToan.Translation(A, trX, trY, trZ);
             B = new Point(A.X, A.Y + Edge, A.Z, "B");
             C = new Point(A.X + Edge, A.Y + Edge, A.Z, "C");
             D = new Point(A.X + Edge, A.Y, A.Z, "D");

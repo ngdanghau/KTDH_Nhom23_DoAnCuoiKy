@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\2D\Circle.cs" />
-    <Compile Include="Class\2D\Clock.cs" />
+    <Compile Include="Class\Animation\Clock.cs" />
     <Compile Include="Class\2D\DashLine.cs" />
     <Compile Include="Class\2D\Elip.cs" />
     <Compile Include="Class\2D\Line.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Class\3D\Cube.cs" />
     <Compile Include="Class\3D\Cylinder.cs" />
     <Compile Include="Class\3D\Sphere.cs" />
-    <Compile Include="Class\Animation\Matrix.cs" />
+    <Compile Include="Class\PhepBienDoi\Matrix.cs" />
     <Compile Include="Class\Point.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -161,7 +161,7 @@
     <Compile Include="UI\3D\PanelCube.Designer.cs">
       <DependentUpon>PanelCube.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class\Animation\PhepToan.cs" />
+    <Compile Include="Class\PhepBienDoi\PhepToan.cs" />
     <Compile Include="UI\Animation\PanelAnimateModel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -248,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Animation\PanelAnimateModel.resx">
       <DependentUpon>PanelAnimateModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Animation\PanelClock.resx">
+      <DependentUpon>PanelClock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Translation.resx">
       <DependentUpon>Translation.cs</DependentUpon>
