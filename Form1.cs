@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
 using KTDH_Nhom23_DoAnCuoiKy.Class._3D;
+using KTDH_Nhom23_DoAnCuoiKy.Class.Animation;
 using KTDH_Nhom23_DoAnCuoiKy.UI;
 using KTDH_Nhom23_DoAnCuoiKy.UI._2D;
 using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
@@ -23,6 +24,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Triangle> ListTriangle = new List<Triangle>();
         private Point StartPoint, EndPoint;
         private Graphics g;
+        private Graphics gAnimation;
         public static List<Label> ListLabel = new List<Label>();
         internal List<Sphere> ListSphere = new List<Sphere>();
         internal List<Cube> ListCube = new List<Cube>();
@@ -31,6 +33,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Cone> ListCone = new List<Cone>();
         internal List<DashLine> ListDashLine = new List<DashLine>();
         internal List<Clock> ListClock = new List<Clock>();
+        internal List<Plane> ListPlane = new List<Plane>();
+        internal List<Car> ListCar = new List<Car>();
+        internal List<Sun> ListSun = new List<Sun>();
 
         public static GroupBox GroupBoxInput;
 
@@ -43,6 +48,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         #region Hành Động Khi Load xong Form chính
         private void Form1_Load(object sender, EventArgs e)
         {
+            panel2.Size = Constants.SizePaint;
+            panel2.Location = Constants.LocationPaint;
+            panel2.BringToFront();
             panel3.Controls.Add(Panel2DModel.Instance);
             Panel2DModel.Instance.Dock = DockStyle.Fill;
             Panel2DModel.Instance.BringToFront();
@@ -53,6 +61,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
             GroupBoxInput = groupBox2;
             g = panel2.CreateGraphics();
+            gAnimation = panel6.CreateGraphics();
         }
 
         private void Panel2_Paint(object sender, PaintEventArgs e)
@@ -138,6 +147,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
 
             g.Clear(Constants.Background_Color_Coordinate_System);
+            gAnimation.Clear(Constants.Background_Color_Coordinate_System);
             PageSizeLabel.Text = panel2.Width + " x " + panel2.Height;
             if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
@@ -158,6 +168,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         #region Hành Động Thay Đổi Mode 2D <-> 3D
         private void Btn_3D_Click(object sender, EventArgs e)
         {
+            panel2.BringToFront();
             panel7.Enabled = false;
             Init.ModeCurrent = Constants.Mode._3DMode;
             Init.ShapeCurrent = Constants.Shape.Sphere;
@@ -179,6 +190,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void Btn_2D_Click(object sender, EventArgs e)
         {
+            panel2.BringToFront();
             panel7.Enabled = true;
             Init.ModeCurrent = Constants.Mode._2DMode;
             Btn_2D.Image = Properties.Resources._2d_selected;
@@ -198,6 +210,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void Btn_Animation_Click(object sender, EventArgs e)
         {
+            panel6.BringToFront();
+
             panel7.Enabled = false;
             Init.ModeCurrent = Constants.Mode.AnimationMode;
             Init.ShapeCurrent = Constants.Shape.Clock;
@@ -253,10 +267,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                 foreach (Sphere p in ListSphere) p.Show(g);
                 foreach (Cylinder p in ListCylinder) p.Show(g);
                 foreach (Cone p in ListCone) p.Show(g);
-            }
-            else if (Init.ModeCurrent == Constants.Mode.AnimationMode){
-                // vẽ lại tất cả hình 3D
-                foreach (Clock p in ListClock) p.Show(g);
             }
         }
 
@@ -473,11 +483,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             ListCone.Clear();
             ListDashLine.Clear();
 
-            foreach (Clock clock in ListClock)
-            {
-                clock.time.Stop();
-            }
+            foreach (Clock clock in ListClock) clock.time.Stop();
+            foreach (Plane plane in ListPlane) plane.time.Stop();
+            foreach (Car car in ListCar) car.time.Stop();
+            foreach (Sun sun in ListSun) sun.time.Stop();
             ListClock.Clear();
+            ListCar.Clear();
+            ListSun.Clear();
+            ListPlane.Clear();
             ClearLabel();
             ListLabel.Clear();
             StartPoint = null;
@@ -487,7 +500,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
 
         private void ShowPointName_Click(object sender, EventArgs e)
         {
-            if (Init.ShapeCurrent == Constants.Shape.Tank || Init.ShapeCurrent == Constants.Shape.Clock) return;
+            if (Init.ModeCurrent == Constants.Mode.AnimationMode) return;
             Init.IsShowNamePoint = !Init.IsShowNamePoint;
             if (Init.IsShowNamePoint)
             {
@@ -559,8 +572,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         break;
                     case Constants.Shape.Triangle:
                         StartPoint = new Point(Convert.ToInt32(PanelTriangle.Instance.X1), Convert.ToInt32(PanelTriangle.Instance.Y1));
+                        Point temp = new Point(Convert.ToInt32(PanelTriangle.Instance.X2), Convert.ToInt32(PanelTriangle.Instance.Y2));
                         EndPoint = new Point(Convert.ToInt32(PanelTriangle.Instance.X3), Convert.ToInt32(PanelTriangle.Instance.Y3));
-                        Triangle hinhtamgiac = new Triangle(StartPoint, EndPoint);
+                        Triangle hinhtamgiac = new Triangle(StartPoint, temp, EndPoint);
                         ListLabel.Add(StartPoint.SetLabel("triangle_" + ListTriangle.Count + "_1"));
                         ListLabel.Add(EndPoint.SetLabel("triangle_" + ListTriangle.Count + "_2"));
                         ListLabel.Add(hinhtamgiac.B.SetLabel("triangle_" + ListTriangle.Count + "_3"));
@@ -664,9 +678,34 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         );
                         ListClock.Add(new Clock(StartPoint, Convert.ToInt32(PanelClock.Instance.Radius)));
                         break;
+                    case Constants.Shape.Plane:
+                        if (ListPlane.Count > 0) return;
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelPlane.Instance.X),
+                            Convert.ToInt32(PanelPlane.Instance.Y)
+                        );
+                        ListPlane.Add(new Plane(StartPoint));
+                        break;
+                    case Constants.Shape.Car:
+                        if (ListCar.Count > 0) return;
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelCar.Instance.X),
+                            Convert.ToInt32(PanelCar.Instance.Y)
+                        );
+                        ListCar.Add(new Car(StartPoint));
+                        break;
+                    case Constants.Shape.Sun:
+                        if (ListSun.Count > 0) return;
+                        StartPoint = new Point(
+                            Convert.ToInt32(PanelSun.Instance.X),
+                            Convert.ToInt32(PanelSun.Instance.Y)
+                        );
+                        ListSun.Add(new Sun(StartPoint));
+                        break;
                     case Constants.Shape.Default:
                         break;
                 }
+                panel6.Invalidate();
             }
             ShowAllShape();
             ShowLabel();
@@ -1229,22 +1268,29 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         #region Phép Toán Cho Hình Động
         private void TranslationAllShapeAnimate(double trX, double trY)
         {
-            foreach (Clock item in ListClock)
+            foreach (Clock item in ListClock) item.Translation(trX, trY);
+            panel6.Invalidate();
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+            if (Init.ModeCurrent == Constants.Mode.AnimationMode)
             {
-                item.Hide(g);
-                item.Translation(trX, trY);
-                item.Show(g);
+                // vẽ lại tất cả hình 3D
+                foreach (Clock p in ListClock) p.Show(gAnimation, panel6);
+                foreach (Plane p in ListPlane) p.Show(gAnimation, panel6);
+                foreach (Car p in ListCar) p.Show(gAnimation, panel6);
+                foreach (Sun p in ListSun) p.Show(gAnimation, panel6);
             }
         }
 
         private void ScaleAllShapeAnimate(double ratio)
         {
-            foreach (Clock item in ListClock)
-            {
-                item.Hide(g);
-                item.Scale(ratio);
-                item.Show(g);
-            }
+            foreach (Clock item in ListClock) item.Scale(ratio);
+            //foreach foreach (Plane item in ListPlane) item.Scale(ratio);
+            //foreach foreach (Car item in ListCar) item.Scale(ratio);
+            //foreach foreach (Sun item in ListSun) item.Scale(ratio);
+            panel6.Invalidate();
         }
 
         #endregion

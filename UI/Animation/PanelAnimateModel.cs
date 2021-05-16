@@ -75,8 +75,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Init.ShapeCurrent = Shape.Tank;
-            HandleInputPanel(PanelTank.Instance);
+            Init.ShapeCurrent = Shape.Car;
+            HandleInputPanel(PanelCar.Instance);
             HandleButton(2, Resources._18_selected);
         }
 
@@ -89,8 +89,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Init.ShapeCurrent = Shape.Cylinder;
-            HandleInputPanel(PanelFan.Instance);
+            Init.ShapeCurrent = Shape.Sun;
+            HandleInputPanel(PanelSun.Instance);
             HandleButton(1, Resources._21_selected);
         }
 

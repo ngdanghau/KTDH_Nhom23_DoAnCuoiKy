@@ -2,15 +2,15 @@
 
 namespace KTDH_Nhom23_DoAnCuoiKy.UI.Animation
 {
-    public partial class PanelPlane : UserControl
+    public partial class PanelSun : UserControl
     {
-        private static PanelPlane _instance;
-        public static PanelPlane Instance
+        private static PanelSun _instance;
+        public static PanelSun Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new PanelPlane();
+                    _instance = new PanelSun();
                 return _instance;
             }
         }
@@ -27,7 +27,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI.Animation
             set { yBegin.Value = value; }
         }
 
-        public PanelPlane()
+
+        public PanelSun()
         {
             InitializeComponent();
         }

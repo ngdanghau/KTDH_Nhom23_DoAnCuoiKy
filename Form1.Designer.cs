@@ -66,6 +66,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowPointName)).BeginInit();
@@ -483,11 +484,22 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.RotateRight90_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel6.Location = new System.Drawing.Point(0, 97);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1006, 683);
+            this.panel6.TabIndex = 5;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1225, 781);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
@@ -552,6 +564,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         private System.Windows.Forms.ToolStripMenuItem x5ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem phépTịnhTiếnToolStripMenuItem;
         private System.Windows.Forms.Button Btn_Animation;
+        private System.Windows.Forms.Panel panel6;
     }
 }
 

@@ -111,5 +111,18 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             return (1.0 * degrees / 180) * Math.PI;
         }
+
+        public static double GetAngle(Point p1, Point p2, Point p3)
+        {
+            double numerator = p2.Y * (p1.X - p3.X) + p1.Y * (p3.X - p2.X) + p3.Y * (p2.X - p1.X);
+            double denominator = (p2.X - p1.X) * (p1.X - p3.X) + (p2.Y - p1.Y) * (p1.Y - p3.Y);
+            double ratio = numerator / denominator;
+
+            double angleRad = Math.Atan(ratio);
+            double angleDeg = (angleRad * 180) / Math.PI;
+
+            if (angleDeg < 0) angleDeg = 180 + angleDeg;
+            return angleDeg;
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         public enum Shape { 
             Default, Line, DashLine, Circle, Rectangle, Triangle, Elip, 
             Cube, Sphere, Cone, Cylinder, 
-            Tank, Clock, Plane, Fan
+            Car, Clock, Plane, Sun
         };
 
         /// <summary>
@@ -42,5 +42,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Variables
         /// Màu sắc Khác của điểm pixel - Dùng cho phép tịnh tiến
         /// </summary>
         public static Color Color_Point_Dot_Pixel = Color.MediumVioletRed;
+
+        /// <summary>
+        /// Vị trí của bảng vẻ 2D - 3D
+        /// </summary>
+        public static System.Drawing.Point LocationPaint = new System.Drawing.Point(0, 97);
+
+        /// <summary>
+        /// Kích thước của bảng vẽ 2D - 3D
+        /// </summary>
+        public static Size SizePaint = new Size(1006, 683);
     }
 }

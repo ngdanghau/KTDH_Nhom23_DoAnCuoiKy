@@ -106,7 +106,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         {
             if (Init.ModeCurrent == Constants.Mode.AnimationMode)
             {
-                RemovePixelAnimation(g);
                 return;
             }
             Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
@@ -132,18 +131,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             {
                 g.DrawLine(pen, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom, O.X + X * Init.zoom + Init.zoom / 2, O.Y - Y * Init.zoom);
             }
-        }
-
-        public void RemovePixelAnimation(Graphics g)
-        {
-            Point O = new Point(Init.NewSize2D.Width, Init.NewSize2D.Height);
-            SolidBrush brush = new SolidBrush(Constants.Background_Color_Coordinate_System);
-            g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom - Init.zoom / 2, Init.zoom / 2, Init.zoom / 2);
-            g.FillRectangle(brush, O.X + X * Init.zoom + 1, O.Y - Y * Init.zoom - Init.zoom / 2, Init.zoom / 2, Init.zoom / 2);
-            g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom + 1, Init.zoom / 2, Init.zoom / 2);
-            g.FillRectangle(brush, O.X + X * Init.zoom + 1, O.Y - Y * Init.zoom + 1, Init.zoom / 2, Init.zoom / 2);
-            g.DrawLine(new Pen(Constants.Background_Color_Coordinate_System), O.X + X * Init.zoom - Init.zoom / 2, O.Y - Y * Init.zoom, O.X + X * Init.zoom + Init.zoom / 2, O.Y - Y * Init.zoom);
-            g.DrawLine(new Pen(Constants.Background_Color_Coordinate_System), O.X + X * Init.zoom, O.Y - Y * Init.zoom - Init.zoom / 2, O.X + X * Init.zoom, O.Y - Y * Init.zoom + Init.zoom / 2);
         }
 
         //Chuyển đổi điểm từ Hệ Tọa Độ sang Pixel
