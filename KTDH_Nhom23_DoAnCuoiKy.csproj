@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\2D\Circle.cs" />
+    <Compile Include="Class\Animation\Car.cs" />
+    <Compile Include="Class\Animation\Plane.cs" />
     <Compile Include="Class\Animation\Clock.cs" />
     <Compile Include="Class\2D\DashLine.cs" />
     <Compile Include="Class\2D\Elip.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Class\3D\Cube.cs" />
     <Compile Include="Class\3D\Cylinder.cs" />
     <Compile Include="Class\3D\Sphere.cs" />
+    <Compile Include="Class\Animation\Sun.cs" />
     <Compile Include="Class\PhepBienDoi\Matrix.cs" />
     <Compile Include="Class\Point.cs" />
     <Compile Include="Form1.cs">
@@ -174,11 +177,11 @@
     <Compile Include="UI\Animation\PanelClock.Designer.cs">
       <DependentUpon>PanelClock.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Animation\PanelFan.cs">
+    <Compile Include="UI\Animation\PanelSun.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Animation\PanelFan.Designer.cs">
-      <DependentUpon>PanelFan.cs</DependentUpon>
+    <Compile Include="UI\Animation\PanelSun.Designer.cs">
+      <DependentUpon>PanelSun.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Animation\PanelPlane.cs">
       <SubType>UserControl</SubType>
@@ -186,11 +189,11 @@
     <Compile Include="UI\Animation\PanelPlane.Designer.cs">
       <DependentUpon>PanelPlane.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Animation\PanelTank.cs">
+    <Compile Include="UI\Animation\PanelCar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Animation\PanelTank.Designer.cs">
-      <DependentUpon>PanelTank.cs</DependentUpon>
+    <Compile Include="UI\Animation\PanelCar.Designer.cs">
+      <DependentUpon>PanelCar.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Translation.cs">
       <SubType>Form</SubType>
@@ -249,8 +252,17 @@
     <EmbeddedResource Include="UI\Animation\PanelAnimateModel.resx">
       <DependentUpon>PanelAnimateModel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Animation\PanelCar.resx">
+      <DependentUpon>PanelCar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Animation\PanelClock.resx">
       <DependentUpon>PanelClock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Animation\PanelPlane.resx">
+      <DependentUpon>PanelPlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Animation\PanelSun.resx">
+      <DependentUpon>PanelSun.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Translation.resx">
       <DependentUpon>Translation.cs</DependentUpon>
@@ -268,10 +280,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="resources\18_selected.png" />
+    <None Include="resources\18.png" />
+    <None Include="resources\21.png" />
+    <None Include="resources\21_selected.png" />
     <None Include="resources\animation_selected.png" />
     <None Include="resources\animation.png" />
-    <None Include="resources\21_selected.png" />
-    <None Include="resources\21.png" />
     <None Include="resources\20_selected.png" />
     <None Include="resources\20.png" />
     <None Include="resources\b3.png" />
@@ -282,8 +296,6 @@
     <None Include="resources\b4.png" />
     <None Include="resources\19.png" />
     <None Include="resources\19_selected.png" />
-    <None Include="resources\18.png" />
-    <None Include="resources\18_selected.png" />
     <None Include="resources\Cancel.png" />
     <None Include="resources\OK.png" />
     <None Include="resources\17_selected.png" />

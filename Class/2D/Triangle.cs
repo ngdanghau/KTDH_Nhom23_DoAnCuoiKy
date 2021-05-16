@@ -6,6 +6,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
 {
     class Triangle : Shape
     {
+       
+
+        public int Edge { get; set; }
+        internal Point A { get; set; }
+        internal Point B { get; set; }
+        internal Point C { get; set; }
+        internal List<Line> ListEdge { get; set; } = new List<Line>();
+
         public Triangle(Point angle, Point p2)
         {
             A = angle;
@@ -24,11 +32,28 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Remove();
         }
 
-        public int Edge { get; set; }
-        internal Point A { get; set; }
-        internal Point B { get; set; }
-        internal Point C { get; set; }
-        internal List<Line> ListEdge { get; set; } = new List<Line>();
+        public Triangle(Point a, Point b, Point c)
+        {
+            A = a;
+            B = b;
+            C = c;
+            ListEdge.Add(new Line(A, B));
+            ListEdge.Add(new Line(B, C));
+            ListEdge.Add(new Line(C, A));
+            foreach (Line s in ListEdge)
+            {
+                List.AddRange(s.List);
+            }
+            Remove();
+        }
+
+        public void ShowAnimation(Graphics g)
+        {
+            foreach (var item in ListEdge)
+            {
+                item.Show(g);
+            }
+        }
 
         public void Show(Graphics g)
         {
@@ -37,6 +62,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
                 item.PutPixel(g);
             }
         }
+
         public void Hide(Graphics g)
         {
             foreach (var item in List)

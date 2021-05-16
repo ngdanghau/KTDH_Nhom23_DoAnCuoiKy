@@ -1,7 +1,5 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,31 +14,27 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
         public Line Minute { get; set; }
         public Line Second { get; set; }
         public Graphics G { get; set; }
+        public Panel Panel { get; set; }
 
 
         internal Point A { get; set; }
         internal Point B { get; set; }
         internal Point C { get; set; }
         internal Timer time { get; set; } = new Timer();
+        internal bool alreadyAdded { get; set; } = false;
+
 
         private void t_Tick(object sender, EventArgs e)
         {
             var CurDate = DateTime.Now;
-            Second.Hide(G);
-            Hour.Hide(G);
-            Minute.Hide(G);
             DrawClock(CurDate);
             PanelClock.Instance.HourO = "{X = " + Hour.First.X + ", Y = " + Hour.First.Y + "}";
             PanelClock.Instance.HourA = "{X = " + Hour.Last.X + ", Y = " + Hour.Last.Y + "}";
-
             PanelClock.Instance.MinuteO = "{X = " + Minute.First.X + ", Y = " + Minute.First.Y + "}";
             PanelClock.Instance.MinuteB = "{X = " + Minute.Last.X + ", Y = " + Minute.Last.Y + "}";
-
             PanelClock.Instance.SecondO = "{X = " + Second.First.X + ", Y = " + Second.First.Y + "}";
             PanelClock.Instance.SecondC = "{X = " + Second.Last.X + ", Y = " + Second.Last.Y + "}";
-            Minute.Show(G);
-            Hour.Show(G);
-            Second.Show(G);
+            Panel.Invalidate();
         }
 
         public Clock(Point c, double r)
@@ -81,24 +75,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Minute = new Line(O, PhepToan.CenterRotate(B, O, b));
             Second = new Line(O, PhepToan.CenterRotate(C, O, c));
         }
-        public void Show(Graphics g)
+        public void Show(Graphics g, Panel panel)
         {
+
             C1.Show(g);
             Hour.Show(g);
-            Minute.Show(g); 
+            Minute.Show(g);
             Second.Show(g);
+            if (alreadyAdded) return;
+            alreadyAdded = true;
+            Panel = panel;
             G = g;
             time.Interval = 1000;
             time.Tick += new EventHandler(t_Tick);
             time.Start();
-        }
-
-        public void Hide(Graphics g)
-        {
-            C1.Hide(g);
-            Hour.Hide(g);
-            Minute.Hide(g);
-            Second.Hide(g);
         }
 
         public void Scale(double ratio)

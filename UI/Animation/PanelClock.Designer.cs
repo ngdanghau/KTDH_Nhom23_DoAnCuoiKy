@@ -207,6 +207,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI.Animation
             this.x2.Name = "x2";
             this.x2.Size = new System.Drawing.Size(73, 21);
             this.x2.TabIndex = 16;
+            this.x2.Value = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             // 
             // label12
             // 
