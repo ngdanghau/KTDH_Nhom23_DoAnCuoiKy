@@ -23,8 +23,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Rectangle> ListRectangle = new List<Rectangle>();
         internal List<Triangle> ListTriangle = new List<Triangle>();
         private Point StartPoint, EndPoint;
-        private Graphics g;
-        private Graphics gAnimation;
+        
         public static List<Label> ListLabel = new List<Label>();
         internal List<Sphere> ListSphere = new List<Sphere>();
         internal List<Cube> ListCube = new List<Cube>();
@@ -37,7 +36,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         internal List<Car> ListCar = new List<Car>();
         internal List<Sun> ListSun = new List<Sun>();
 
+        public static Graphics g;
+        public static Graphics gAnimation;
         public static GroupBox GroupBoxInput;
+        public static Panel paintAnimate;
+        public static Panel paint2D3D;
 
 
         public Form1()
@@ -60,6 +63,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             PanelLine.Instance.BringToFront();
 
             GroupBoxInput = groupBox2;
+            paintAnimate = panel6;
+            paint2D3D = panel2;
             g = panel2.CreateGraphics();
             gAnimation = panel6.CreateGraphics();
         }
@@ -1277,10 +1282,10 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             if (Init.ModeCurrent == Constants.Mode.AnimationMode)
             {
                 // vẽ lại tất cả hình 3D
-                foreach (Clock p in ListClock) p.Show(gAnimation, panel6);
-                foreach (Plane p in ListPlane) p.Show(gAnimation, panel6);
-                foreach (Car p in ListCar) p.Show(gAnimation, panel6);
-                foreach (Sun p in ListSun) p.Show(gAnimation, panel6);
+                foreach (Clock p in ListClock) p.Show(gAnimation);
+                foreach (Plane p in ListPlane) p.Show(gAnimation);
+                foreach (Car p in ListCar) p.Show(gAnimation);
+                foreach (Sun p in ListSun) p.Show(gAnimation);
             }
         }
 

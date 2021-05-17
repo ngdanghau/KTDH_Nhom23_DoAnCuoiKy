@@ -1,5 +1,6 @@
 ﻿
 using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
+using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -80,18 +81,43 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
         internal Point R { get; set; }
 
         internal List<Line> ListEdge { get; set; } = new List<Line>();
-        public Graphics Graphic { get; set; }
         internal Timer time { get; set; } = new Timer();
         internal int ticktac { get; set; } = 1;
         internal bool alreadyAdded { get; set; } = false;
-        public Panel Panel { get; set; }
 
 
         private void t_Tick(object sender, EventArgs e)
         {
             ticktac++;
+            // THÂN MÁY BAY
+            PanelPlane.Instance.A = "{X = " + A.X + ",Y=" + A.Y + "}";
+            PanelPlane.Instance.B = "{X = " + B.X + ",Y=" + B.Y + "}";
+
+            PanelPlane.Instance.C = "{X = " + C.X + ",Y=" + C.Y + "}";
+            PanelPlane.Instance.D = "{X = " + D.X + ",Y=" + D.Y + "}";
+
+            PanelPlane.Instance.E = "{X = " + E.X + ",Y=" + E.Y + "}";
+            PanelPlane.Instance.F = "{X = " + F.X + ",Y=" + F.Y + "}";
+
+            PanelPlane.Instance.G = "{X = " + G.X + ",Y=" + G.Y + "}";
+            PanelPlane.Instance.H = "{X = " + H.X + ",Y=" + H.Y + "}";
+
+            PanelPlane.Instance.M = "{X = " + M.X + ",Y=" + M.Y + "}";
+            PanelPlane.Instance.N = "{X = " + N.X + ",Y=" + N.Y + "}";
+            // CÁNH MÁY BAY
+            PanelPlane.Instance.O = "{X = " + O.X + ",Y=" + O.Y + "}";
+            PanelPlane.Instance.P = "{X = " + P.X + ",Y=" + P.Y + "}";
+
+            PanelPlane.Instance.Q = "{X = " + Q.X + ",Y=" + Q.Y + "}";
+            PanelPlane.Instance.R = "{X = " + R.X + ",Y=" + R.Y + "}";
+            // HỌA TIẾT MÁY BAY
+            PanelPlane.Instance.CR1 = "{X = " + CRS1.X + ",Y=" + CRS1.Y + "}";
+            PanelPlane.Instance.CR2 = "{X = " + CRS2.X + ",Y=" + CRS2.Y + "}";
+
+            PanelPlane.Instance.CR3 = "{X = " + CRS3.X + ",Y=" + CRS3.Y + "}";
+            PanelPlane.Instance.CR4 = "{X = " + CRS4.X + ",Y=" + CRS4.Y + "}";
             Translation(ticktac, 0);
-            Panel.Invalidate();
+            Form1.paintAnimate.Invalidate();
         }
 
 
@@ -216,13 +242,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             ListEdge.Add(new Line(Q, R));
 
         }
-        public void Show(Graphics g, Panel panel)
+        public void Show(Graphics g)
         {
             foreach (var item in ListEdge) item.Show(g);
             if (alreadyAdded) return;
             alreadyAdded = true;
-            Panel = panel;
-            Graphic = g;
             time.Interval = 1000;
             time.Tick += new EventHandler(t_Tick);
             time.Start();
