@@ -56,6 +56,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             return matrix;
         }
 
+        public static double[,] CenterRotate(Point p, double rad) // độ
+        {
+            double sin = Math.Sin(rad);
+            double cos = Math.Cos(rad);
+            double[,] matrix = new double[,] {  {cos,   sin,    0 },
+                                                {-sin,  cos,    0 },
+                                                {-p.X * cos + p.Y * sin + p.X,     -p.X * sin - p.Y * cos + p.Y,      1} };
+            return matrix;
+        }
+
         public static double[,] rotate3D(int b, int x, int y) // độ
         {
             double a = (double)b / 180 * Math.PI;

@@ -15,17 +15,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
         internal Point O { get; set; }
         internal Circle C1 { get; set; }
         internal Triangle T1 { get; set; }
-        internal Triangle T2 { get; set; }
-        internal Triangle T3 { get; set; }
-        internal Triangle T4 { get; set; }
-        internal Triangle T5 { get; set; }
-        internal Triangle T6 { get; set; }
-        internal Triangle T7 { get; set; }
-        internal Triangle T8 { get; set; }
-        internal Triangle T9 { get; set; }
-        internal Triangle T10 { get; set; }
-        internal Triangle T11 { get; set; }
-        internal Triangle T12 { get; set; }
+        internal List<Triangle> ListT { get; set; } = new List<Triangle>();
 
         internal Timer time { get; set; } = new Timer();
         internal bool alreadyAdded { get; set; } = false;
@@ -34,50 +24,103 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
 
         private void t_Tick(object sender, EventArgs e)
         {
+            ListT.Clear();
             ticktac += 0.05;
             Point p = PhepToan.Translation(C1.Center, ticktac, ticktac, 0);
             int r = Convert.ToInt32(Radius);
             C1 = new Circle(p, r);
             T1 = new Triangle(new Point(p.X, p.Y + r + 15), new Point(p.X + 7, p.Y + r + 5), new Point(p.X - 7, p.Y + r + 5));
+            ListT.Add(T1);
+            for (int i = 0; i< 11; i++)
+            {
+                double a = PhepToan.ConvertDegreesToRadian(330);
+                ListT.Add(new Triangle(
+                        PhepToan.CenterRotate(ListT[i].A, C1.Center, a),
+                        PhepToan.CenterRotate(ListT[i].B, C1.Center, a),
+                        PhepToan.CenterRotate(ListT[i].C, C1.Center, a)
+                    ));
+            }
 
-            double a = PhepToan.ConvertDegreesToRadian(270);
-            T2 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
-
-            a = PhepToan.ConvertDegreesToRadian(360);
-            T3 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
-            a = PhepToan.ConvertDegreesToRadian(90);
-            T4 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
             #region Đĩa mặt trời
             PanelSun.Instance.DiscSun = "{X = " + C1.Center.X + ",Y=" + C1.Center.Y + "}";
             #endregion
             #region Ánh mặt trời
-            PanelSun.Instance.Sunshine10 = "{X = " + T1.A.X + ",Y=" + T1.A.Y + "}";
-            PanelSun.Instance.Sunshine11 = "{X = " + T1.B.X + ",Y=" + T1.B.Y + "}";
-            PanelSun.Instance.Sunshine12 = "{X = " + T1.C.X + ",Y=" + T1.C.Y + "}";
 
-            PanelSun.Instance.Sunshine20 = "{X = " + T2.A.X + ",Y=" + T2.A.Y + "}";
-            PanelSun.Instance.Sunshine21 = "{X = " + T2.B.X + ",Y=" + T2.B.Y + "}";
-            PanelSun.Instance.Sunshine22 = "{X = " + T2.C.X + ",Y=" + T2.C.Y + "}";
-
-            PanelSun.Instance.Sunshine30 = "{X = " + T3.A.X + ",Y=" + T3.A.Y + "}";
-            PanelSun.Instance.Sunshine31 = "{X = " + T3.B.X + ",Y=" + T3.B.Y + "}";
-            PanelSun.Instance.Sunshine32 = "{X = " + T3.C.X + ",Y=" + T3.C.Y + "}";
-
-            PanelSun.Instance.Sunshine40 = "{X = " + T4.A.X + ",Y=" + T4.A.Y + "}";
-            PanelSun.Instance.Sunshine41 = "{X = " + T4.B.X + ",Y=" + T4.B.Y + "}";
-            PanelSun.Instance.Sunshine42 = "{X = " + T4.C.X + ",Y=" + T4.C.Y + "}";
+            for (int i = 0; i < 12; i++)
+            {
+                if (i == 0)
+                {
+                    PanelSun.Instance.Sunshine1_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine1_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine1_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 1)
+                {
+                    PanelSun.Instance.Sunshine2_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine2_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine2_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 2)
+                {
+                    PanelSun.Instance.Sunshine3_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine3_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine3_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 3)
+                {
+                    PanelSun.Instance.Sunshine4_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine4_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine4_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 4)
+                {
+                    PanelSun.Instance.Sunshine5_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine5_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine5_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 5)
+                {
+                    PanelSun.Instance.Sunshine6_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine6_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine6_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 6)
+                {
+                    PanelSun.Instance.Sunshine7_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine7_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine7_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 7)
+                {
+                    PanelSun.Instance.Sunshine8_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine8_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine8_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 8)
+                {
+                    PanelSun.Instance.Sunshine9_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine9_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine9_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 9)
+                {
+                    PanelSun.Instance.Sunshine10_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine10_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine10_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 10)
+                {
+                    PanelSun.Instance.Sunshine11_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine11_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine11_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+                else if (i == 11)
+                {
+                    PanelSun.Instance.Sunshine12_1 = "{X = " + ListT[i].A.X + ",Y=" + ListT[i].A.Y + "}";
+                    PanelSun.Instance.Sunshine12_2 = "{X = " + ListT[i].B.X + ",Y=" + ListT[i].B.Y + "}";
+                    PanelSun.Instance.Sunshine12_3 = "{X = " + ListT[i].C.X + ",Y=" + ListT[i].C.Y + "}";
+                }
+            }
             #endregion
             Form1.paintAnimate.Invalidate();
 
@@ -88,93 +131,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             Radius = r;
             C1 = new Circle(p, r);
             T1 = new Triangle(new Point(p.X, p.Y + r + 15),new Point(p.X + 7, p.Y + r + 5),new Point(p.X - 7, p.Y + r + 5));
-
-            double a = PhepToan.ConvertDegreesToRadian(270);
-            T2 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
-
-            a = PhepToan.ConvertDegreesToRadian(360);
-            T3 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
-            a = PhepToan.ConvertDegreesToRadian(90);
-            T4 = new Triangle(
-                    PhepToan.CenterRotate(T1.A, C1.Center, a),
-                    PhepToan.CenterRotate(T1.B, C1.Center, a),
-                    PhepToan.CenterRotate(T1.C, C1.Center, a)
-                );
-
-            //T5 = new Triangle(
-            //        new Point(Convert.ToInt32((T1.B.X + T2.C.X) /2), Convert.ToInt32((T1.B.Y + T2.C.) / 2)),
-            //        T1.B,
-            //        T2.C
-            //    );
-
-            //a = PhepToan.ConvertDegreesToRadian(330);
-            //T6 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    );
-            //a = PhepToan.ConvertDegreesToRadian(360);
-            //T7 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    ); 
-            //a = PhepToan.ConvertDegreesToRadian(30);
-            //T8 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    ); 
-            //a = PhepToan.ConvertDegreesToRadian(60);
-            //T9 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    );
-            //a = PhepToan.ConvertDegreesToRadian(90);
-            //T10 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    );
-            //a = PhepToan.ConvertDegreesToRadian(120);
-            //T11 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    );
-            //a = PhepToan.ConvertDegreesToRadian(150);
-            //T12 = new Triangle(
-            //        PhepToan.CenterRotate(T1.A, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.B, C1.Center, a),
-            //        PhepToan.CenterRotate(T1.C, C1.Center, a)
-            //    );
-
+            ListT.Add(T1);
+            for (int i = 0; i < 11; i++)
+            {
+                double a = PhepToan.ConvertDegreesToRadian(330);
+                ListT.Add(new Triangle(
+                        PhepToan.CenterRotate(ListT[i].A, C1.Center, a),
+                        PhepToan.CenterRotate(ListT[i].B, C1.Center, a),
+                        PhepToan.CenterRotate(ListT[i].C, C1.Center, a)
+                    ));
+            }
         }
 
         public void Show(Graphics g)
         {
             C1.Show(g);
             T1.Show(g);
-            T2.Show(g);
-            T3.Show(g);
-            T4.Show(g);
-            //T5.Show(g);
-            //T6.Show(g);
-            //T7.Show(g);
-            //T8.Show(g);
-            //T9.Show(g);
-            //T10.Show(g);
-            //T11.Show(g);
-            //T12.Show(g);
+            foreach (Triangle tri in ListT) tri.Show(g);
 
             if (alreadyAdded) return;
             alreadyAdded = true;

@@ -33,6 +33,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             PanelClock.Instance.MinuteB = "{X = " + Minute.Last.X + ", Y = " + Minute.Last.Y + "}";
             PanelClock.Instance.SecondO = "{X = " + Second.First.X + ", Y = " + Second.First.Y + "}";
             PanelClock.Instance.SecondC = "{X = " + Second.Last.X + ", Y = " + Second.Last.Y + "}";
+            PanelClock.Instance.SystemTime = CurDate.ToString("HH:mm:ss");
             Form1.paintAnimate.Invalidate();
         }
 
@@ -57,19 +58,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             int m = CurDate.Minute;
             int s = CurDate.Second;
             double a, b, c;
-            if (-1 < h && h < 6) a = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(210 + h * 30));
-            else a = PhepToan.ConvertDegreesToRadian(Convert.ToInt32((h - 5) * 30));
-
-            if ((0 < m && m < 31) || (0 < s && s < 31))
-            {
-                b = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(186 + m * 6));
-                c = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(186 + s * 6));
-            }
-            else
-            {
-                b = PhepToan.ConvertDegreesToRadian(Convert.ToInt32((m - 30) * 6));
-                c = PhepToan.ConvertDegreesToRadian(Convert.ToInt32((s - 30) * 6));
-            }
+            a = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(330 - h * 30));
+            b = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(360 - m * 6));
+            c = PhepToan.ConvertDegreesToRadian(Convert.ToInt32(360 - s * 6));
             Hour = new Line(O, PhepToan.CenterRotate(A, O, a));
             Minute = new Line(O, PhepToan.CenterRotate(B, O, b));
             Second = new Line(O, PhepToan.CenterRotate(C, O, c));

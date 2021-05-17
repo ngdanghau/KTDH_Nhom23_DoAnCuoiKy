@@ -47,14 +47,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Remove();
         }
 
-        public void ShowAnimation(Graphics g)
-        {
-            foreach (var item in ListEdge)
-            {
-                item.Show(g);
-            }
-        }
-
         public void Show(Graphics g)
         {
             foreach (var item in List)

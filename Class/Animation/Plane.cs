@@ -4,8 +4,6 @@ using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
@@ -247,7 +245,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             foreach (var item in ListEdge) item.Show(g);
             if (alreadyAdded) return;
             alreadyAdded = true;
-            time.Interval = 1000;
+            time.Interval = 50;
             time.Tick += new EventHandler(t_Tick);
             time.Start();
         }
