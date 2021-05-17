@@ -75,7 +75,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public static Point Translation(Point p, double trX, double trY, double trZ)
         {
             if (Init.ModeCurrent == Constants.Mode._3DMode)
-
             {
                 Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.move3d(trX, trY, trZ));
                 Matrix<double> result = GetMatrix(p).Multiply(matrix);

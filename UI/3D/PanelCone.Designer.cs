@@ -57,6 +57,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.canh.Name = "canh";
             this.canh.Size = new System.Drawing.Size(62, 20);
             this.canh.TabIndex = 19;
+            this.canh.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // x1
             // 
@@ -156,6 +161,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.r.Name = "r";
             this.r.Size = new System.Drawing.Size(62, 20);
             this.r.TabIndex = 21;
+            this.r.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label5
             // 

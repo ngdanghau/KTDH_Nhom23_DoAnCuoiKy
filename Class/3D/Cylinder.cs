@@ -49,19 +49,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             E1.ShowElip(g, false);
             E2.Show(g);
 
-            foreach (Line n in nega)
-            {
-                n.Show(g, true);
-            }
-
-            foreach (Line n in pose)
-            {
-                n.Show(g);
-            }
+            foreach (Line n in nega) n.Show(g, true);
+            foreach (Line n in pose) n.Show(g);
         }
 
         public void Hide(Graphics g)
         {
+            foreach (Line n in nega) n.Hide(g);
+            foreach (Line n in pose) n.Hide(g);
             nega.Clear();
             pose.Clear();
         }

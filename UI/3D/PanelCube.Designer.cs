@@ -54,6 +54,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.canh.Name = "canh";
             this.canh.Size = new System.Drawing.Size(62, 20);
             this.canh.TabIndex = 19;
+            this.canh.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // x1
             // 

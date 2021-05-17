@@ -10,7 +10,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         public int ChieuCao { get; set; }
         public int Radius { get; set; }
         internal Elip E1 { get; set; }
-        internal Elip E2 { get; set; }
 
         internal Point A { get; set; }
         internal Point B { get; set; }
@@ -53,36 +52,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         {
 
             E1.ShowElip(g, false);
-
-            foreach (Line n in nega)
-            {
-                n.Show(g, true);
-            }
-
-            foreach (Line n in pose)
-            {
-                n.Show(g);
-            }
+            foreach (Line n in nega) n.Show(g, true);
+            foreach (Line n in pose) n.Show(g);
         }
 
         public void Hide(Graphics g)
         {
             E1.Hide(g);
-            foreach (Line n in nega)
-            {
-                n.Hide(g);
-            }
-
-            foreach (Line n in pose)
-            {
-                n.Hide(g);
-            }
+            foreach (Line n in nega) n.Hide(g);
+            foreach (Line n in pose) n.Hide(g);
             nega.Clear();
             pose.Clear();
         }
 
         public void Scale(double ratio)
         {
+            nega.Clear();
+            pose.Clear();
             ChieuCao = Convert.ToInt32(ChieuCao * ratio);
             Radius = Convert.ToInt32(Radius * ratio);
             Point O = PhepToan.Scale(A, ratio, ratio, ratio);
@@ -113,6 +99,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public void Translation(double trX, double trY, double trZ)
         {
+            nega.Clear();
+            pose.Clear();
             Point O = PhepToan.Translation(A, trX, trY, trZ);
             A = O;
             B = new Point(O.X, O.Y + ChieuCao, O.Z, "B");
