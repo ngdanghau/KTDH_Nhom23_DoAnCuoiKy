@@ -14,7 +14,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
         public Line Minute { get; set; }
         public Line Second { get; set; }
         public Graphics G { get; set; }
-        public Panel Panel { get; set; }
 
 
         internal Point A { get; set; }
@@ -34,7 +33,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             PanelClock.Instance.MinuteB = "{X = " + Minute.Last.X + ", Y = " + Minute.Last.Y + "}";
             PanelClock.Instance.SecondO = "{X = " + Second.First.X + ", Y = " + Second.First.Y + "}";
             PanelClock.Instance.SecondC = "{X = " + Second.Last.X + ", Y = " + Second.Last.Y + "}";
-            Panel.Invalidate();
+            Form1.paintAnimate.Invalidate();
         }
 
         public Clock(Point c, double r)
@@ -75,7 +74,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Minute = new Line(O, PhepToan.CenterRotate(B, O, b));
             Second = new Line(O, PhepToan.CenterRotate(C, O, c));
         }
-        public void Show(Graphics g, Panel panel)
+        public void Show(Graphics g)
         {
 
             C1.Show(g);
@@ -84,7 +83,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             Second.Show(g);
             if (alreadyAdded) return;
             alreadyAdded = true;
-            Panel = panel;
             G = g;
             time.Interval = 1000;
             time.Tick += new EventHandler(t_Tick);
