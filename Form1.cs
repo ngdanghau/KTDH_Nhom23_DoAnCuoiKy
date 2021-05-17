@@ -630,9 +630,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         break;
                     case Constants.Shape.Cone:
                         StartPoint = new Point(
-                            Convert.ToInt32(PanelSphere.Instance.X),
-                            Convert.ToInt32(PanelSphere.Instance.Y),
-                            Convert.ToInt32(PanelSphere.Instance.Z),
+                            Convert.ToInt32(PanelCone.Instance.X),
+                            Convert.ToInt32(PanelCone.Instance.Y),
+                            Convert.ToInt32(PanelCone.Instance.Z),
                             "A"
                         );
                         Cone hinhnon = new Cone(
@@ -648,9 +648,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy
                         break;
                     case Constants.Shape.Cylinder:
                         StartPoint = new Point(
-                            Convert.ToInt32(PanelSphere.Instance.X),
-                            Convert.ToInt32(PanelSphere.Instance.Y),
-                            Convert.ToInt32(PanelSphere.Instance.Z),
+                            Convert.ToInt32(PanelCylinder.Instance.X),
+                            Convert.ToInt32(PanelCylinder.Instance.Y),
+                            Convert.ToInt32(PanelCylinder.Instance.Z),
                             "B"
                         );
                         Cylinder hinhtru = new Cylinder(

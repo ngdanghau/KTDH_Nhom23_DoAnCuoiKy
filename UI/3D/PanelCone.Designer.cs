@@ -79,6 +79,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.x1.Name = "x1";
             this.x1.Size = new System.Drawing.Size(47, 20);
             this.x1.TabIndex = 18;
+            this.x1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // y1
             // 
@@ -96,6 +101,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.y1.Name = "y1";
             this.y1.Size = new System.Drawing.Size(46, 20);
             this.y1.TabIndex = 17;
+            this.y1.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // z1
             // 
@@ -113,6 +123,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI
             this.z1.Name = "z1";
             this.z1.Size = new System.Drawing.Size(46, 20);
             this.z1.TabIndex = 16;
+            this.z1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label3
             // 

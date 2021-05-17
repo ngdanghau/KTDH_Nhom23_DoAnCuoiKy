@@ -18,6 +18,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             MidPoint();
             Move();
             List.Add(Center);
+
         }
         private void MidPoint()
         {
