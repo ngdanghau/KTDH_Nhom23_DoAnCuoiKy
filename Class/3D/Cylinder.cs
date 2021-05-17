@@ -40,8 +40,15 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            E1 = new Elip(B, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            E2 = new Elip(E, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            Point O1 = new Point(x1, y1);
+            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+
+            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            Point O2 = new Point(x2, y2);
+            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
         }
 
         public void Show(Graphics g)
@@ -80,8 +87,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            E1 = new Elip(B, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            E2 = new Elip(E, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            Point O1 = new Point(x1, y1);
+
+            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+
+            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            Point O2 = new Point(x2, y2);
+            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
         }
 
         public void Translation(double trX, double trY, double trZ)
@@ -101,8 +116,16 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            E1 = new Elip(B, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            E2 = new Elip(E, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
+            Point O1 = new Point(x1, y1);
+
+            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+
+            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
+            Point O2 = new Point(x2, y2);
+            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
         }
     }
 }

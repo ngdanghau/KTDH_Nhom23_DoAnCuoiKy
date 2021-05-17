@@ -93,7 +93,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             if (Init.ModeCurrent == Constants.Mode._3DMode)
             {
                 O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
-                g.FillRectangle(brush, O.X + X * Init.zoom - Init.zoom / 2 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, O.Y - Y * Init.zoom - Init.zoom / 2 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, zoom, zoom);
+                g.FillRectangle(brush, 
+                    O.X + X * Init.zoom - Init.zoom / 2 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, 
+                    O.Y - Y * Init.zoom - Init.zoom / 2 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, 
+                    zoom, zoom
+                );
             }
             else
             {
