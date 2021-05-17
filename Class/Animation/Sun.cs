@@ -1,4 +1,5 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
+using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -60,7 +61,26 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
                     PhepToan.CenterRotate(T1.B, C1.Center, a),
                     PhepToan.CenterRotate(T1.C, C1.Center, a)
                 );
+            #region Đĩa mặt trời
+            PanelSun.Instance.DiscSun = "{X = " + C1.Center.X + ",Y=" + C1.Center.Y + "}";
+            #endregion
+            #region Ánh mặt trời
+            PanelSun.Instance.Sunshine10 = "{X = " + T1.A.X + ",Y=" + T1.A.Y + "}";
+            PanelSun.Instance.Sunshine11 = "{X = " + T1.B.X + ",Y=" + T1.B.Y + "}";
+            PanelSun.Instance.Sunshine12 = "{X = " + T1.C.X + ",Y=" + T1.C.Y + "}";
 
+            PanelSun.Instance.Sunshine20 = "{X = " + T2.A.X + ",Y=" + T2.A.Y + "}";
+            PanelSun.Instance.Sunshine21 = "{X = " + T2.B.X + ",Y=" + T2.B.Y + "}";
+            PanelSun.Instance.Sunshine22 = "{X = " + T2.C.X + ",Y=" + T2.C.Y + "}";
+
+            PanelSun.Instance.Sunshine30 = "{X = " + T3.A.X + ",Y=" + T3.A.Y + "}";
+            PanelSun.Instance.Sunshine31 = "{X = " + T3.B.X + ",Y=" + T3.B.Y + "}";
+            PanelSun.Instance.Sunshine32 = "{X = " + T3.C.X + ",Y=" + T3.C.Y + "}";
+
+            PanelSun.Instance.Sunshine40 = "{X = " + T4.A.X + ",Y=" + T4.A.Y + "}";
+            PanelSun.Instance.Sunshine41 = "{X = " + T4.B.X + ",Y=" + T4.B.Y + "}";
+            PanelSun.Instance.Sunshine42 = "{X = " + T4.C.X + ",Y=" + T4.C.Y + "}";
+            #endregion
             Panel.Invalidate();
 
         }

@@ -1,4 +1,5 @@
 ﻿using KTDH_Nhom23_DoAnCuoiKy.Class._2D;
+using KTDH_Nhom23_DoAnCuoiKy.UI.Animation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,9 +42,11 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             A = PhepToan.Translation(A, 1, 0, 0);
             B = new Point(A.X, A.Y + 10);
             C = new Point(A.X + 10, A.Y + 20);
+
             D = new Point(A.X + 40, A.Y + 20);
             E = new Point(A.X + 50, A.Y + 10);
             F = new Point(A.X + 70, A.Y + 10);
+
             G = new Point(A.X + 70, A.Y);
 
             C1 = new Circle(new Point(A.X + 5, A.Y - 6), Radius);
@@ -75,7 +78,40 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
 
             List[8] = PhepToan.CenterRotate(new Point(C5.Center.X - Distance, C5.Center.Y), C5.Center, -a);
             List[9] = PhepToan.CenterRotate(new Point(C5.Center.X + Distance, C5.Center.Y), C5.Center, -a);
+            // THÂN XE Ô TÔ
+            PanelCar.Instance.A = "{X = " + A.X + ",Y=" + A.Y + "}";
+            PanelCar.Instance.B = "{X = " + B.X + ",Y=" + B.Y + "}";
 
+            PanelCar.Instance.C = "{X = " + C.X + ",Y=" + C.Y + "}";
+            PanelCar.Instance.D = "{X = " + D.X + ",Y=" + D.Y + "}";
+
+            PanelCar.Instance.E = "{X = " + E.X + ",Y=" + E.Y + "}";
+            PanelCar.Instance.F = "{X = " + F.X + ",Y=" + F.Y + "}";
+
+            PanelCar.Instance.G = "{X = " + G.X + ",Y=" + G.Y + "}";
+            // BÁNH XE Ô TÔ
+            PanelCar.Instance.C1 = "{X = " + C1.Center.X + ",Y=" + C1.Center.Y + "}";
+            PanelCar.Instance.C2 = "{X = " + C2.Center.X + ",Y=" + C2.Center.Y + "}";
+
+            PanelCar.Instance.C3 = "{X = " + C3.Center.X + ",Y=" + C3.Center.Y + "}";
+            PanelCar.Instance.C4 = "{X = " + C4.Center.X + ",Y=" + C4.Center.Y + "}";
+
+            PanelCar.Instance.C5 = "{X = " + C5.Center.X + ",Y=" + C5.Center.Y + "}";
+            // HỌA TIẾT BÁNH XE
+            PanelCar.Instance.HT0 = "{X = " + List[0].X + ",Y=" + List[0].Y + "}";
+            PanelCar.Instance.HT1 = "{X = " + List[1].X + ",Y=" + List[1].Y + "}";
+
+            PanelCar.Instance.HT2 = "{X = " + List[2].X + ",Y=" + List[2].Y + "}";
+            PanelCar.Instance.HT3 = "{X = " + List[3].X + ",Y=" + List[3].Y + "}";
+
+            PanelCar.Instance.HT4 = "{X = " + List[4].X + ",Y=" + List[4].Y + "}";
+            PanelCar.Instance.HT5 = "{X = " + List[5].X + ",Y=" + List[5].Y + "}";
+
+            PanelCar.Instance.HT6 = "{X = " + List[6].X + ",Y=" + List[6].Y + "}";
+            PanelCar.Instance.HT7 = "{X = " + List[7].X + ",Y=" + List[7].Y + "}";
+
+            PanelCar.Instance.HT8 = "{X = " + List[8].X + ",Y=" + List[8].Y + "}";
+            PanelCar.Instance.HT9 = "{X = " + List[9].X + ",Y=" + List[9].Y + "}";
             Panel.Invalidate();
 
         }
