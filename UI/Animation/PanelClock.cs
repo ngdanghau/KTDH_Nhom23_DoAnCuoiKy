@@ -74,6 +74,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy.UI.Animation
         {
             get { return label8.Text; }
             set { label8.Text = value; }
+        } 
+        
+        public string SystemTime
+        {
+            get { return label14.Text; }
+            set { label14.Text = value; }
         }
 
         public PanelClock()
