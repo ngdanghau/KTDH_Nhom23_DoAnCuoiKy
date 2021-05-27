@@ -17,12 +17,12 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         {
             Center = o;
             Radius = r;
-            int x1 = Center.X - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            int y1 = Center.Y - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            Point O1 = new Point(x1, y1);
+            Point O1 = PhepToan.Cabinet(Center);
             C1 = new Circle(O1, Radius);
-            E1 = new Elip(O1, Convert.ToInt32(Radius / 3), Convert.ToInt32(Radius));
-            E2 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
+            E1 = new Elip(O1, b, a);
+            E2 = new Elip(O1, a, b);
         }
 
         public void Show(Graphics g)
@@ -43,23 +43,24 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         {
             Center = PhepToan.Scale(Center, ratio, ratio, ratio);
             Radius = Radius * ratio;
-            int x1 = Center.X - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            int y1 = Center.Y - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            Point O1 = new Point(x1, y1);
+            Point O1 = PhepToan.Cabinet(Center);
             C1 = new Circle(O1, Radius);
-            E1 = new Elip(O1, Convert.ToInt32(Radius / 3), Convert.ToInt32(Radius));
-            E2 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
+            E1 = new Elip(O1, b, a);
+            E2 = new Elip(O1, a, b);
         }
 
         public void Translation(double trX, double trY, double trZ)
         {
             Center = PhepToan.Translation(Center, trX, trY, trZ);
-            int x1 = Center.X - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            int y1 = Center.Y - Convert.ToInt32(Math.Ceiling(Center.Z * 0.5));
-            Point O1 = new Point(x1, y1);
+            Point O1 = PhepToan.Cabinet(Center);
             C1 = new Circle(O1, Radius);
-            E1 = new Elip(O1, Convert.ToInt32(Radius / 3), Convert.ToInt32(Radius));
-            E2 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
+
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
+            E1 = new Elip(O1, b, a);
+            E2 = new Elip(O1, a, b);
         }
     }
 }

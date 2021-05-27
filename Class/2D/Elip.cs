@@ -25,24 +25,24 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             double P = Math.Pow(MinorAxis, 2) - Math.Pow(MajorAxis, 2) * MinorAxis + Math.Pow(MajorAxis, 2) / 4;
             int y = MinorAxis;
             int x = 0;
-            int Dx = 0;
-            int Dy = 2 * MajorAxis * MajorAxis * y;
+            int fx = 0;
+            int fy = 2 * MajorAxis * MajorAxis * y;
             Point p1 = new Point(x, y);
             List.Add(p1);
             Clone(p1);
-            while (Dx < Dy)
+            while (fx < fy)
             {
                 x++;
-                Dx += 2 * MinorAxis * MinorAxis;
+                fx += 2 * MinorAxis * MinorAxis;
                 if (P < 0)
                 {
-                    P += (Math.Pow(MinorAxis, 2) + Dx);
+                    P += (Math.Pow(MinorAxis, 2) + fx);
                 }
                 else
                 {
                     y--;
-                    Dy -= 2 * MajorAxis * MajorAxis;
-                    P += (Math.Pow(MinorAxis, 2) + Dx - Dy);
+                    fy -= 2 * MajorAxis * MajorAxis;
+                    P += (Math.Pow(MinorAxis, 2) + fx - fy);
 
                 }
                 Point p = new Point(x, y);
@@ -53,17 +53,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             while (y > 0)
             {
                 y--;
-                Dy -= MajorAxis * MajorAxis * 2;
+                fy -= MajorAxis * MajorAxis * 2;
                 if (Q < 0)
                 {
                     x++;
-                    Dx += MinorAxis * MinorAxis * 2;
-                    Q += (Math.Pow(MajorAxis, 2) - Dy + Dx);
+                    fx += MinorAxis * MinorAxis * 2;
+                    Q += (Math.Pow(MajorAxis, 2) - fy + fx);
 
                 }
                 else
                 {
-                    Q += (Math.Pow(MajorAxis, 2) - Dy);
+                    Q += (Math.Pow(MajorAxis, 2) - fy);
 
                 }
                 Point p = new Point(x, y);

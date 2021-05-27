@@ -76,41 +76,47 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
                                                 {-x * cos + y * sin + x,     -x * sin - y * cos + y,      1} };
             return matrix;
         }
-
-        public static int[,] symmetryO()
+        public static int[,] symmetryC(Point c)
         {
             int[,] matrix = new int[,]
             {
                 {-1, 0, 0 },
                 {0, -1, 0 },
-                {0, 0, 0 }
+                {2 * c.X, 2 * c.Y, 1 }
+            };
+            return matrix;
+        }
+        public static double[,] symmetryO()
+        {
+            double[,] matrix = new double[,]
+            {
+                {-1, 0, 0 },
+                {0, -1, 0 },
+                {0, 0, 1 }
             };
             return matrix;
         }
 
-        public static int[,] symmetryOx()
+        public static double[,] symmetryOx()
         {
-            int[,] matrix = new int[,]
+            double[,] matrix = new double[,]
             {
                 {1, 0, 0 },
                 {0, -1, 0 },
-                {0, 0, 0 }
+                {0, 0, 1 }
             };
             return matrix;
         }
 
-        public static int[,] symmetryOy()
+        public static double[,] symmetryOy()
         {
-            int[,] matrix = new int[,]
+            double[,] matrix = new double[,]
             {
                 {-1, 0, 0 },
                 {0, 1, 0 },
-                {0, 0, 0 }
+                {0, 0, 1 }
             };
             return matrix;
         }
-
-
-
     }
 }

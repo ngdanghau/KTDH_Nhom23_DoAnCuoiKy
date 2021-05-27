@@ -37,20 +37,20 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             if (Init.ModeCurrent == Constants.Mode._3DMode) {
                 lb.Text = Name + "(" + X + ", " + Y + ", " + Z+ ")"; ;
                 if (X >= 0 && Y >= 0){
-                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
-                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
+                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
                 }
                 else if (X >= 0 && Y < 0){
-                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
-                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    x1 = temp.X + 10 - Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
+                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
                 }
                 else if (X < 0 && Y < 0){
-                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
-                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
+                    y1 = temp.Y + 10 + Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
                 }
                 else{
-                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
-                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom;
+                    x1 = temp.X - 10 - Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
+                    y1 = temp.Y - 10 + Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom;
                 }
             }
             else
@@ -94,8 +94,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             {
                 O = new Point(Init.NewSize3D.Width, Init.NewSize3D.Height);
                 g.FillRectangle(brush, 
-                    O.X + X * Init.zoom - Init.zoom / 2 - Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, 
-                    O.Y - Y * Init.zoom - Init.zoom / 2 + Convert.ToInt32(Math.Ceiling(Z * 0.5)) * Init.zoom, 
+                    O.X + X * Init.zoom - Init.zoom / 2 - Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom, 
+                    O.Y - Y * Init.zoom - Init.zoom / 2 + Convert.ToInt32(Math.Ceiling(Z * Math.Sqrt(2) / 4)) * Init.zoom, 
                     zoom, zoom
                 );
             }

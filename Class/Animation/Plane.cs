@@ -245,7 +245,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class.Animation
             foreach (var item in ListEdge) item.Show(g);
             if (alreadyAdded) return;
             alreadyAdded = true;
-            time.Interval = 50;
+            time.Interval = 200;
             time.Tick += new EventHandler(t_Tick);
             time.Start();
         }

@@ -15,10 +15,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             {
                 First = new Point(0, 0, 0);
                 Last = new Point(0, 0, 0);
-                First.X = first.X - Convert.ToInt32(Math.Ceiling(first.Z * 0.5));
-                First.Y = first.Y - Convert.ToInt32(Math.Ceiling(first.Z * 0.5));
-                Last.X = last.X - Convert.ToInt32(Math.Ceiling(last.Z * 0.5));
-                Last.Y = last.Y - Convert.ToInt32(Math.Ceiling(last.Z * 0.5));
+                First = PhepToan.Cabinet(first);
+                Last = PhepToan.Cabinet(last);
             }
             else
             {

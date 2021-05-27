@@ -34,21 +34,9 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(B, C));
             pose.Add(new Line(B, D));
 
-            int x1 = A.X - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            int y1 = A.Y - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            Point O1 = new Point(x1, y1);
-            if (ChieuCao * 2 < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 13));
-            }
-            else if (ChieuCao < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 6));
-            }
-            else
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            }
+
+            Point O1 = PhepToan.Cabinet(O);
+            E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius * (Math.Sqrt(2) / 4)));
         }
 
         public void Show(Graphics g)
@@ -86,21 +74,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(B, C));
             pose.Add(new Line(B, D));
 
-            int x1 = A.X - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            int y1 = A.Y - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            Point O1 = new Point(x1, y1);
-            if (ChieuCao * 2 < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 13));
-            }
-            else if (ChieuCao < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 6));
-            }
-            else
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            }
+            Point O1 = PhepToan.Cabinet(A);
+            E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius * (Math.Sqrt(2) / 4)));
         }
 
         public void Translation(double trX, double trY, double trZ)
@@ -118,21 +93,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(B, C));
             pose.Add(new Line(B, D));
 
-            int x1 = A.X - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            int y1 = A.Y - Convert.ToInt32(Math.Ceiling(A.Z * 0.5));
-            Point O1 = new Point(x1, y1);
-            if (ChieuCao * 2 < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 13));
-            }
-            else if (ChieuCao < Radius)
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 6));
-            }
-            else
-            {
-                E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius / 3));
-            }
+            Point O1 = PhepToan.Cabinet(A);
+            E1 = new Elip(O1, Convert.ToInt32(Radius), Convert.ToInt32(Radius * (Math.Sqrt(2) / 4)));
         }
     }
 }

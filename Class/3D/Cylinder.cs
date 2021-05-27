@@ -40,15 +40,13 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            Point O1 = new Point(x1, y1);
-            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+            Point O1 = PhepToan.Cabinet(B);
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
+            E1 = new Elip(O1, a, b);
 
-            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            Point O2 = new Point(x2, y2);
-            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
+            Point O2 = PhepToan.Cabinet(E);
+            E2 = new Elip(O2, a, b);
         }
 
         public void Show(Graphics g)
@@ -87,16 +85,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            Point O1 = new Point(x1, y1);
+            Point O1 = PhepToan.Cabinet(B);
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
 
-            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+            E1 = new Elip(O1, a, b);
 
-            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            Point O2 = new Point(x2, y2);
-            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
+            Point O2 = PhepToan.Cabinet(E);
+            E2 = new Elip(O2, a,b);
         }
 
         public void Translation(double trX, double trY, double trZ)
@@ -116,16 +112,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
             pose.Add(new Line(F, C));
             pose.Add(new Line(A, D));
 
-            int x1 = B.X - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            int y1 = B.Y - Convert.ToInt32(Math.Ceiling(B.Z * 0.5));
-            Point O1 = new Point(x1, y1);
+            Point O1 = PhepToan.Cabinet(B);
+            var a = Convert.ToInt32(Radius);
+            var b = Convert.ToInt32(Radius * (Math.Sqrt(2) / 4));
 
-            E1 = new Elip(O1, Radius, Convert.ToInt32(Radius / 3));
+            E1 = new Elip(O1, a, b);
 
-            int x2 = E.X - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            int y2 = E.Y - Convert.ToInt32(Math.Ceiling(E.Z * 0.5));
-            Point O2 = new Point(x2, y2);
-            E2 = new Elip(O2, Radius, Convert.ToInt32(Radius / 3));
+            Point O2 = PhepToan.Cabinet(E);
+            E2 = new Elip(O2, a, b);
         }
     }
 }

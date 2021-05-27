@@ -41,11 +41,17 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             switch (type)
             {
                 case -1:
-                    return new Point(-1 * p.X, p.Y);
+                    Matrix<double> matrix = Matrix<double>.Build.DenseOfArray(Matrix.symmetryOy());
+                    Matrix<double> result = GetMatrix(p).Multiply(matrix);
+                    return new Point(Convert.ToInt32(result[0, 0]), Convert.ToInt32(result[0, 1]));
                 case 1:
-                    return new Point( p.X, -1 * p.Y);
+                    matrix = Matrix<double>.Build.DenseOfArray(Matrix.symmetryO());
+                    result = GetMatrix(p).Multiply(matrix);
+                    return new Point(Convert.ToInt32(result[0, 0]), Convert.ToInt32(result[0, 1]));
                 default:
-                    return new Point(-1 * p.X, -1 * p.Y);
+                    matrix = Matrix<double>.Build.DenseOfArray(Matrix.symmetryOx());
+                    result = GetMatrix(p).Multiply(matrix);
+                    return new Point(Convert.ToInt32(result[0, 0]), Convert.ToInt32(result[0, 1]));
             }
         }
 
@@ -104,6 +110,14 @@ namespace KTDH_Nhom23_DoAnCuoiKy
         public static double ConvertDegreesToRadian(int degrees)
         {
             return (1.0 * degrees / 180) * Math.PI;
+        }
+
+
+        public static Point Cabinet(Point p)
+        {
+            int x1 = Convert.ToInt32(p.X - p.Z * Math.Sqrt(2) / 4);
+            int y1 = Convert.ToInt32(p.Y - p.Z * Math.Sqrt(2) / 4);
+            return new Point(x1, y1);
         }
 
     }

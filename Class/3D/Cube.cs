@@ -22,7 +22,8 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
 
         public Cube(Point a, int canh)
         {
-            A = a;
+            A = PhepToan.Cabinet(a);
+
             Edge = canh;
             B = new Point(A.X, A.Y + Edge, A.Z, "B");
             C = new Point(A.X + Edge, A.Y + Edge, A.Z, "C");
@@ -51,7 +52,6 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         }
         public void Show(Graphics g)
         {
-            A.PutPixel(g);
             foreach (Line n in nega)
             {
                 n.Show(g, true);
@@ -74,6 +74,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._3D
         {
             Edge = Convert.ToInt32(Edge * ratio);
             A = PhepToan.Scale(A, ratio, ratio, ratio);
+
             B = new Point(A.X, A.Y + Edge, A.Z, "B");
             C = new Point(A.X + Edge, A.Y + Edge, A.Z, "C");
             D = new Point(A.X + Edge, A.Y, A.Z, "D");

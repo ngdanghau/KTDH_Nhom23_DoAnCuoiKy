@@ -24,6 +24,7 @@ namespace KTDH_Nhom23_DoAnCuoiKy.Class._2D
             int x = 0;
             int y = Convert.ToInt32(Radius);
             int maxX = Convert.ToInt32(Math.Sqrt(2) / 2 * Radius);
+
             double P = 1 - Radius;
 
             while (x <= maxX)

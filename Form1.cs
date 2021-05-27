@@ -121,6 +121,21 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             // Vẽ 2 đường Ox và Oy 
             g.DrawLine(pen, panel2.Width, O.Y, 0, O.Y);
             g.DrawLine(pen, O.X, 0, O.X, panel2.Height);
+
+            // Vẽ tên trục
+            label3.Location = new System.Drawing.Point(panel2.Width / 2, panel2.Height / 2 + 100);
+            label3.Visible = true;
+            label3.BringToFront();
+
+            label4.Location = new System.Drawing.Point(panel2.Width - 20, panel2.Height / 2 + 100);
+            label4.Visible = true;
+            label4.BringToFront();
+
+            label5.Location = new System.Drawing.Point(panel2.Width / 2, 100);
+            label5.Visible = true;
+            label5.BringToFront();
+
+            label6.Visible = false;
         }
 
         private void DrawCoordinate3D()
@@ -145,6 +160,23 @@ namespace KTDH_Nhom23_DoAnCuoiKy
             g.DrawLine(pen, O.X, O.Y, panel2.Width, O.Y);
             g.DrawLine(pen, O.X, 0, O.X, O.Y);
             g.DrawLine(pen, O.X, O.Y, 0 - Convert.ToInt32(panel2.Width / 3.5), panel2.Width);
+
+            // Vẽ tên trục
+            label3.Location = new System.Drawing.Point(panel2.Width / 2 - 100, panel2.Height / 2 + 100);
+            label3.Visible = true;
+            label3.BringToFront();
+
+            label4.Location = new System.Drawing.Point(panel2.Width - 40, panel2.Height / 2 + 100);
+            label4.Visible = true;
+            label4.BringToFront();
+
+            label5.Location = new System.Drawing.Point(panel2.Width / 2 - 100, 100);
+            label5.Visible = true;
+            label5.BringToFront();
+
+            label6.Location = new System.Drawing.Point(panel2.Width / 2 - 450, panel2.Height + 70);
+            label6.Visible = true;
+            label6.BringToFront();
 
         }
 
